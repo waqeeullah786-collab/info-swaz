@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service — Swaz</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a1f0a; --card: #0f2212; --border: rgba(255,77,28,0.12); --border2: rgba(255,77,28,0.28);
+  --green: #FF4D1C; --gold: #FFB800; --white: #F7F5F0;
+  --muted: rgba(247,245,240,0.5); --muted2: rgba(247,245,240,0.28);
+  --font-d: 'Bebas Neue', sans-serif; --font: 'DM Sans', sans-serif; --font-mono: 'DM Mono', monospace;
+}
+body { background: linear-gradient(160deg, #0a1f0a 0%, #0f2e10 40%, #163518 70%, #1a3d1a 100%); color: var(--white); font-family: var(--font); min-height: 100vh; }
+body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(255,77,28,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,77,28,0.03) 1px, transparent 1px); background-size: 48px 48px; }
+nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 56px; background: rgba(8,22,9,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: blink 2.5s infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.4} }
+.nav-brand { font-family: var(--font-d); font-size: 22px; color: var(--white); text-decoration: none; }
+.nav-brand span { color: var(--green); }
+.nav-back { font-size: 13px; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); transition: color 0.18s; }
+.nav-back:hover { color: var(--white); }
+.page { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 64px 24px 100px; }
+.policy-header { margin-bottom: 48px; }
+.policy-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 14px; }
+.policy-title { font-family: var(--font-d); font-size: 56px; letter-spacing: 0.03em; line-height: 0.95; color: var(--white); margin-bottom: 16px; }
+.policy-meta { font-size: 13px; color: var(--muted2); font-family: var(--font-mono); }
+.policy-body { display: flex; flex-direction: column; gap: 36px; }
+.policy-section { background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 12px; padding: 28px 30px; }
+.policy-section h2 { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.policy-section h2::before { content: ''; width: 3px; height: 18px; background: var(--green); border-radius: 2px; flex-shrink: 0; }
+.policy-section p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 12px; }
+.policy-section p:last-child { margin-bottom: 0; }
+.policy-section ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.policy-section ul li { font-size: 14px; color: var(--muted); line-height: 1.65; padding-left: 18px; position: relative; }
+.policy-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--green); font-size: 12px; }
+.contact-box { background: rgba(255,77,28,0.06); border: 1px solid rgba(255,77,28,0.2); border-radius: 12px; padding: 24px 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.contact-box p { font-size: 14px; color: var(--muted); }
+.contact-box a { font-family: var(--font-mono); font-size: 13px; color: var(--green); text-decoration: none; border: 1px solid rgba(255,77,28,0.3); padding: 9px 20px; border-radius: 8px; transition: all 0.18s; }
+.contact-box a:hover { background: rgba(255,77,28,0.1); }
+.site-footer { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 60px; background: rgba(0,0,0,0.35); }
+.footer-inner { max-width: 900px; margin: 0 auto; padding: 60px 24px 0; }
+.footer-top { display: grid; grid-template-columns: 1.4fr 2fr; gap: 60px; margin-bottom: 48px; }
+.footer-logo { font-family: var(--font-d); font-size: 36px; color: var(--white); margin-bottom: 12px; }
+.footer-logo span { color: var(--green); }
+.footer-tagline { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
+.footer-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,77,28,0.1); border: 1px solid rgba(255,77,28,0.25); border-radius: 20px; padding: 7px 14px; font-size: 12px; color: var(--green); font-family: var(--font-mono); }
+.footer-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; }
+.footer-links-group { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+.footer-col { display: flex; flex-direction: column; gap: 10px; }
+.footer-col-title { font-size: 11px; font-weight: 600; color: var(--white); letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 4px; }
+.footer-col a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.18s; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding: 20px 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 12px; color: var(--muted2); font-family: var(--font-mono); }
+.footer-bottom-links { display: flex; gap: 24px; }
+.footer-bottom-links a { font-size: 12px; color: var(--muted2); text-decoration: none; font-family: var(--font-mono); transition: color 0.18s; }
+.footer-bottom-links a:hover { color: var(--white); }
+
+@media (max-width: 768px) {
+  nav { padding: 0 16px; }
+  .page { padding: 40px 16px 80px; }
+  .policy-title { font-size: 38px; }
+  .policy-section { padding: 20px 18px; }
+  .contact-box { flex-direction: column; align-items: flex-start; }
+  .highlight-box { flex-direction: column; gap: 10px; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .footer-links-group { grid-template-columns: repeat(2,1fr); gap: 20px; }
+  .footer-logo { font-size: 28px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .footer-inner { padding: 40px 16px 0; }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="nav-dot"></div>
+    <a href="https://waqeeu.vercel.app" class="nav-brand">SWAZ<span>.</span></a>
+  </div>
+  <a href="https://waqeeu.vercel.app" class="nav-back">← Back to App</a>
+</nav>
+
+<div class="page">
+  <div class="policy-header">
+    <div class="policy-eyebrow">Legal · Terms</div>
+    <h1 class="policy-title">TERMS OF<br>SERVICE</h1>
+    <div class="policy-meta">Last updated: January 1, 2025 · Swaz / Janan AI Automation Club</div>
+  </div>
+
+  <div class="policy-body">
+
+    <div class="policy-section">
+      <h2>Acceptance of Terms</h2>
+      <p>By accessing or using Swaz ("the Service"), operated by Janan AI Automation Club, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use the Service.</p>
+      <p>We reserve the right to update these terms at any time. Continued use of the Service after changes constitutes acceptance of the revised terms.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Description of Service</h2>
+      <p>Swaz is an Amazon niche research platform powered by AI automation. It provides product discovery, competition analysis, trend forecasting, revenue estimation, and related tools to help Amazon sellers identify market opportunities.</p>
+      <p>The Service is provided on a subscription basis and requires an active account to access premium features.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Account Registration</h2>
+      <ul>
+        <li>You must provide accurate and complete information when creating an account</li>
+        <li>You are responsible for maintaining the security of your account credentials</li>
+        <li>You must be at least 18 years old to create an account</li>
+        <li>One person or legal entity may not maintain more than one free account</li>
+        <li>You are responsible for all activity that occurs under your account</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Acceptable Use</h2>
+      <p>You agree to use Swaz only for lawful purposes. You must not:</p>
+      <ul>
+        <li>Use the Service to violate Amazon's Terms of Service or any applicable law</li>
+        <li>Scrape, bulk export, or systematically harvest data beyond normal usage</li>
+        <li>Resell, sublicense, or redistribute access to the Service without written permission</li>
+        <li>Attempt to reverse-engineer, decompile, or access our underlying systems or data sources</li>
+        <li>Use automated tools, bots, or scripts to access the Service at excessive rates</li>
+        <li>Share account credentials with third parties outside your permitted team seats</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Subscription & Billing</h2>
+      <p>Swaz offers monthly and annual subscription plans. By subscribing, you authorize us to charge your payment method at the beginning of each billing cycle.</p>
+      <ul>
+        <li>Subscriptions renew automatically unless cancelled before the renewal date</li>
+        <li>We will notify you by email 3 days before any renewal charge</li>
+        <li>You may cancel at any time from your account dashboard</li>
+        <li>Pricing may change with 30 days notice to existing subscribers</li>
+        <li>All fees are exclusive of taxes unless stated otherwise</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Payment Processing — Lemon Squeezy</h2>
+      <p>All payments for Swaz subscriptions are processed by <strong style="color:var(--white)">Lemon Squeezy</strong> (lemonsqueezy.com), our authorized merchant of record. Lemon Squeezy handles all billing, tax collection, and payment processing on our behalf.</p>
+      <ul>
+        <li>Your payment details are securely handled by Lemon Squeezy and never stored on our servers</li>
+        <li>Charges on your bank or card statement will appear as "Lemon Squeezy"</li>
+        <li>Lemon Squeezy is responsible for collecting and remitting applicable sales taxes</li>
+        <li>By purchasing a Swaz subscription, you also agree to Lemon Squeezy's Terms of Service at <a href="https://www.lemonsqueezy.com/terms" style="color:var(--green);text-decoration:none" target="_blank">lemonsqueezy.com/terms</a></li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Nature of Service — Self-Service Platform</h2>
+      <p>Swaz is a fully self-service subscription platform. Access to all features is provided automatically upon subscribing — no manual onboarding, 1:1 sessions, or customised delivery is included unless explicitly stated in a specific plan.</p>
+      <p>We do not currently offer personalised consulting, custom-built products, or individual coaching as part of any standard subscription. Any such arrangement, if offered separately, would be governed by a separate agreement.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Intellectual Property</h2>
+      <p>All content, features, and functionality of Swaz — including but not limited to text, graphics, code, algorithms, and data — are owned by Janan AI Automation Club and are protected by intellectual property laws.</p>
+      <p>You are granted a limited, non-exclusive, non-transferable license to use the Service for your own business purposes. You may not copy, modify, or distribute any part of the Service without our written consent.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Disclaimer of Warranties</h2>
+      <p>Swaz is provided "as is" without warranties of any kind. We do not guarantee that niche data, revenue estimates, or competition scores will be accurate, complete, or suitable for any particular business decision.</p>
+      <p>All data provided by Swaz is for informational purposes only. You are solely responsible for any business decisions made based on information from the Service.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Limitation of Liability</h2>
+      <p>To the maximum extent permitted by law, Janan AI Automation Club shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the Service, including but not limited to loss of profits, data, or business opportunities.</p>
+      <p>Our total liability to you for any claims arising from these Terms shall not exceed the amount you paid us in the 3 months preceding the claim.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Termination</h2>
+      <p>We reserve the right to suspend or terminate your account at any time if you violate these Terms of Service. You may also terminate your account at any time by cancelling your subscription and deleting your account from the dashboard.</p>
+      <p>Upon termination, your right to use the Service ceases immediately. Provisions that by their nature should survive termination will remain in effect.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Governing Law</h2>
+      <p>These Terms shall be governed by and construed in accordance with applicable laws. Any disputes arising from these Terms or your use of the Service shall be resolved through good-faith negotiation before pursuing formal legal action.</p>
+    </div>
+
+    <div class="contact-box">
+      <p>Questions about these terms? Our team is happy to clarify.</p>
+      <a href="mailto:support@swaz.app">Contact Legal Team →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">SWAZ<span>.</span></div>
+        <p class="footer-tagline">Amazon niche intelligence powered by AI.<br>Find winning products before the market does.</p>
+        <div class="footer-badge"><div class="footer-badge-dot"></div>Swaz Janan AI Automation</div>
+      </div>
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <div class="footer-col-title">Product</div>
+          <a href="#">Niche Scanner</a><a href="#">Trend Forecasting</a><a href="#">Competition Score</a><a href="#">FBA Calculator</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <a href="#">About Us</a><a href="#">Blog</a><a href="#">Pricing</a><a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Legal</div>
+          <a href="https://waqeeu.vercel.app/privacy.html">Privacy Policy</a><a href="https://waqeeu.vercel.app/refund.html">Refund Policy</a><a href="https://waqeeu.vercel.app/terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Swaz · Janan AI Automation. All rights reserved.</div>
+      <div class="footer-bottom-links"><a href="https://waqeeu.vercel.app/privacy.html">Privacy</a><a href="https://waqeeu.vercel.app/refund.html">Refund</a><a href="https://waqeeu.vercel.app/terms.html">Terms</a></div>
+    </div>

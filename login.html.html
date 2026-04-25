@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swaz — Login</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap');
+:root {
+  --green-dark: #0d2318;
+  --green-mid: #1a3a2a;
+  --orange: #FF6B2B;
+  --orange-hover: #e55a1a;
+  --white: #ffffff;
+  --gray: #8a9e94;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background-color: var(--green-dark);
+  font-family: 'Barlow', sans-serif;
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; position: relative;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,107,43,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,107,43,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+body::after {
+  content: '';
+  position: fixed; top: -200px; left: 50%; transform: translateX(-50%);
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,107,43,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.login-wrapper {
+  width: 100%; max-width: 420px; padding: 20px;
+  animation: fadeUp 0.6s ease forwards;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.logo { text-align: center; margin-bottom: 36px; }
+.logo-badge { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.logo-dot { width: 10px; height: 10px; background: var(--orange); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.6;transform:scale(1.3)} }
+.logo-name { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--white); letter-spacing: 3px; }
+.logo-sub { font-size: 12px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; }
+
+.card {
+  background: var(--green-mid);
+  border: 1px solid rgba(255,107,43,0.15);
+  border-radius: 16px; padding: 40px 36px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+}
+.card-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--white); letter-spacing: 2px; margin-bottom: 6px; }
+.card-subtitle { font-size: 13px; color: var(--gray); margin-bottom: 32px; }
+
+.form-group { margin-bottom: 20px; }
+label { display: block; font-size: 12px; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 8px; }
+input {
+  width: 100%; background: var(--green-dark);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px; padding: 14px 16px;
+  font-family: 'Barlow', sans-serif; font-size: 15px; color: var(--white);
+  outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+}
+input::placeholder { color: rgba(255,255,255,0.2); }
+input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,107,43,0.1); }
+
+.error-msg {
+  display: none;
+  background: rgba(255,80,80,0.1); border: 1px solid rgba(255,80,80,0.3);
+  border-radius: 8px; padding: 10px 14px;
+  font-size: 13px; color: #ff6b6b; margin-bottom: 16px; text-align: center;
+}
+.error-msg.show { display: block; }
+
+.plan-badge {
+  display: none;
+  text-align: center; margin-bottom: 16px;
+  padding: 8px 14px; border-radius: 8px;
+  font-size: 13px; font-weight: 600;
+}
+.plan-badge.free { background: rgba(255,255,255,0.06); color: var(--gray); border: 1px solid rgba(255,255,255,0.1); }
+.plan-badge.paid { background: rgba(255,107,43,0.12); color: var(--orange); border: 1px solid rgba(255,107,43,0.25); }
+.plan-badge.show { display: block; }
+
+.btn {
+  width: 100%; background: var(--orange); color: var(--white);
+  border: none; border-radius: 10px; padding: 15px;
+  font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 2px;
+  cursor: pointer; transition: background 0.2s, transform 0.1s; margin-top: 4px;
+}
+.btn:hover { background: var(--orange-hover); }
+.btn:active { transform: scale(0.98); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.divider { display: flex; align-items: center; gap: 12px; margin: 24px 0; }
+.divider-line { flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+.divider-text { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
+
+.footer { text-align: center; margin-top: 28px; font-size: 12px; color: var(--gray); }
+.footer a { color: var(--orange); text-decoration: none; }
+
+.free-note {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; padding: 14px 16px;
+  font-size: 12px; color: var(--gray); line-height: 1.6; margin-bottom: 20px;
+}
+.free-note strong { color: var(--white); }
+
+.waqi-tag { text-align: center; margin-top: 32px; font-size: 11px; color: rgba(255,255,255,0.2); letter-spacing: 1px; }
+</style>
+</head>
+<body>
+<div class="login-wrapper">
+
+  <div class="logo">
+    <div class="logo-badge">
+      <div class="logo-dot"></div>
+      <span class="logo-name">SWAZ</span>
+    </div>
+    <div class="logo-sub">Amazon Niche Research Software</div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">WELCOME BACK</div>
+    <div class="card-subtitle">Sign in with your email to access your dashboard</div>
+
+    <div class="free-note">
+      🎁 <strong>Free plan:</strong> 1 search/day for 7 days.<br>
+      ⚡ <strong>Paid plan:</strong> 7 searches/day — unlimited access.<br>
+      Contact <strong>03152666506</strong> on WhatsApp to subscribe.
+    </div>
+
+    <div class="error-msg" id="errorMsg">❌ Incorrect email or password. Please try again.</div>
+    <div class="plan-badge" id="planBadge"></div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="emailInput" placeholder="Enter your email" autocomplete="email" />
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" />
+    </div>
+
+    <button class="btn" onclick="handleLogin()">▶ SIGN IN →</button>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-text">Need access?</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="footer">
+      Contact us on WhatsApp to get your account<br>
+      <a href="https://wa.me/923152666506">📱 03152666506</a>
+    </div>
+  </div>
+
+  <div class="waqi-tag">© 2025 WAQI GLOBAL TECH · ALL RIGHTS RESERVED</div>
+</div>
+
+<script>
+// =============================================
+// USER LIST
+// Add users here. Set paid: true for subscribers.
+// Format: { email: "x@x.com", password: "pass", paid: true/false }
+// =============================================
+const USERS = [
+  { email: "admin@swaz.com",    password: "swaz2024",  paid: true  },
+  { email: "waqee@swaz.com",    password: "waqi123",   paid: true  },
+  // Free users (1 search/day):
+  // { email: "client@gmail.com", password: "pass123", paid: false },
+  // Paid subscribers (7 searches/day):
+  // { email: "pro@gmail.com",    password: "pass456", paid: true  },
+];
+
+document.addEventListener('keydown', e => { if (e.key === 'Enter') handleLogin(); });
+
+function handleLogin() {
+  const email    = document.getElementById('emailInput').value.trim().toLowerCase();
+  const password = document.getElementById('password').value.trim();
+  const errorMsg = document.getElementById('errorMsg');
+  const planBadge = document.getElementById('planBadge');
+  const btn      = document.querySelector('.btn');
+
+  errorMsg.classList.remove('show');
+  planBadge.classList.remove('show', 'free', 'paid');
+
+  if (!email || !password) {
+    errorMsg.textContent = '⚠️ Please enter both email and password.';
+    errorMsg.classList.add('show');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'SIGNING IN...';
+
+  setTimeout(() => {
+    const user = USERS.find(u => u.email === email && u.password === password);
+
+    if (user) {
+      sessionStorage.setItem('swaz_logged_in', 'true');
+      sessionStorage.setItem('swaz_user', email);
+      sessionStorage.setItem('swaz_paid', user.paid ? 'true' : 'false');
+
+      planBadge.textContent = user.paid
+        ? '✅ Paid Plan — 7 searches/day unlocked'
+        : '🎁 Free Plan — 1 search/day (7-day trial)';
+      planBadge.className = 'plan-badge show ' + (user.paid ? 'paid' : 'free');
+
+      setTimeout(() => { window.location.href = 'index.html'; }, 800);
+    } else {
+      errorMsg.textContent = '❌ Incorrect email or password. Please try again.';
+      errorMsg.classList.add('show');
+      btn.disabled = false;
+      btn.textContent = '▶ SIGN IN →';
+    }
+  }, 800);
+}
+</script>
+</body>
+</html>

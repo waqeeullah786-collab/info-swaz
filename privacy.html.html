@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Swaz</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a1f0a;
+  --card: #0f2212;
+  --border: rgba(255,77,28,0.12);
+  --border2: rgba(255,77,28,0.28);
+  --green: #FF4D1C;
+  --gold: #FFB800;
+  --white: #F7F5F0;
+  --muted: rgba(247,245,240,0.5);
+  --muted2: rgba(247,245,240,0.28);
+  --font-d: 'Bebas Neue', sans-serif;
+  --font: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+body {
+  background: linear-gradient(160deg, #0a1f0a 0%, #0f2e10 40%, #163518 70%, #1a3d1a 100%);
+  color: var(--white); font-family: var(--font); min-height: 100vh;
+}
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(255,77,28,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,77,28,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px; height: 56px;
+  background: rgba(8,22,9,0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-left { display: flex; align-items: center; gap: 10px; }
+.nav-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: blink 2.5s infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.4} }
+.nav-brand { font-family: var(--font-d); font-size: 22px; color: var(--white); text-decoration: none; }
+.nav-brand span { color: var(--green); }
+.nav-back {
+  font-size: 13px; color: var(--muted); text-decoration: none;
+  display: flex; align-items: center; gap: 6px; transition: color 0.18s;
+  font-family: var(--font-mono);
+}
+.nav-back:hover { color: var(--white); }
+
+.page { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 64px 24px 100px; }
+
+.policy-header { margin-bottom: 48px; }
+.policy-eyebrow {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--green); margin-bottom: 14px;
+}
+.policy-title { font-family: var(--font-d); font-size: 56px; letter-spacing: 0.03em; line-height: 0.95; color: var(--white); margin-bottom: 16px; }
+.policy-meta { font-size: 13px; color: var(--muted2); font-family: var(--font-mono); }
+
+.policy-body { display: flex; flex-direction: column; gap: 36px; }
+
+.policy-section {
+  background: rgba(0,0,0,0.2);
+  border: 1px solid var(--border);
+  border-radius: 12px; padding: 28px 30px;
+}
+.policy-section h2 {
+  font-size: 16px; font-weight: 600; color: var(--white);
+  margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
+}
+.policy-section h2::before {
+  content: ''; width: 3px; height: 18px; background: var(--green);
+  border-radius: 2px; flex-shrink: 0;
+}
+.policy-section p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 12px; }
+.policy-section p:last-child { margin-bottom: 0; }
+.policy-section ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.policy-section ul li {
+  font-size: 14px; color: var(--muted); line-height: 1.65;
+  padding-left: 18px; position: relative;
+}
+.policy-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--green); font-size: 12px; }
+
+.contact-box {
+  background: rgba(255,77,28,0.06); border: 1px solid rgba(255,77,28,0.2);
+  border-radius: 12px; padding: 24px 28px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+}
+.contact-box p { font-size: 14px; color: var(--muted); }
+.contact-box a {
+  font-family: var(--font-mono); font-size: 13px; color: var(--green);
+  text-decoration: none; border: 1px solid rgba(255,77,28,0.3);
+  padding: 9px 20px; border-radius: 8px; transition: all 0.18s;
+}
+.contact-box a:hover { background: rgba(255,77,28,0.1); }
+
+/* FOOTER */
+.site-footer { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 60px; background: rgba(0,0,0,0.35); }
+.footer-inner { max-width: 900px; margin: 0 auto; padding: 60px 24px 0; }
+.footer-top { display: grid; grid-template-columns: 1.4fr 2fr; gap: 60px; margin-bottom: 48px; }
+.footer-logo { font-family: var(--font-d); font-size: 36px; color: var(--white); margin-bottom: 12px; }
+.footer-logo span { color: var(--green); }
+.footer-tagline { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
+.footer-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,77,28,0.1); border: 1px solid rgba(255,77,28,0.25); border-radius: 20px; padding: 7px 14px; font-size: 12px; color: var(--green); font-family: var(--font-mono); }
+.footer-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; }
+.footer-links-group { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+.footer-col { display: flex; flex-direction: column; gap: 10px; }
+.footer-col-title { font-size: 11px; font-weight: 600; color: var(--white); letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 4px; }
+.footer-col a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.18s; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding: 20px 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 12px; color: var(--muted2); font-family: var(--font-mono); }
+.footer-bottom-links { display: flex; gap: 24px; }
+.footer-bottom-links a { font-size: 12px; color: var(--muted2); text-decoration: none; font-family: var(--font-mono); transition: color 0.18s; }
+.footer-bottom-links a:hover { color: var(--white); }
+
+@media (max-width: 768px) {
+  nav { padding: 0 16px; }
+  .page { padding: 40px 16px 80px; }
+  .policy-title { font-size: 38px; }
+  .policy-section { padding: 20px 18px; }
+  .contact-box { flex-direction: column; align-items: flex-start; }
+  .highlight-box { flex-direction: column; gap: 10px; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .footer-links-group { grid-template-columns: repeat(2,1fr); gap: 20px; }
+  .footer-logo { font-size: 28px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .footer-inner { padding: 40px 16px 0; }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://waqeeu.vercel.app" class="nav-brand">SWAZ<span>.</span></a>
+  <a href="https://waqeeu.vercel.app" class="nav-back">← Back to App</a>
+</nav>
+
+<div class="page">
+  <div class="policy-header">
+    <div class="policy-eyebrow">Legal · Privacy</div>
+    <h1 class="policy-title">PRIVACY<br>POLICY</h1>
+    <div class="policy-meta">Last updated: January 1, 2025 · Swaz / Janan AI Automation Club</div>
+  </div>
+
+  <div class="policy-body">
+
+    <div class="policy-section">
+      <h2>Overview</h2>
+      <p>Swaz ("we", "our", or "us"), operated by Janan AI Automation Club, is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our Amazon niche research platform.</p>
+      <p>By using Swaz, you agree to the collection and use of information in accordance with this policy.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Information We Collect</h2>
+      <p>We collect the following types of information to provide and improve our service:</p>
+      <ul>
+        <li>Account information such as your name, email address, and password when you register</li>
+        <li>Usage data including search queries, niche scans, and feature interactions</li>
+        <li>Payment information processed securely through Lemon Squeezy, our merchant of record and payment processor</li>
+        <li>Device and browser information including IP address, browser type, and operating system</li>
+        <li>Cookies and similar tracking technologies to enhance your experience</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>How We Use Your Information</h2>
+      <p>Your data is used strictly to deliver and improve our service:</p>
+      <ul>
+        <li>To provide, operate, and maintain the Swaz platform</li>
+        <li>To personalize your experience and remember your recent searches</li>
+        <li>To process transactions and send billing-related communications</li>
+        <li>To send product updates, newsletters, and relevant marketing (you may opt out at any time)</li>
+        <li>To analyze usage patterns and improve platform performance</li>
+        <li>To detect and prevent fraud or unauthorized access</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Data Sharing & Third Parties</h2>
+      <p>We do not sell, trade, or rent your personal data to third parties. We may share information with trusted service providers who assist us in operating our platform, provided they agree to keep your information confidential. These include:</p>
+      <ul>
+        <li>Lemon Squeezy (lemonsqueezy.com) as our merchant of record for payment processing, billing, and tax compliance</li>
+        <li>Analytics providers (e.g. Google Analytics) for usage insights</li>
+        <li>Cloud infrastructure providers for data hosting</li>
+        <li>n8n automation services powering our AI agent</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Data Retention & Security</h2>
+      <p>We retain your personal data for as long as your account is active or as needed to provide our services. You may request deletion of your account and associated data at any time by contacting us.</p>
+      <p>We implement industry-standard security measures including SSL encryption, secure database storage, and access controls. However, no method of transmission over the internet is 100% secure.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Your Rights</h2>
+      <ul>
+        <li>Access — request a copy of the personal data we hold about you</li>
+        <li>Correction — request that we update inaccurate or incomplete information</li>
+        <li>Deletion — request that we delete your account and personal data</li>
+        <li>Opt-out — unsubscribe from marketing emails at any time</li>
+        <li>Portability — receive your data in a structured, machine-readable format</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Cookies</h2>
+      <p>We use cookies to maintain your session, remember preferences, and analyze traffic. You can control cookie settings through your browser. Disabling cookies may limit some features of the platform.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Lemon Squeezy — Payment Data</h2>
+      <p>Payments on Swaz are processed by <strong style="color:var(--white)">Lemon Squeezy</strong> (lemonsqueezy.com), who acts as our merchant of record. When you make a purchase, your payment details are collected and handled directly by Lemon Squeezy — we never store your card or billing information on our servers.</p>
+      <p>Lemon Squeezy processes your payment data in accordance with their own Privacy Policy, available at <a href="https://www.lemonsqueezy.com/privacy" style="color:var(--green);text-decoration:none" target="_blank">lemonsqueezy.com/privacy</a>. They are also responsible for applicable tax handling and compliance.</p>
+    </div>
+
+    <div class="contact-box">
+      <p>Questions about this policy? Reach out to our team directly.</p>
+      <a href="mailto:support@swaz.app">Contact Privacy Team →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">SWAZ<span>.</span></div>
+        <p class="footer-tagline">Amazon niche intelligence powered by AI.<br>Find winning products before the market does.</p>
+        <div class="footer-badge"><div class="footer-badge-dot"></div>Swaz Janan AI Automation</div>
+      </div>
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <div class="footer-col-title">Product</div>
+          <a href="#">Niche Scanner</a><a href="#">Trend Forecasting</a><a href="#">Competition Score</a><a href="#">FBA Calculator</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <a href="#">About Us</a><a href="#">Blog</a><a href="#">Pricing</a><a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Legal</div>
+          <a href="https://waqeeu.vercel.app/privacy.html">Privacy Policy</a><a href="https://waqeeu.vercel.app/refund.html">Refund Policy</a><a href="https://waqeeu.vercel.app/terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Swaz · Janan AI Automation. All rights reserved.</div>
+      <div class="footer-bottom-links"><a href="https://waqeeu.vercel.app/privacy.html">Privacy</a><a href="https://waqeeu.vercel.app/refund.html">Refund</a><a href="https://waqeeu.vercel.app/terms.html">Terms</a></div>
+    </div

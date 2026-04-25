@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refund Policy — Swaz</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #0a1f0a; --card: #0f2212; --border: rgba(255,77,28,0.12); --border2: rgba(255,77,28,0.28);
+  --green: #FF4D1C; --gold: #FFB800; --white: #F7F5F0;
+  --muted: rgba(247,245,240,0.5); --muted2: rgba(247,245,240,0.28);
+  --font-d: 'Bebas Neue', sans-serif; --font: 'DM Sans', sans-serif; --font-mono: 'DM Mono', monospace;
+}
+body { background: linear-gradient(160deg, #0a1f0a 0%, #0f2e10 40%, #163518 70%, #1a3d1a 100%); color: var(--white); font-family: var(--font); min-height: 100vh; }
+body::before { content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: linear-gradient(rgba(255,77,28,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,77,28,0.03) 1px, transparent 1px); background-size: 48px 48px; }
+nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 56px; background: rgba(8,22,9,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+.nav-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: blink 2.5s infinite; }
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.4} }
+.nav-brand { font-family: var(--font-d); font-size: 22px; color: var(--white); text-decoration: none; }
+.nav-brand span { color: var(--green); }
+.nav-back { font-size: 13px; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); transition: color 0.18s; }
+.nav-back:hover { color: var(--white); }
+.page { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 64px 24px 100px; }
+.policy-header { margin-bottom: 48px; }
+.policy-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 14px; }
+.policy-title { font-family: var(--font-d); font-size: 56px; letter-spacing: 0.03em; line-height: 0.95; color: var(--white); margin-bottom: 16px; }
+.policy-meta { font-size: 13px; color: var(--muted2); font-family: var(--font-mono); }
+.policy-body { display: flex; flex-direction: column; gap: 36px; }
+.policy-section { background: rgba(0,0,0,0.2); border: 1px solid var(--border); border-radius: 12px; padding: 28px 30px; }
+.policy-section h2 { font-size: 16px; font-weight: 600; color: var(--white); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.policy-section h2::before { content: ''; width: 3px; height: 18px; background: var(--green); border-radius: 2px; flex-shrink: 0; }
+.policy-section p { font-size: 14px; color: var(--muted); line-height: 1.75; margin-bottom: 12px; }
+.policy-section p:last-child { margin-bottom: 0; }
+.policy-section ul { padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.policy-section ul li { font-size: 14px; color: var(--muted); line-height: 1.65; padding-left: 18px; position: relative; }
+.policy-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--green); font-size: 12px; }
+
+.highlight-box {
+  background: rgba(255,184,0,0.06); border: 1px solid rgba(255,184,0,0.2);
+  border-radius: 12px; padding: 22px 26px;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.highlight-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.highlight-box p { font-size: 14px; color: rgba(255,184,0,0.85); line-height: 1.7; margin: 0; }
+
+.contact-box { background: rgba(255,77,28,0.06); border: 1px solid rgba(255,77,28,0.2); border-radius: 12px; padding: 24px 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.contact-box p { font-size: 14px; color: var(--muted); }
+.contact-box a { font-family: var(--font-mono); font-size: 13px; color: var(--green); text-decoration: none; border: 1px solid rgba(255,77,28,0.3); padding: 9px 20px; border-radius: 8px; transition: all 0.18s; }
+.contact-box a:hover { background: rgba(255,77,28,0.1); }
+
+.site-footer { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,0.08); margin-top: 60px; background: rgba(0,0,0,0.35); }
+.footer-inner { max-width: 900px; margin: 0 auto; padding: 60px 24px 0; }
+.footer-top { display: grid; grid-template-columns: 1.4fr 2fr; gap: 60px; margin-bottom: 48px; }
+.footer-logo { font-family: var(--font-d); font-size: 36px; color: var(--white); margin-bottom: 12px; }
+.footer-logo span { color: var(--green); }
+.footer-tagline { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
+.footer-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,77,28,0.1); border: 1px solid rgba(255,77,28,0.25); border-radius: 20px; padding: 7px 14px; font-size: 12px; color: var(--green); font-family: var(--font-mono); }
+.footer-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 2s infinite; }
+.footer-links-group { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+.footer-col { display: flex; flex-direction: column; gap: 10px; }
+.footer-col-title { font-size: 11px; font-weight: 600; color: var(--white); letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 4px; }
+.footer-col a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.18s; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding: 20px 0 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 12px; color: var(--muted2); font-family: var(--font-mono); }
+.footer-bottom-links { display: flex; gap: 24px; }
+.footer-bottom-links a { font-size: 12px; color: var(--muted2); text-decoration: none; font-family: var(--font-mono); transition: color 0.18s; }
+.footer-bottom-links a:hover { color: var(--white); }
+
+@media (max-width: 768px) {
+  nav { padding: 0 16px; }
+  .page { padding: 40px 16px 80px; }
+  .policy-title { font-size: 38px; }
+  .policy-section { padding: 20px 18px; }
+  .contact-box { flex-direction: column; align-items: flex-start; }
+  .highlight-box { flex-direction: column; gap: 10px; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
+  .footer-links-group { grid-template-columns: repeat(2,1fr); gap: 20px; }
+  .footer-logo { font-size: 28px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .footer-inner { padding: 40px 16px 0; }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="nav-dot"></div>
+    <a href="https://waqeeu.vercel.app" class="nav-brand">SWAZ<span>.</span></a>
+  </div>
+  <a href="https://waqeeu.vercel.app" class="nav-back">← Back to App</a>
+</nav>
+
+<div class="page">
+  <div class="policy-header">
+    <div class="policy-eyebrow">Legal · Refunds</div>
+    <h1 class="policy-title">REFUND<br>POLICY</h1>
+    <div class="policy-meta">Last updated: January 1, 2025 · Swaz / Janan AI Automation Club</div>
+  </div>
+
+  <div class="policy-body">
+
+    <div class="highlight-box">
+      <div class="highlight-icon">⚡</div>
+      <p>We stand behind Swaz. If you're not satisfied within the first 7 days of any paid plan, contact us and we'll make it right — no questions asked.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>7-Day Money-Back Guarantee</h2>
+      <p>All paid plans come with a 7-day money-back guarantee. If you are not completely satisfied with Swaz within 7 days of your initial purchase, you are eligible for a full refund of your subscription fee.</p>
+      <p>To request a refund within this window, simply contact our support team with your account email and reason for the request. Refunds are processed by <strong style="color:var(--white)">Lemon Squeezy</strong>, our payment processor, and typically appear within 5–10 business days back to your original payment method.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>Payment Processing — Lemon Squeezy</h2>
+      <p>All Swaz subscriptions are billed and managed through <strong style="color:var(--white)">Lemon Squeezy</strong> (lemonsqueezy.com), who serves as our merchant of record. This means Lemon Squeezy is responsible for processing your payment, issuing refunds, and handling applicable taxes.</p>
+      <ul>
+        <li>Refund requests are actioned through Lemon Squeezy's system on our behalf</li>
+        <li>Your statement will show charges from "Lemon Squeezy" not Swaz directly</li>
+        <li>For billing disputes, you may also contact Lemon Squeezy support at <a href="https://www.lemonsqueezy.com" style="color:var(--green);text-decoration:none" target="_blank">lemonsqueezy.com</a></li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Eligibility for Refunds</h2>
+      <p>You may be eligible for a refund under the following conditions:</p>
+      <ul>
+        <li>Request is made within 7 days of the original purchase date</li>
+        <li>The account has not been suspended for a violation of our Terms of Service</li>
+        <li>The subscription has not been used to bulk-export or scrape data in violation of our fair-use policy</li>
+        <li>This is your first refund request on the account</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Non-Refundable Situations</h2>
+      <p>Refunds will not be issued in the following cases:</p>
+      <ul>
+        <li>Requests made after the 7-day guarantee window has expired</li>
+        <li>Renewal charges — we send a reminder email 3 days before each renewal</li>
+        <li>Partial months or unused days on annual plans after the 7-day window</li>
+        <li>Accounts terminated due to abuse or violation of our Terms of Service</li>
+        <li>Promotional or discounted plan purchases (unless otherwise stated)</li>
+      </ul>
+    </div>
+
+    <div class="policy-section">
+      <h2>Subscription Cancellations</h2>
+      <p>You may cancel your subscription at any time from your account dashboard. Cancellation takes effect at the end of your current billing period — you will retain full access to Swaz until then.</p>
+      <p>Cancellation does not automatically trigger a refund. If you wish to cancel and receive a refund, please contact support within the 7-day guarantee window.</p>
+    </div>
+
+    <div class="policy-section">
+      <h2>How to Request a Refund</h2>
+      <ul>
+        <li>Email us at support@swaz.app with the subject line "Refund Request"</li>
+        <li>Include your registered account email address</li>
+        <li>Briefly describe your reason for the request (optional but helpful)</li>
+        <li>We will respond within 1–2 business days and process eligible refunds promptly</li>
+      </ul>
+    </div>
+
+    <div class="contact-box">
+      <p>Need a refund or have a billing question? We're here to help.</p>
+      <a href="mailto:support@swaz.app">Contact Support →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">SWAZ<span>.</span></div>
+        <p class="footer-tagline">Amazon niche intelligence powered by AI.<br>Find winning products before the market does.</p>
+        <div class="footer-badge"><div class="footer-badge-dot"></div>Swaz Janan AI Automation</div>
+      </div>
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <div class="footer-col-title">Product</div>
+          <a href="#">Niche Scanner</a><a href="#">Trend Forecasting</a><a href="#">Competition Score</a><a href="#">FBA Calculator</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <a href="#">About Us</a><a href="#">Blog</a><a href="#">Pricing</a><a href="#">Contact</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Legal</div>
+          <a href="https://waqeeu.vercel.app/privacy.html">Privacy Policy</a><a href="https://waqeeu.vercel.app/refund.html">Refund Policy</a><a href="https://waqeeu.vercel.app/terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Swaz · Janan AI Automation. All rights reserved.</div>
+      <div class="footer-bottom-l
