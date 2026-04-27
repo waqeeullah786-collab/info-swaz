@@ -976,15 +976,18 @@ async function doSearch() {
 
     if (!response.ok) throw new Error('n8n error ' + response.status);
 
-    const raw = await response.json();
-
-    // Handle different response shapes from n8n
-    let data = [];
-    if (Array.isArray(raw)) data = raw;
-    else if (raw.results) data = raw.results;
-    else if (raw.products) data = raw.products;
-    else if (raw.data) data = raw.data;
-    else data = [raw];
+  let rawText = await response.text();
+        let data = [];
+        try {
+          let parsed = JSON.parse(rawText);
+          if (typeof parsed === 'string') parsed = JSON.parse(parsed);
+          if (Array.isArray(parsed)) data = parsed;
+          else if (parsed.results) data = parsed.results;
+          else if (parsed.products) data = parsed.products;
+          else data = [parsed];
+        } catch(e) {
+          throw new Error('Parse error');
+        }
 
     if (data.length === 0) throw new Error('No results');
 
