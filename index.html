@@ -306,7 +306,7 @@ nav{
       <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </a>
     <a href="#" class="nav-link">Pricing</a>
-    <a href="#" class="nav-link">Blog</a>
+    <a href="blog.html" class="nav-link">Blog</a>
     <a href="#" class="nav-link">
       Resources
       <svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -679,6 +679,79 @@ nav{
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════════ BLOG PREVIEW -->
+<section id="blog" style="max-width:1080px;margin:0 auto;padding:0 40px 80px;">
+  <div style="font-size:12px;font-family:'Manrope',sans-serif;color:#2563EB;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;">From the Blog</div>
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:36px;">
+    <div style="font-family:'Manrope',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:900;letter-spacing:-0.03em;color:#0F1724;line-height:1.08;">Seller insights &amp;<br>niche strategies</div>
+    <a href="blog.html" style="font-size:13px;font-weight:600;color:#2563EB;text-decoration:none;border:1px solid rgba(37,99,235,0.25);padding:9px 20px;border-radius:9px;white-space:nowrap;transition:all 0.15s;" onmouseover="this.style.background='rgba(37,99,235,0.06)'" onmouseout="this.style.background='transparent'">View all 50 articles →</a>
+  </div>
+  <div class="blog-grid">
+    <a href="blog.html#blog-1" class="blog-card">
+      <div class="blog-tag">Niche Research</div>
+      <div class="blog-title">How to Find Profitable Niches on Amazon in 2025</div>
+      <div class="blog-excerpt">Finding a profitable niche is the single most important decision you'll make as a seller. Get it right and your product practically sells itself.</div>
+      <div class="blog-meta"><span>5 min read</span><span class="blog-arrow">→</span></div>
+    </a>
+    <a href="blog.html#blog-2" class="blog-card">
+      <div class="blog-tag">Platform Comparison</div>
+      <div class="blog-title">Amazon FBA vs Walmart WFS — Which Platform Should You Choose?</div>
+      <div class="blog-excerpt">The debate between Amazon FBA and Walmart WFS is heating up. Here's a clear breakdown to help you decide where your next product should go.</div>
+      <div class="blog-meta"><span>4 min read</span><span class="blog-arrow">→</span></div>
+    </a>
+    <a href="blog.html#blog-5" class="blog-card blog-card-featured">
+      <div class="blog-tag" style="background:rgba(37,99,235,0.12);color:#2563EB;">🇵🇰 For Pakistani Sellers</div>
+      <div class="blog-title">Why Pakistani Sellers Are Dominating Amazon FBA in 2025</div>
+      <div class="blog-excerpt">Pakistan has emerged as one of the fastest-growing sources of Amazon FBA sellers globally. Here's how sellers from Lahore to Karachi are winning.</div>
+      <div class="blog-meta"><span>6 min read</span><span class="blog-arrow">→</span></div>
+    </a>
+    <a href="blog.html#blog-6" class="blog-card">
+      <div class="blog-tag">Trend Forecasting</div>
+      <div class="blog-title">How to Find Products Before They Go Mainstream</div>
+      <div class="blog-excerpt">The biggest wins in Amazon selling come from spotting trends early. Learn the signals that separate rising niches from already-saturated ones.</div>
+      <div class="blog-meta"><span>4 min read</span><span class="blog-arrow">→</span></div>
+    </a>
+    <a href="blog.html#blog-9" class="blog-card">
+      <div class="blog-tag">Niche Ideas</div>
+      <div class="blog-title">10 Amazon Niche Ideas That Are Trending Right Now</div>
+      <div class="blog-excerpt">From posture correction products to pickleball equipment — ten categories showing strong momentum with data to back them up.</div>
+      <div class="blog-meta"><span>5 min read</span><span class="blog-arrow">→</span></div>
+    </a>
+    <a href="blog.html#blog-3" class="blog-card">
+      <div class="blog-tag">Product Research</div>
+      <div class="blog-title">The Ultimate Guide to Amazon Product Research in 2025</div>
+      <div class="blog-excerpt">No amount of great copy or advertising can save a bad product choice. This guide walks you through a complete, repeatable research process.</div>
+      <div class="blog-meta"><span>7 min read</span><span class="blog-arrow">→</span></div>
+    </a>
+  </div>
+</section>
+
+<style>
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.blog-card{
+  display:flex;flex-direction:column;
+  background:#fff;border:1px solid rgba(37,99,235,0.1);border-radius:16px;
+  padding:24px;text-decoration:none;color:inherit;
+  transition:all 0.2s;position:relative;overflow:hidden;
+}
+.blog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,rgba(37,99,235,0.5),transparent);transition:opacity 0.2s;opacity:0;}
+.blog-card:hover{border-color:rgba(37,99,235,0.22);transform:translateY(-3px);box-shadow:0 8px 28px rgba(37,99,235,0.1);}
+.blog-card:hover::before{opacity:1;}
+.blog-card-featured{border-color:rgba(37,99,235,0.2);background:linear-gradient(150deg,rgba(37,99,235,0.03),#fff 60%);}
+.blog-tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2563EB;background:rgba(37,99,235,0.07);border:1px solid rgba(37,99,235,0.14);padding:3px 10px;border-radius:20px;margin-bottom:12px;}
+.blog-title{font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;color:#0F1724;line-height:1.35;margin-bottom:10px;flex:1;}
+.blog-excerpt{font-size:13px;color:#6B7A99;line-height:1.65;margin-bottom:16px;}
+.blog-meta{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#A0AABF;margin-top:auto;}
+.blog-arrow{color:#2563EB;font-size:15px;transition:transform 0.15s;}
+.blog-card:hover .blog-arrow{transform:translateX(4px);}
+@media(max-width:1024px){.blog-grid{grid-template-columns:repeat(2,1fr)!important;}}
+@media(max-width:767px){
+  .blog-grid{grid-template-columns:1fr!important;}
+  #blog{padding-left:16px!important;padding-right:16px!important;}
+  .blog-card{padding:18px;}
+}
+</style>
+
 <!-- ═══════════════════════════════════════════ FOOTER -->
 <footer style="border-top:1px solid rgba(37,99,235,0.1);background:#EAF2FB;">
   <div style="max-width:1080px;margin:0 auto;padding:56px 40px 0;">
@@ -875,7 +948,194 @@ nav{
 }
 </style>
 
+<style>
+/* ── SEARCH COUNTER ── */
+.search-counter{
+  display:flex;align-items:center;gap:10px;
+  background:#fff;border:1px solid rgba(37,99,235,0.15);
+  border-radius:12px;padding:10px 18px;
+  margin-bottom:14px;font-size:13px;color:#6B7A99;
+}
+.counter-bar{flex:1;height:6px;background:rgba(37,99,235,0.1);border-radius:10px;overflow:hidden;}
+.counter-fill{height:100%;background:var(--accent);border-radius:10px;transition:width 0.4s ease;}
+.counter-fill.warn{background:#D97706;}
+.counter-fill.full{background:#DC2626;}
+.counter-label{font-weight:600;color:var(--dark);white-space:nowrap;}
+
+/* ── LOADING OVERLAY ── */
+.search-loading{
+  display:none;
+  position:fixed;inset:0;z-index:999;
+  background:rgba(240,245,253,0.85);
+  backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;
+  flex-direction:column;gap:18px;
+}
+.search-loading.active{display:flex;}
+.loading-spinner{
+  width:52px;height:52px;border-radius:50%;
+  border:4px solid rgba(37,99,235,0.15);
+  border-top-color:#2563EB;
+  animation:spin 0.8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-family:'Manrope',sans-serif;font-weight:700;font-size:17px;color:#0F1724;}
+.loading-sub{font-size:13px;color:#6B7A99;}
+
+/* ── RESULTS PANEL ── */
+.results-panel{
+  max-width:760px;margin:20px auto 0;
+  display:none;
+  animation:fadeUp 0.5s ease both;
+}
+.results-panel.active{display:block;}
+.results-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:14px;
+}
+.results-title{font-family:'Manrope',sans-serif;font-size:18px;font-weight:800;color:#0F1724;}
+.results-meta{font-size:12px;color:#6B7A99;background:rgba(37,99,235,0.06);border:1px solid rgba(37,99,235,0.12);padding:4px 12px;border-radius:20px;}
+.result-box{
+  background:#fff;border:1px solid rgba(37,99,235,0.12);border-radius:16px;
+  padding:22px 24px;white-space:pre-wrap;
+  font-size:14px;line-height:1.75;color:#374151;
+  box-shadow:0 4px 20px rgba(37,99,235,0.07);
+}
+.result-box h3{font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;color:#0F1724;margin:14px 0 4px;}
+.result-box h3:first-child{margin-top:0;}
+.results-close{
+  font-size:13px;color:#6B7A99;background:none;border:1px solid rgba(107,122,153,0.3);
+  padding:5px 14px;border-radius:8px;cursor:pointer;font-family:var(--font);
+  transition:all 0.15s;
+}
+.results-close:hover{border-color:#0F1724;color:#0F1724;}
+
+/* ── ERROR TOAST ── */
+.toast{
+  position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(80px);
+  background:#DC2626;color:#fff;
+  font-size:13px;font-weight:600;font-family:var(--font);
+  padding:12px 24px;border-radius:12px;
+  box-shadow:0 8px 30px rgba(220,38,38,0.3);
+  transition:transform 0.3s ease;z-index:1000;
+  white-space:nowrap;
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
+</style>
+
+<!-- Loading Overlay -->
+<div class="search-loading" id="loadingOverlay">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">Scanning niches…</div>
+  <div class="loading-sub" id="loadingSub">Connecting to live data feed</div>
+</div>
+
+<!-- Error Toast -->
+<div class="toast" id="errorToast"></div>
+
 <script>
+const WEBHOOK_URL = 'https://swaz.app.n8n.cloud/webhook/amazon-research';
+const MAX_SEARCHES = 7;
+const STORAGE_KEY = 'swaz_search_data';
+
+// ── Search counter helpers ──
+function getSearchData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return { count: 0, date: today() };
+    const data = JSON.parse(raw);
+    if (data.date !== today()) return { count: 0, date: today() };
+    return data;
+  } catch(e) { return { count: 0, date: today() }; }
+}
+function today() {
+  return new Date().toISOString().slice(0, 10);
+}
+function saveSearchData(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+function updateCounter() {
+  const { count } = getSearchData();
+  const remaining = MAX_SEARCHES - count;
+  const pct = (count / MAX_SEARCHES) * 100;
+  const fill = document.getElementById('counterFill');
+  const label = document.getElementById('counterLabel');
+  if (!fill || !label) return;
+  fill.style.width = pct + '%';
+  fill.className = 'counter-fill' + (pct >= 100 ? ' full' : pct >= 70 ? ' warn' : '');
+  label.textContent = remaining > 0
+    ? remaining + ' search' + (remaining !== 1 ? 'es' : '') + ' left today'
+    : 'Daily limit reached — resets tomorrow';
+}
+
+// ── Toast ──
+function showToast(msg) {
+  const t = document.getElementById('errorToast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 4000);
+}
+
+// ── Loading messages ──
+const loadingMsgs = [
+  'Connecting to live data feed…',
+  'Scanning Amazon & Walmart…',
+  'Analysing competition scores…',
+  'Generating niche insights…',
+  'Almost there…'
+];
+let loadingInterval;
+function startLoading() {
+  let i = 0;
+  const sub = document.getElementById('loadingSub');
+  sub.textContent = loadingMsgs[0];
+  loadingInterval = setInterval(() => {
+    i = (i + 1) % loadingMsgs.length;
+    sub.textContent = loadingMsgs[i];
+  }, 2200);
+  document.getElementById('loadingOverlay').classList.add('active');
+}
+function stopLoading() {
+  clearInterval(loadingInterval);
+  document.getElementById('loadingOverlay').classList.remove('active');
+}
+
+// ── Render results ──
+function renderResults(data, query, platform) {
+  const panel = document.getElementById('resultsPanel');
+  const box   = document.getElementById('resultBox');
+  const meta  = document.getElementById('resultsMeta');
+  panel.classList.add('active');
+  meta.textContent = platform.charAt(0).toUpperCase() + platform.slice(1) + ' · ' + new Date().toLocaleTimeString();
+
+  // Handle different response shapes from n8n
+  let content = '';
+  if (typeof data === 'string') {
+    content = data;
+  } else if (data && data.output) {
+    content = data.output;
+  } else if (data && data.result) {
+    content = data.result;
+  } else if (data && data.text) {
+    content = data.text;
+  } else if (Array.isArray(data)) {
+    content = data.map(item => JSON.stringify(item, null, 2)).join('\n\n');
+  } else {
+    content = JSON.stringify(data, null, 2);
+  }
+
+  // Light markdown → HTML
+  content = content
+    .replace(/### (.+)/g, '<h3>$1</h3>')
+    .replace(/## (.+)/g, '<h3>$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\n/g, '<br>');
+
+  box.innerHTML = content;
+  panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── Platform selector ──
 let selectedPlatform = 'amazon';
 function selectPlatform(p) {
   selectedPlatform = p;
@@ -885,13 +1145,78 @@ function selectPlatform(p) {
 function setSearch(v) {
   document.getElementById('searchInput').value = v;
 }
-function doSearch() {
+
+// ── Main search ──
+async function doSearch() {
   const q = document.getElementById('searchInput').value.trim();
   if (!q) { document.getElementById('searchInput').focus(); return; }
-  alert('Searching for: ' + q + ' on ' + selectedPlatform);
+
+  const data = getSearchData();
+  if (data.count >= MAX_SEARCHES) {
+    showToast('Daily limit of ' + MAX_SEARCHES + ' searches reached. Resets at midnight.');
+    return;
+  }
+
+  startLoading();
+  try {
+    const res = await fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: q, niche: q, platforms: [selectedPlatform, 'amazon', 'walmart'] })
+    });
+
+    if (!res.ok) throw new Error('Server error ' + res.status);
+    const result = await res.json();
+
+    // Increment counter only on success
+    data.count += 1;
+    saveSearchData(data);
+    updateCounter();
+
+    stopLoading();
+    renderResults(result, q, selectedPlatform);
+  } catch(err) {
+    stopLoading();
+    showToast('Search failed: ' + (err.message || 'Please try again'));
+    console.error('SWAZ search error:', err);
+  }
 }
-document.getElementById('searchInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter') doSearch();
+
+// ── Init ──
+document.addEventListener('DOMContentLoaded', () => {
+  // Inject counter into search card
+  const searchCard = document.querySelector('.search-card');
+  const searchBar  = searchCard.querySelector('.search-bar');
+  const counter = document.createElement('div');
+  counter.className = 'search-counter';
+  counter.innerHTML = `
+    <span style="font-size:12px;">🔍</span>
+    <div class="counter-bar"><div class="counter-fill" id="counterFill" style="width:0%"></div></div>
+    <span class="counter-label" id="counterLabel"></span>
+  `;
+  searchCard.insertBefore(counter, searchBar);
+
+  // Inject results panel after search card
+  const resultsPanel = document.createElement('div');
+  resultsPanel.className = 'results-panel';
+  resultsPanel.id = 'resultsPanel';
+  resultsPanel.innerHTML = `
+    <div class="results-header">
+      <div class="results-title">🔎 Niche Results</div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="results-meta" id="resultsMeta"></span>
+        <button class="results-close" onclick="document.getElementById('resultsPanel').classList.remove('active')">✕ Close</button>
+      </div>
+    </div>
+    <div class="result-box" id="resultBox"></div>
+  `;
+  searchCard.parentNode.insertBefore(resultsPanel, searchCard.nextSibling);
+
+  updateCounter();
+
+  document.getElementById('searchInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doSearch();
+  });
 });
 </script>
 </body>
