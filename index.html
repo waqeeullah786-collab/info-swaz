@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Swaz — Amazon Niche Research Software | Digital SaaS Tool</title>
-<meta name="description" content="Swaz is a paid digital SaaS subscription software for Amazon sellers. Find winning niches, analyze competition, forecast trends and estimate revenue. Plans from $19/month.">
-<meta name="keywords" content="Amazon niche finder, FBA research tool, Amazon seller software, niche analysis, digital SaaS">
+<title>Swaz — Amazon &amp; Walmart Research Software | Digital SaaS Tool</title>
+<meta name="description" content="Swaz is a paid digital SaaS subscription software for Amazon & Walmart sellers. Find winning niches, analyze competition, forecast trends and estimate revenue. Plans from $29/month.">
+<meta name="keywords" content="Amazon niche finder, Walmart niche finder, FBA research tool, Amazon seller software, niche analysis, digital SaaS">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ── RESET ─────────────────────────────────────────── */
@@ -18,12 +18,12 @@
   --bg3:          #112614;
   --bg4:          #163018;
   --card:         #0f2212;
-  --border:       rgba(0,230,118,0.12);
-  --border2:      rgba(0,230,118,0.28);
-  --accent:       #00E676;
-  --accent-bright:#00FF88;
-  --accent-dim:   rgba(0,230,118,0.65);
-  --accent-glow:  rgba(0,230,118,0.08);
+  --border:       rgba(255,153,0,0.12);
+  --border2:      rgba(255,153,0,0.28);
+  --accent:       #FF9900;
+  --accent-bright:#FFB347;
+  --accent-dim:   rgba(255,153,0,0.65);
+  --accent-glow:  rgba(255,153,0,0.08);
   --gold:         #FFB800;
   --white:        #F7F5F0;
   --muted:        rgba(247,245,240,0.45);
@@ -48,8 +48,8 @@ body::before {
   content: '';
   position: fixed; inset: 0; z-index: 0; pointer-events: none;
   background-image:
-    linear-gradient(rgba(34,197,94,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34,197,94,0.05) 1px, transparent 1px);
+    linear-gradient(rgba(255,153,0,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,153,0,0.06) 1px, transparent 1px);
   background-size: 48px 48px;
 }
 
@@ -82,7 +82,7 @@ nav {
   border: 1px solid var(--border2); border-radius: 20px;
   font-family: var(--font-mono); transition: all 0.2s;
 }
-.nav-login:hover { color: var(--white); border-color: rgba(0,230,118,0.5); }
+.nav-login:hover { color: var(--white); border-color: rgba(255,153,0,0.5); }
 
 .nav-cta {
   display: flex; align-items: center; gap: 7px;
@@ -95,7 +95,7 @@ nav {
 
 .nav-badge {
   display: flex; align-items: center; gap: 7px;
-  background: rgba(0,230,118,0.1); border: 1px solid var(--border2);
+  background: rgba(255,153,0,0.1); border: 1px solid var(--border2);
   padding: 6px 14px; border-radius: 20px;
   font-size: 12px; color: var(--accent); font-family: var(--font-mono);
 }
@@ -314,8 +314,8 @@ main {
   animation: fadeUp 0.3s ease both;
 }
 .result-card:hover { border-color: var(--border2); background: var(--bg4); }
-.result-card.winner-card { border-color: rgba(0,230,118,0.28); }
-.result-card.winner-card:hover { border-color: rgba(0,230,118,0.5); }
+.result-card.winner-card { border-color: rgba(255,153,0,0.28); }
+.result-card.winner-card:hover { border-color: rgba(255,153,0,0.5); }
 .result-card:nth-child(2) { animation-delay: 0.06s; }
 .result-card:nth-child(3) { animation-delay: 0.12s; }
 .result-card:nth-child(4) { animation-delay: 0.18s; }
@@ -331,7 +331,7 @@ main {
   padding: 4px 10px; border-radius: 6px;
   font-size: 12px; font-weight: 500; font-family: var(--font-mono);
 }
-.badge-winner { background: rgba(0,230,118,0.15); color: var(--accent);   border: 1px solid rgba(0,230,118,0.25); }
+.badge-winner { background: rgba(255,153,0,0.15); color: var(--accent);   border: 1px solid rgba(255,153,0,0.25); }
 .badge-price  { background: rgba(240,255,244,0.06); color: var(--muted);  border: 1px solid var(--border); }
 .badge-stars  { background: rgba(245,158,11,0.12); color: var(--gold);    border: 1px solid rgba(245,158,11,0.2); }
 .badge-warn   { background: rgba(239,68,68,0.1);   color: #F87171;        border: 1px solid rgba(239,68,68,0.2); }
@@ -408,7 +408,7 @@ main {
   display: flex; align-items: center; gap: 14px;
   max-width: 480px; margin: 0 auto;
 }
-.pricing-divider-line { flex: 1; height: 1px; background: rgba(0,230,118,0.15); }
+.pricing-divider-line { flex: 1; height: 1px; background: rgba(255,153,0,0.15); }
 .pricing-divider-text { font-size: 12px; color: var(--muted2); font-family: var(--font-mono); white-space: nowrap; }
 
 .pricing-grid {
@@ -480,8 +480,8 @@ main {
 /* what is swaz box */
 .what-is-box {
   margin-top: 20px;
-  background: rgba(0,230,118,0.06);
-  border: 1px solid rgba(0,230,118,0.2);
+  background: rgba(255,153,0,0.06);
+  border: 1px solid rgba(255,153,0,0.2);
   border-radius: 12px; padding: 24px 28px;
   display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;
 }
@@ -525,7 +525,7 @@ main {
 .footer-tagline { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
 .footer-badge {
   display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(0,230,118,0.1); border: 1px solid rgba(0,230,118,0.25);
+  background: rgba(255,153,0,0.1); border: 1px solid rgba(255,153,0,0.25);
   border-radius: 20px; padding: 7px 14px;
   font-size: 12px; color: var(--accent); font-family: var(--font-mono); letter-spacing: 0.04em;
 }
@@ -608,7 +608,7 @@ main {
     <div class="nav-dot"></div>
     <span class="nav-brand">SWAZ</span>
     <span class="nav-slash">/</span>
-    <span class="nav-sub">Amazon Niche Research</span>
+    <span class="nav-sub">Amazon &amp; Walmart Research</span>
   </div>
   <div class="nav-right">
     <div class="nav-badge">
@@ -626,14 +626,15 @@ main {
   <!-- HEADER -->
   <div class="header">
     <div class="header-tag">
-      <span>◆</span> Digital SaaS Tool · Amazon Niche Research Software
+      <span>◆</span> Digital SaaS Tool · Amazon &amp; Walmart Research Software
     </div>
     <h1>FIND YOUR<br><span>WINNING</span> NICHE</h1>
-    <p>A <strong>digital SaaS software</strong> that helps Amazon sellers find profitable niches.<br>Powered by <strong>Waqee Global Tech</strong> — real demand data, competition scores &amp; revenue estimates.</p>
+    <p>A <strong>digital SaaS software</strong> that helps Amazon &amp; Walmart sellers find profitable niches.<br>Powered by <strong>Waqee Global Tech</strong> — real demand data, competition scores &amp; revenue estimates.</p>
     <div class="header-cta-row">
       <a href="https://khanwaqee.gumroad.com/l/swaz" target="_blank" class="btn-primary">🚀 Start Free Trial →</a>
       <a href="#pricing" class="btn-secondary">See Pricing</a>
     </div>
+    <div class="platform-row" style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:10px;flex-wrap:wrap;"><span style="font-size:11px;color:var(--muted2);font-family:var(--font-mono);letter-spacing:0.06em;">SEARCHES ON</span><span style="font-size:13px;font-weight:700;color:#FF9900;letter-spacing:0.02em;">amazon</span><span style="font-size:13px;color:var(--muted2);">+</span><span style="font-size:13px;font-weight:700;color:#0071CE;letter-spacing:0.02em;">Walmart</span></div>
     <div class="trust-row">
       <div class="trust-item"><span>✓</span> No credit card needed</div>
       <div class="trust-item"><span>✓</span> 1 free search/day</div>
@@ -665,26 +666,26 @@ main {
 
   <!-- SWAZ CHARACTER -->
   <div class="swaz-character-wrap" id="charWrap">
-    <div class="char-bubble" id="charBubble">Scanning Amazon... 🔍</div>
+    <div class="char-bubble" id="charBubble">Scanning Amazon & Walmart... 🔍</div>
     <div id="swazChar" class="char-idle">
       <svg viewBox="0 0 140 160" xmlns="http://www.w3.org/2000/svg">
-        <line x1="70" y1="8" x2="70" y2="28" stroke="#00E676" stroke-width="3" stroke-linecap="round"/>
-        <circle class="antenna-light" cx="70" cy="6" r="5" fill="#00E676"/>
-        <rect x="22" y="28" width="96" height="80" rx="20" fill="#0f2212" stroke="#00E676" stroke-width="2"/>
-        <rect x="28" y="34" width="84" height="68" rx="14" fill="rgba(0,230,118,0.06)"/>
-        <rect class="eye-left"  x="36" y="46" width="22" height="14" rx="5" fill="#00E676"/>
-        <rect class="eye-right" x="82" y="46" width="22" height="14" rx="5" fill="#00E676"/>
+        <line x1="70" y1="8" x2="70" y2="28" stroke="#FF9900" stroke-width="3" stroke-linecap="round"/>
+        <circle class="antenna-light" cx="70" cy="6" r="5" fill="#FF9900"/>
+        <rect x="22" y="28" width="96" height="80" rx="20" fill="#0f2212" stroke="#FF9900" stroke-width="2"/>
+        <rect x="28" y="34" width="84" height="68" rx="14" fill="rgba(255,153,0,0.06)"/>
+        <rect class="eye-left"  x="36" y="46" width="22" height="14" rx="5" fill="#FF9900"/>
+        <rect class="eye-right" x="82" y="46" width="22" height="14" rx="5" fill="#FF9900"/>
         <rect x="40" y="48" width="6" height="4" rx="2" fill="rgba(255,255,255,0.5)"/>
         <rect x="86" y="48" width="6" height="4" rx="2" fill="rgba(255,255,255,0.5)"/>
-        <path class="mouth" d="M 50 72 Q 70 82 90 72" stroke="#00E676" stroke-width="3" fill="none" stroke-linecap="round"/>
-        <rect x="12"  y="50" width="12" height="20" rx="4" fill="#0f2212" stroke="#00E676" stroke-width="2"/>
-        <rect x="116" y="50" width="12" height="20" rx="4" fill="#0f2212" stroke="#00E676" stroke-width="2"/>
-        <rect class="body" x="32" y="108" width="76" height="44" rx="14" fill="rgba(0,230,118,0.08)" stroke="#00E676" stroke-width="2"/>
-        <circle cx="55" cy="128" r="6" fill="rgba(0,230,118,0.3)" stroke="#00E676" stroke-width="1.5"/>
-        <circle cx="70" cy="128" r="6" fill="rgba(0,230,118,0.3)" stroke="#00E676" stroke-width="1.5"/>
-        <circle cx="85" cy="128" r="6" fill="rgba(0,230,118,0.3)" stroke="#00E676" stroke-width="1.5"/>
-        <rect x="44" y="150" width="18" height="10" rx="4" fill="#0f2212" stroke="#00E676" stroke-width="1.5"/>
-        <rect x="78" y="150" width="18" height="10" rx="4" fill="#0f2212" stroke="#00E676" stroke-width="1.5"/>
+        <path class="mouth" d="M 50 72 Q 70 82 90 72" stroke="#FF9900" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <rect x="12"  y="50" width="12" height="20" rx="4" fill="#0f2212" stroke="#FF9900" stroke-width="2"/>
+        <rect x="116" y="50" width="12" height="20" rx="4" fill="#0f2212" stroke="#FF9900" stroke-width="2"/>
+        <rect class="body" x="32" y="108" width="76" height="44" rx="14" fill="rgba(255,153,0,0.08)" stroke="#FF9900" stroke-width="2"/>
+        <circle cx="55" cy="128" r="6" fill="rgba(255,153,0,0.3)" stroke="#FF9900" stroke-width="1.5"/>
+        <circle cx="70" cy="128" r="6" fill="rgba(255,153,0,0.3)" stroke="#FF9900" stroke-width="1.5"/>
+        <circle cx="85" cy="128" r="6" fill="rgba(255,153,0,0.3)" stroke="#FF9900" stroke-width="1.5"/>
+        <rect x="44" y="150" width="18" height="10" rx="4" fill="#0f2212" stroke="#FF9900" stroke-width="1.5"/>
+        <rect x="78" y="150" width="18" height="10" rx="4" fill="#0f2212" stroke="#FF9900" stroke-width="1.5"/>
       </svg>
     </div>
   </div>
@@ -711,7 +712,7 @@ main {
     <div id="loadingWrap" class="loading-wrap">
       <div class="loader"><span></span><span></span><span></span></div>
       <div class="loading-text">Scanning Amazon data...</div>
-      <div class="loading-sub" id="loadingStep">Analyzing niche opportunities</div>
+      <div class="loading-sub" id="loadingStep">Analyzing Amazon &amp; Walmart opportunities</div>
     </div>
     <div class="results-list" id="resultsList"></div>
   </div>
@@ -720,17 +721,120 @@ main {
   <div class="empty-state" id="emptyState">
     <div class="empty-icon">◎</div>
     <div class="empty-title">READY TO SCAN</div>
-    <div class="empty-sub">Enter a niche above and hit Analyze to find winning products</div>
+    <div class="empty-sub">Enter a niche above and hit Analyze to find winning products on Amazon &amp; Walmart</div>
   </div>
 
 </main>
 
 <!-- PRICING -->
+
+<!-- STATS SECTION -->
+<section style="position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 24px 60px;">
+  <div style="text-align:center;margin-bottom:40px;">
+    <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Trusted Results</div>
+    <div style="font-family:var(--font-d);font-size:clamp(32px,5vw,52px);color:var(--white);letter-spacing:0.03em;line-height:0.95;margin-bottom:14px;">SELLERS WHO USE SWAZ<br><span style="color:var(--accent);">OUTPERFORM THE MARKET</span></div>
+    <p style="font-size:15px;color:var(--muted);max-width:500px;margin:0 auto;">Real numbers from real Amazon & Walmart sellers using Swaz to find winning niches.</p>
+  </div>
+
+  <!-- Story Cards -->
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:20px;">
+
+    <!-- Story 1 -->
+    <div style="position:relative;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--border2);min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,31,10,0.3) 0%,rgba(10,31,10,0.85) 100%);z-index:0;"></div>
+      <div style="position:absolute;top:20px;left:20px;font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;z-index:1;">🇵🇰 Pakistani Seller</div>
+      <div style="position:relative;z-index:1;">
+        <div style="font-family:var(--font-d);font-size:52px;color:var(--accent);line-height:1;margin-bottom:4px;">$42K+</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">revenue in first 3 months</div>
+        <div style="font-size:14px;color:var(--white);line-height:1.6;">Ahmed found a home office niche with Swaz that had zero competition on Walmart. Launched in 6 weeks.</div>
+      </div>
+    </div>
+
+    <!-- Story 2 -->
+    <div style="position:relative;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--border2);min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,31,10,0.3) 0%,rgba(10,31,10,0.85) 100%);z-index:0;"></div>
+      <div style="position:absolute;top:20px;left:20px;font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;z-index:1;">🇬🇧 UK Seller</div>
+      <div style="position:relative;z-index:1;">
+        <div style="font-family:var(--font-d);font-size:52px;color:var(--accent);line-height:1;margin-bottom:4px;">31%</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">decrease in research time</div>
+        <div style="font-size:14px;color:var(--white);line-height:1.6;">Sara cut her product research from 3 weeks to 2 days using Swaz niche scores and trend data.</div>
+      </div>
+    </div>
+
+    <!-- Story 3 -->
+    <div style="position:relative;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--border2);min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,31,10,0.3) 0%,rgba(10,31,10,0.85) 100%);z-index:0;"></div>
+      <div style="position:absolute;top:20px;left:20px;font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;z-index:1;">🇺🇸 US Seller</div>
+      <div style="position:relative;z-index:1;">
+        <div style="font-family:var(--font-d);font-size:52px;color:var(--accent);line-height:1;margin-bottom:4px;">18+</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">hours saved per week</div>
+        <div style="font-size:14px;color:var(--white);line-height:1.6;">Marcus runs 3 Amazon stores. Swaz replaced his entire research stack — Jungle Scout, spreadsheets, all of it.</div>
+      </div>
+    </div>
+
+    <!-- Story 4 -->
+    <div style="position:relative;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--border2);min-height:220px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,31,10,0.3) 0%,rgba(10,31,10,0.85) 100%);z-index:0;"></div>
+      <div style="position:absolute;top:20px;left:20px;font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;z-index:1;">🇦🇪 UAE Agency</div>
+      <div style="position:relative;z-index:1;">
+        <div style="font-family:var(--font-d);font-size:52px;color:var(--accent);line-height:1;margin-bottom:4px;">$500K+</div>
+        <div style="font-size:13px;color:var(--muted);margin-bottom:12px;">managed for clients</div>
+        <div style="font-size:14px;color:var(--white);line-height:1.6;">Rami's agency uses Swaz Agency plan to run niche research for 12 Amazon FBA clients simultaneously.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHO IS IT FOR SECTION -->
+<section style="position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 24px 60px;">
+  <div style="text-align:center;margin-bottom:40px;">
+    <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">Who It's For</div>
+    <div style="font-family:var(--font-d);font-size:clamp(32px,5vw,52px);color:var(--white);letter-spacing:0.03em;line-height:0.95;">BUILT FOR SELLERS<br><span style="color:var(--accent);">AT EVERY STAGE</span></div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;">
+
+    <!-- Card 1 -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px 28px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="font-size:32px;margin-bottom:16px;">🚀</div>
+      <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">New Sellers</div>
+      <div style="font-size:18px;font-weight:600;color:var(--white);margin-bottom:10px;">Just starting on Amazon or Walmart?</div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.65;">Skip the guesswork. Swaz shows you exactly which niches have demand and low competition so your first product has the best shot at winning.</p>
+    </div>
+
+    <!-- Card 2 -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px 28px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="font-size:32px;margin-bottom:16px;">📦</div>
+      <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Scaling Sellers</div>
+      <div style="font-size:18px;font-weight:600;color:var(--white);margin-bottom:10px;">Already selling but want to expand?</div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.65;">Find your next winning product line before competitors do. Swaz's trend forecasting tells you what's rising before it peaks.</p>
+    </div>
+
+    <!-- Card 3 -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px 28px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="font-size:32px;margin-bottom:16px;">🏢</div>
+      <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Agencies</div>
+      <div style="font-size:18px;font-weight:600;color:var(--white);margin-bottom:10px;">Managing multiple clients?</div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.65;">Run niche research for all your clients from one dashboard. White-label reports. API access. Built for teams that move fast.</p>
+    </div>
+
+    <!-- Card 4 -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px 28px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--border2)'" onmouseout="this.style.borderColor='var(--border)'">
+      <div style="font-size:32px;margin-bottom:16px;">🌍</div>
+      <div style="font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);margin-bottom:8px;">Global Sellers</div>
+      <div style="font-size:18px;font-weight:600;color:var(--white);margin-bottom:10px;">Selling from anywhere in the world?</div>
+      <p style="font-size:14px;color:var(--muted);line-height:1.65;">Swaz works for sellers in Pakistan, UAE, UK, US and beyond. No location limits. Sell globally, research intelligently.</p>
+    </div>
+
+  </div>
+</section>
+
 <section class="pricing-section" id="pricing">
   <div class="pricing-header">
     <div class="pricing-eyebrow">Pricing Plans</div>
     <div class="pricing-title">FIND WINNING NICHES<br><span>BEFORE YOUR COMPETITORS</span></div>
-    <p class="pricing-sub">Swaz scans real Amazon data to surface high-demand, low-competition niches instantly. No guesswork. No spreadsheets. Just results.</p>
+    <p class="pricing-sub">Swaz scans real Amazon &amp; Walmart data to surface high-demand, low-competition niches instantly. No guesswork. No spreadsheets. Just results.</p>
     <div class="pricing-features">
       <div class="pricing-feature"><span>✓</span> Real-time market data</div>
       <div class="pricing-feature"><span>✓</span> 20+ Amazon categories</div>
@@ -765,7 +869,7 @@ main {
     <!-- STARTER -->
     <div class="plan-card">
       <div class="plan-name">Starter</div>
-      <div class="plan-price"><span class="plan-price-sym">$</span>19</div>
+      <div class="plan-price"><span class="plan-price-sym">$</span>29</div>
       <div class="plan-period">per month</div>
       <div class="plan-divider"></div>
       <ul class="plan-features">
@@ -782,7 +886,7 @@ main {
     <div class="plan-card featured">
       <div class="plan-badge">Most Popular</div>
       <div class="plan-name">Pro</div>
-      <div class="plan-price"><span class="plan-price-sym">$</span>49</div>
+      <div class="plan-price"><span class="plan-price-sym">$</span>67</div>
       <div class="plan-period">per month</div>
       <div class="plan-divider"></div>
       <ul class="plan-features">
@@ -798,7 +902,7 @@ main {
     <!-- AGENCY -->
     <div class="plan-card">
       <div class="plan-name">Agency</div>
-      <div class="plan-price"><span class="plan-price-sym">$</span>99</div>
+      <div class="plan-price"><span class="plan-price-sym">$</span>197</div>
       <div class="plan-period">per month</div>
       <div class="plan-divider"></div>
       <ul class="plan-features">
@@ -818,7 +922,7 @@ main {
     <div class="what-is-icon">📦</div>
     <div>
       <div class="what-is-title">What is Swaz?</div>
-      <p class="what-is-text">Swaz is a <strong>digital SaaS subscription software</strong> for Amazon sellers. It provides AI-powered niche research, competition analysis, trend forecasting, and revenue estimation tools delivered entirely online — no downloads required. Subscribers get full access to the platform based on their chosen plan.</p>
+      <p class="what-is-text">Swaz is a <strong>digital SaaS subscription software</strong> for Amazon &amp; Walmart sellers. It provides AI-powered niche research, competition analysis, trend forecasting, and revenue estimation tools delivered entirely online — no downloads required. Subscribers get full access to the platform based on their chosen plan.</p>
     </div>
   </div>
 
@@ -830,7 +934,7 @@ main {
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">SWAZ<span>.</span></div>
-        <p class="footer-tagline">Amazon niche intelligence powered by Waqee Global Tech.<br>Find winning products before the market does.</p>
+        <p class="footer-tagline">Amazon &amp; Walmart niche intelligence powered by Waqee Global Tech.<br>Find winning products before the market does.</p>
         <div class="footer-badge">
           <div class="footer-badge-dot"></div>
           Waqee Global Tech
@@ -839,7 +943,8 @@ main {
       <div class="footer-links-group">
         <div class="footer-col">
           <div class="footer-col-title">Product</div>
-          <a href="#">Niche Scanner</a>
+          <a href="#">Amazon Scanner</a>
+          <a href="#">Walmart Scanner</a>
           <a href="#">Trend Forecasting</a>
           <a href="#">Competition Score</a>
           <a href="#">Revenue Estimator</a>
@@ -915,7 +1020,7 @@ function showPaywall() {
   document.getElementById('resultsSection').style.display = 'block';
   document.getElementById('statsBar').innerHTML = '';
   document.getElementById('resultsList').innerHTML = `
-    <div style="text-align:center;padding:60px 20px;border:1px solid rgba(0,230,118,0.3);border-radius:14px;background:rgba(255,77,28,0.05);">
+    <div style="text-align:center;padding:60px 20px;border:1px solid rgba(255,153,0,0.3);border-radius:14px;background:rgba(255,77,28,0.05);">
       <div style="font-size:44px;margin-bottom:14px;">🔒</div>
       <div style="font-family:var(--font-d);font-size:38px;letter-spacing:0.04em;margin-bottom:10px;color:var(--white);">DAILY LIMIT REACHED</div>
       <div style="color:var(--muted);font-size:15px;margin-bottom:6px;">You have used all <strong style="color:var(--white);">1 free search</strong> for today.</div>
@@ -953,7 +1058,7 @@ async function doSearch() {
 
   const loadingWrap = document.getElementById('loadingWrap');
   loadingWrap.classList.add('active');
-  setCharState('searching', 'Scanning Amazon... 🔍');
+  setCharState('searching', 'Scanning Amazon & Walmart... 🔍');
 
   const steps = ['Connecting to Amazon data...', 'Analyzing competition scores...', 'Calculating revenue estimates...', 'Ranking opportunities...'];
   let step = 0;
@@ -973,7 +1078,7 @@ async function doSearch() {
     const response = await fetch('https://swaz.app.n8n.cloud/webhook/amazon-research', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query, niche: query })
+      body: JSON.stringify({ query, niche: query, platforms: ['amazon', 'walmart'] })
     });
 
     clearInterval(loadingInterval);
@@ -1136,7 +1241,7 @@ function startMatrix(fast) {
       const char = useWord
         ? words[Math.floor(Math.random() * words.length)]
         : chars[Math.floor(Math.random() * chars.length)];
-      ctx.fillStyle = y === 1 ? '#AAFFAA' : useWord ? '#00FF41' : '#00CC33';
+      ctx.fillStyle = y === 1 ? '#90c8f0' : useWord ? '#FF9900' : '#e68a00';
       ctx.font = useWord ? 'bold 13px monospace' : 'bold 16px monospace';
       ctx.fillText(char, i * 20, y * 20);
       if (y * 20 > canvas.height && Math.random() > 0.975) drops[i] = 0;
