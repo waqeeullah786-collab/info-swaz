@@ -1106,32 +1106,63 @@ function renderResults(data, query, platform) {
   const box   = document.getElementById('resultBox');
   const meta  = document.getElementById('resultsMeta');
   panel.classList.add('active');
-  meta.textContent = platform.charAt(0).toUpperCase() + platform.slice(1) + ' · ' + new Date().toLocaleTimeString();
+  const platformLabel = platform.charAt(0).toUpperCase() + platform.slice(1);
+  meta.textContent = platformLabel + ' · ' + new Date().toLocaleTimeString();
 
-  // Handle different response shapes from n8n
-  let content = '';
-  if (typeof data === 'string') {
-    content = data;
-  } else if (data && data.output) {
-    content = data.output;
-  } else if (data && data.result) {
-    content = data.result;
-  } else if (data && data.text) {
-    content = data.text;
-  } else if (Array.isArray(data)) {
-    content = data.map(item => JSON.stringify(item, null, 2)).join('\n\n');
-  } else {
-    content = JSON.stringify(data, null, 2);
+  // Normalize data into array of products
+  let products = [];
+  try {
+    if (Array.isArray(data)) {
+      products = data;
+    } else if (data && Array.isArray(data.output)) {
+      products = data.output;
+    } else if (data && typeof data.output === 'string') {
+      const cleaned = data.output.replace(/```json|```/g,'').trim();
+      const parsed = JSON.parse(cleaned);
+      products = Array.isArray(parsed) ? parsed : [parsed];
+    } else if (data && data.product_name) {
+      products = [data];
+    } else {
+      // Try parsing any string fields
+      const str = JSON.stringify(data);
+      const match = str.match(/\[.*\]/s);
+      if (match) products = JSON.parse(match[0]);
+    }
+  } catch(e) { products = []; }
+
+  if (!products.length) {
+    box.innerHTML = '<p style="color:#6B7A99;text-align:center;padding:20px;">No products found. Try a different search term.</p>';
+    panel.scrollIntoView({ behavior:'smooth', block:'start' });
+    return;
   }
 
-  // Light markdown → HTML
-  content = content
-    .replace(/### (.+)/g, '<h3>$1</h3>')
-    .replace(/## (.+)/g, '<h3>$1</h3>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\n/g, '<br>');
+  const isAmazon = platform === 'amazon';
+  const storeColor = isAmazon ? '#FF9900' : '#0071DC';
+  const storeBg    = isAmazon ? '#FFF8ED' : '#EDF5FF';
 
-  box.innerHTML = content;
+  box.innerHTML = products.map(p => {
+    const winner = p.winner === true || p.winner === 'true';
+    const score  = p.score || 0;
+    const scoreColor = score >= 70 ? '#16A34A' : score >= 45 ? '#D97706' : '#DC2626';
+    return `
+      <div style="display:flex;flex-direction:column;gap:0;border:1px solid rgba(37,99,235,0.12);border-radius:14px;padding:18px 20px;margin-bottom:12px;background:#fff;box-shadow:0 2px 10px rgba(37,99,235,0.05);">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px;">
+          <div style="flex:1;">
+            <div style="font-family:'Manrope',sans-serif;font-size:14.5px;font-weight:700;color:#0F1724;line-height:1.4;">${p.product_name || 'Unknown Product'}</div>
+          </div>
+          ${winner ? '<div style="flex-shrink:0;background:#DCFCE7;color:#16A34A;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;">⭐ Winner</div>' : ''}
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
+          <span style="background:${storeBg};color:${storeColor};font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;">${p.store || platformLabel}</span>
+          ${p.price ? `<span style="font-size:13px;font-weight:700;color:#0F1724;">💰 ${p.price}</span>` : ''}
+          ${p.rating ? `<span style="font-size:13px;color:#6B7A99;">⭐ ${p.rating}</span>` : ''}
+          <span style="font-size:12px;font-weight:700;color:${scoreColor};background:${scoreColor}18;padding:3px 10px;border-radius:20px;">Score: ${score}</span>
+        </div>
+        ${p.reason ? `<div style="margin-top:8px;font-size:12.5px;color:#6B7A99;line-height:1.5;">${p.reason}</div>` : ''}
+        ${p.link ? `<a href="${p.link}" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:#2563EB;text-decoration:none;">View on ${platformLabel} →</a>` : ''}
+      </div>`;
+  }).join('');
+
   panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -1162,7 +1193,7 @@ async function doSearch() {
     const res = await fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query: q, niche: q, platforms: [selectedPlatform, 'amazon', 'walmart'] })
+      body: JSON.stringify({ query: q, platform: selectedPlatform })
     });
 
     if (!res.ok) throw new Error('Server error ' + res.status);
