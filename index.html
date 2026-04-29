@@ -1114,7 +1114,11 @@ function renderResults(data, query, platform) {
   try {
     if (Array.isArray(data)) {
       // n8n returns array - each item may have .json wrapper or be direct
-      products = data.map(item => item.json || item).filter(p => p && p.product_name);
+      products = data.map(item => {
+        const p = item.json || item;
+        if (p && p.title && !p.product_name) p.product_name = p.title;
+        return p;
+      }).filter(p => p && p.product_name);
       if (!products.length) products = data.filter(p => p && p.product_name);
     } else if (data && data.product_name) {
       products = [data];
@@ -1122,7 +1126,7 @@ function renderResults(data, query, platform) {
       products = data.output;
     } else if (data && typeof data.output === 'string') {
       const cleaned = data.output.replace(/```json|```/g,'').trim();
-      const match = cleaned.match(/\[\s\S]*\]/);
+      const match = cleaned.match(/\[[\s\S]*\]/);
       if (match) {
         const parsed = JSON.parse(match[0]);
         products = Array.isArray(parsed) ? parsed : [parsed];
