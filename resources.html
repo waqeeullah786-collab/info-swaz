@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWAZ — Resources</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --accent:#2563EB;--green:#16A34A;--bg-hero:#F0F5FD;--white:#FFFFFF;
+  --dark:#0F1724;--muted:#6B7A99;--muted2:#A0AABF;
+  --border:rgba(37,99,235,0.12);--shadow-sm:0 2px 8px rgba(37,99,235,0.08);
+  --shadow-md:0 4px 20px rgba(37,99,235,0.11);
+  --font:'DM Sans',sans-serif;--font-d:'Manrope',sans-serif;
+}
+body{background:var(--bg-hero);color:var(--dark);font-family:var(--font);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:66px;background:rgba(255,255,255,0.94);backdrop-filter:blur(24px);border-bottom:1px solid rgba(200,215,240,0.6);}
+.nav-logo{font-family:var(--font-d);font-size:21px;font-weight:900;letter-spacing:-0.04em;color:var(--dark);display:flex;align-items:center;gap:8px;text-decoration:none;}
+.nav-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.18);animation:dotPulse 2s ease-in-out infinite;}
+@keyframes dotPulse{0%,100%{box-shadow:0 0 0 3px rgba(37,99,235,0.18)}50%{box-shadow:0 0 0 5px rgba(37,99,235,0.08)}}
+.nav-links{display:flex;align-items:center;gap:2px;}
+.nav-link{font-size:14px;font-weight:500;color:var(--muted);text-decoration:none;padding:7px 14px;border-radius:8px;transition:all 0.15s;}
+.nav-link:hover,.nav-link.active{color:var(--dark);background:rgba(37,99,235,0.05);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.nav-live{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:#16A34A;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);padding:6px 14px;border-radius:20px;}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#16A34A;animation:blink 1.4s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.btn-login{font-size:14px;font-weight:500;color:var(--dark);background:none;border:1px solid rgba(15,23,36,0.18);padding:8px 20px;border-radius:9px;text-decoration:none;display:inline-flex;align-items:center;transition:all 0.15s;}
+.btn-login:hover{border-color:rgba(15,23,36,0.32);}
+.btn-cta{font-size:14px;font-weight:700;color:#fff;background:var(--accent);border:none;padding:9px 22px;border-radius:9px;text-decoration:none;display:inline-flex;align-items:center;gap:7px;box-shadow:0 2px 12px rgba(37,99,235,0.28);transition:all 0.18s;}
+.btn-cta:hover{background:#1d4ed8;transform:translateY(-1px);}
+
+/* HERO */
+.page-hero{padding:80px 40px 60px;text-align:center;position:relative;overflow:hidden;}
+.page-hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(37,99,235,0.1) 1px,transparent 1px);background-size:28px 28px;opacity:0.35;pointer-events:none;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.2);color:var(--accent);font-size:12.5px;font-weight:700;padding:6px 16px;border-radius:20px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:22px;position:relative;z-index:1;animation:fadeUp 0.5s ease both;}
+.page-title{font-family:var(--font-d);font-size:clamp(36px,5vw,58px);font-weight:900;line-height:1.06;letter-spacing:-0.03em;color:var(--dark);margin-bottom:18px;position:relative;z-index:1;animation:fadeUp 0.5s 0.1s ease both;}
+.page-title .blue{color:var(--accent);}
+.page-sub{font-size:16px;color:var(--muted);line-height:1.65;max-width:520px;margin:0 auto;position:relative;z-index:1;animation:fadeUp 0.5s 0.2s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* SECTION TABS */
+.tabs-wrap{max-width:1080px;margin:0 auto;padding:0 40px 20px;display:flex;gap:8px;flex-wrap:wrap;}
+.tab-btn{font-size:14px;font-weight:600;padding:9px 20px;border-radius:10px;border:1.5px solid rgba(37,99,235,0.15);background:#fff;color:var(--muted);cursor:pointer;transition:all 0.15s;font-family:var(--font);}
+.tab-btn.active,.tab-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);}
+
+/* CONTENT WRAP */
+.content-wrap{max-width:1080px;margin:0 auto;padding:0 40px 80px;}
+
+/* SECTION TITLE */
+.section-head{margin-bottom:32px;padding-top:20px;}
+.section-label{font-size:11.5px;font-weight:700;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px;}
+.section-title{font-family:var(--font-d);font-size:clamp(24px,3vw,34px);font-weight:900;letter-spacing:-0.02em;color:var(--dark);}
+
+/* BLOG CARDS */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:60px;}
+.blog-card{background:#fff;border:1px solid rgba(200,218,245,0.7);border-radius:18px;overflow:hidden;transition:all 0.2s;cursor:pointer;text-decoration:none;display:block;}
+.blog-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(37,99,235,0.12);}
+.blog-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:48px;}
+.blog-body{padding:20px;}
+.blog-cat{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
+.blog-title{font-family:var(--font-d);font-size:16px;font-weight:800;color:var(--dark);line-height:1.35;margin-bottom:8px;}
+.blog-desc{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:14px;}
+.blog-meta{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted2);}
+.blog-read{font-size:12px;font-weight:600;color:var(--accent);}
+
+/* VIDEO CARDS */
+.video-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:60px;}
+.video-card{background:#fff;border:1px solid rgba(200,218,245,0.7);border-radius:18px;overflow:hidden;display:flex;gap:0;transition:all 0.2s;cursor:pointer;}
+.video-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(37,99,235,0.1);}
+.video-thumb{width:140px;min-height:120px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:36px;position:relative;}
+.video-play{position:absolute;width:40px;height:40px;border-radius:50%;background:rgba(37,99,235,0.9);display:flex;align-items:center;justify-content:center;}
+.video-body{padding:18px 18px 18px 0;flex:1;}
+.video-label{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:6px;}
+.video-title{font-family:var(--font-d);font-size:15px;font-weight:800;color:var(--dark);line-height:1.3;margin-bottom:6px;}
+.video-desc{font-size:12.5px;color:var(--muted);line-height:1.5;}
+.video-dur{font-size:11.5px;color:var(--muted2);margin-top:8px;display:flex;align-items:center;gap:4px;}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:12px;margin-bottom:60px;}
+.faq-item{background:#fff;border:1px solid rgba(200,218,245,0.7);border-radius:14px;overflow:hidden;}
+.faq-q{padding:18px 22px;font-size:15px;font-weight:700;color:var(--dark);cursor:pointer;display:flex;align-items:center;justify-content:space-between;user-select:none;}
+.faq-q:hover{background:rgba(37,99,235,0.02);}
+.faq-icon{width:24px;height:24px;border-radius:50%;background:rgba(37,99,235,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.2s;font-size:14px;color:var(--accent);}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{display:none;padding:0 22px 18px;font-size:14px;color:var(--muted);line-height:1.7;}
+.faq-item.open .faq-a{display:block;}
+
+/* GLOSSARY */
+.glossary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:60px;}
+.gloss-card{background:#fff;border:1px solid rgba(200,218,245,0.7);border-radius:14px;padding:20px 22px;}
+.gloss-term{font-family:var(--font-d);font-size:15px;font-weight:800;color:var(--accent);margin-bottom:6px;}
+.gloss-def{font-size:13.5px;color:var(--muted);line-height:1.6;}
+
+/* BOTTOM CTA */
+.bottom-cta{background:linear-gradient(135deg,#1e3a8a 0%,#2563EB 50%,#3b82f6 100%);border-radius:24px;padding:60px;text-align:center;margin-bottom:80px;position:relative;overflow:hidden;}
+.bottom-cta::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.06) 1px,transparent 1px);background-size:24px 24px;}
+.bottom-cta h2{font-family:var(--font-d);font-size:clamp(26px,4vw,42px);font-weight:900;color:#fff;letter-spacing:-0.03em;margin-bottom:12px;position:relative;}
+.bottom-cta p{font-size:16px;color:rgba(255,255,255,0.75);margin-bottom:30px;position:relative;}
+.btn-white{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--accent);font-size:15px;font-weight:700;padding:14px 32px;border-radius:12px;text-decoration:none;transition:all 0.18s;box-shadow:0 4px 20px rgba(0,0,0,0.15);position:relative;}
+.btn-white:hover{transform:translateY(-2px);}
+
+/* FOOTER */
+footer{background:#fff;border-top:1px solid rgba(200,215,240,0.6);padding:40px 48px;display:flex;align-items:center;justify-content:space-between;}
+.foot-logo{font-family:var(--font-d);font-size:18px;font-weight:900;letter-spacing:-0.04em;color:var(--dark);display:flex;align-items:center;gap:8px;text-decoration:none;}
+.foot-links{display:flex;gap:24px;}
+.foot-link{font-size:13px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+.foot-link:hover{color:var(--dark);}
+.foot-copy{font-size:12px;color:var(--muted2);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo"><div class="nav-dot"></div>SWAZ</a>
+  <div class="nav-links">
+    <a href="features.html" class="nav-link">Features</a>
+    <a href="index.html#pricing" class="nav-link">Pricing</a>
+    <a href="blog.html" class="nav-link">Blog</a>
+    <a href="resources.html" class="nav-link active">Resources</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-live"><div class="live-dot"></div>n8n Live</div>
+    <a href="index.html#pricing" class="btn-login">Subscribe</a>
+    <a href="index.html" class="btn-cta">Start for free →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="badge">📚 Learn & Grow</div>
+  <h1 class="page-title">Everything you need to<br><span class="blue">sell smarter</span></h1>
+  <p class="page-sub">Guides, tutorials, FAQs and a complete glossary — all free, all built to help you make better product decisions on Amazon and Walmart.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- BLOG / GUIDES -->
+  <div class="section-head" id="guides">
+    <div class="section-label">📖 Guides & Blog Posts</div>
+    <div class="section-title">Learn from the best sellers</div>
+  </div>
+
+  <div class="blog-grid">
+    <a href="#" class="blog-card">
+      <div class="blog-thumb" style="background:linear-gradient(135deg,#EEF4FC,#DBEAFE);">🎯</div>
+      <div class="blog-body">
+        <div class="blog-cat">Amazon FBA</div>
+        <div class="blog-title">How to Find a Winning Product in Under 10 Minutes Using SWAZ</div>
+        <div class="blog-desc">A step-by-step walkthrough of using SWAZ's niche scanner to find profitable products with low competition and high demand.</div>
+        <div class="blog-meta"><span>5 min read</span><span>·</span><span class="blog-read">Read →</span></div>
+      </div>
+    </a>
+    <a href="#" class="blog-card">
+      <div class="blog-thumb" style="background:linear-gradient(135deg,#F0FFF4,#DCFCE7);">📦</div>
+      <div class="blog-body">
+        <div class="blog-cat">Product Research</div>
+        <div class="blog-title">The Complete 2025 Guide to Amazon FBA Product Research</div>
+        <div class="blog-desc">Everything you need to know about finding profitable products, evaluating competition, and calculating real profit margins before you source.</div>
+        <div class="blog-meta"><span>12 min read</span><span>·</span><span class="blog-read">Read →</span></div>
+      </div>
+    </a>
+    <a href="#" class="blog-card">
+      <div class="blog-thumb" style="background:linear-gradient(135deg,#FFF7ED,#FED7AA);">🛒</div>
+      <div class="blog-body">
+        <div class="blog-cat">Walmart Selling</div>
+        <div class="blog-title">Walmart WFS vs Amazon FBA: Which Platform Wins in 2025?</div>
+        <div class="blog-desc">An honest, data-driven comparison of selling fees, traffic, and profitability between Walmart Fulfillment Services and Amazon FBA.</div>
+        <div class="blog-meta"><span>8 min read</span><span>·</span><span class="blog-read">Read →</span></div>
+      </div>
+    </a>
+    <a href="#" class="blog-card">
+      <div class="blog-thumb" style="background:linear-gradient(135deg,#FAF5FF,#E9D5FF);">📈</div>
+      <div class="blog-body">
+        <div class="blog-cat">Trend Research</div>
+        <div class="blog-title">5 Rising Product Niches You Should Research Right Now</div>
+        <div class="blog-desc">Our AI has spotted 5 niches trending upward fast. Here's the data behind each one and why early movers are positioned to win.</div>
+        <div class="blog-meta"><span>6 min read</span><span>·</span><span class="blog-read">Read →</span></div>
+      </div>
+    </a>
+    <a href="#" class="blog-card">
+      <div class="blog-thumb" style="background:linear-gradient(135deg,#FFF1F2,#FFE4E6);">💰</div>
+      <div class="blog-body">
+        <div class="blog-cat">Profit Margins</div>
+        <div class="blog-title">How to Calculate Your True Amazon FBA Profit Margin (With Formula)</div>
+        <div class="blog-desc">Most sellers underestimate their costs. This guide walks you through every fee — referral, fulfilment, storage, returns — so you know your real margin.</div>
+        <div class="blog-meta"><span>7 min read</span><span>·</span><span class="blog-read">Read →</span></div>
+      </div>
+    </a>
+    <a href="#" class="blog-card">
+      <div class="blog-thumb" style="background:linear-gradient(135deg,#ECFDF5,#A7F3D0);">🏆</div>
+      <div class="blog-body">
+        <div class="blog-cat">Beginner Guide</div>
+        <div class="blog-title">Amazon FBA for Beginners: The Complete 2025 Starter Guide</div>
+        <div class="blog-desc">Never sold on Amazon before? This comprehensive guide covers everything from account setup to your first product launch — step by step.</div>
+        <div class="blog-meta"><span>15 min read</span><span>·</span><span class="blog-read">Read →</span></div>
+      </div>
+    </a>
+  </div>
+
+  <!-- VIDEO TUTORIALS -->
+  <div class="section-head" id="tutorials">
+    <div class="section-label">🎥 Video Tutorials</div>
+    <div class="section-title">Watch & learn at your own pace</div>
+  </div>
+
+  <div class="video-grid">
+    <div class="video-card">
+      <div class="video-thumb" style="background:linear-gradient(135deg,#EEF4FC,#DBEAFE);">
+        🔍
+        <div class="video-play"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 2l8 5-8 5V2z" fill="white"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-label">Getting Started</div>
+        <div class="video-title">How to Use SWAZ — Full Walkthrough</div>
+        <div class="video-desc">Complete beginner tutorial covering every feature of the SWAZ dashboard from search to results.</div>
+        <div class="video-dur">⏱ 8:42 · Beginner</div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb" style="background:linear-gradient(135deg,#F0FFF4,#DCFCE7);">
+        🏆
+        <div class="video-play"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 2l8 5-8 5V2z" fill="white"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-label">Product Research</div>
+        <div class="video-title">Finding Winner Products with Competition Scores</div>
+        <div class="video-desc">Deep dive into how to interpret SWAZ scores and what makes a product a true winner opportunity.</div>
+        <div class="video-dur">⏱ 12:15 · Intermediate</div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb" style="background:linear-gradient(135deg,#FFF7ED,#FED7AA);">
+        📊
+        <div class="video-play"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 2l8 5-8 5V2z" fill="white"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-label">FBA Estimates</div>
+        <div class="video-title">Understanding the FBA Profit Calculator</div>
+        <div class="video-desc">How to read FBA fee breakdowns, calculate your net margin, and decide if a product is worth sourcing.</div>
+        <div class="video-dur">⏱ 9:30 · Intermediate</div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb" style="background:linear-gradient(135deg,#FAF5FF,#E9D5FF);">
+        🛒
+        <div class="video-play"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M4 2l8 5-8 5V2z" fill="white"/></svg></div>
+      </div>
+      <div class="video-body">
+        <div class="video-label">Walmart Selling</div>
+        <div class="video-title">Searching Walmart Products with SWAZ</div>
+        <div class="video-desc">How to switch to Walmart mode and find high-scoring products for the WFS platform in any niche.</div>
+        <div class="video-dur">⏱ 6:55 · Beginner</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section-head" id="faq">
+    <div class="section-label">❓ FAQ</div>
+    <div class="section-title">Frequently asked questions</div>
+  </div>
+
+  <div class="faq-list">
+    <div class="faq-item open">
+      <div class="faq-q" onclick="toggleFaq(this)">What is SWAZ and how does it work? <div class="faq-icon">+</div></div>
+      <div class="faq-a">SWAZ is an AI-powered product research tool for Amazon and Walmart sellers. You enter any keyword or product category, and our system searches live marketplace data, analyses competition levels, calculates profit potential, and returns a ranked list of the top 5 products — each with a score, price, rating, and direct link. The entire process takes under 60 seconds.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is SWAZ really free to start? <div class="faq-icon">+</div></div>
+      <div class="faq-a">Yes. The Free plan gives you 1 search per day with no credit card required. You can explore SWAZ completely risk-free. When you're ready to scale your research, you can upgrade to Starter ($29/mo), Pro ($96/mo), or Agency ($496/mo) for more searches and advanced features.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How is the competition score calculated? <div class="faq-icon">+</div></div>
+      <div class="faq-a">Our competition score (0–100) is calculated using a weighted combination of: customer rating (4.5+ stars = positive signal), price competitiveness (under $60 = positive signal), review velocity, market demand signals from live search data, and estimated monthly sales volume. A score of 80+ indicates a high-opportunity winner product.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How accurate is the data? <div class="faq-icon">+</div></div>
+      <div class="faq-a">SWAZ pulls live data from Amazon and Walmart via SerpApi, which scrapes real-time marketplace listings. Prices, ratings, and product availability reflect current marketplace conditions. Our AI researcher analyses this data and scores it within seconds. For FBA estimates, we use standard Amazon fee structures — always verify final fees in Seller Central before sourcing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I search both Amazon and Walmart? <div class="faq-icon">+</div></div>
+      <div class="faq-a">Yes! SWAZ is one of the very few tools that covers both Amazon and Walmart in a single interface. Simply select your platform in the search card before running a search. Each platform has its own AI researcher and scoring model optimised for that marketplace's specific dynamics.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What does "Winner" mean on a product card? <div class="faq-icon">+</div></div>
+      <div class="faq-a">A product is flagged as a "Winner" when it meets all three criteria: a rating of 4.5 stars or higher, a competitive price under $60, and a SWAZ score of 80 or above. This combination indicates strong customer demand, accessible pricing, and manageable competition — the ideal conditions for a new seller to enter the market.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How many searches do I get per day? <div class="faq-icon">+</div></div>
+      <div class="faq-a">Free plan: 1 search/day. Starter: 50 searches/month. Pro: 300 searches/month. Agency: Unlimited searches with 5 team seats. All daily limits reset at midnight UTC. If you hit your limit, you'll see an option to upgrade directly from the search bar.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Can I cancel my subscription anytime? <div class="faq-icon">+</div></div>
+      <div class="faq-a">Absolutely. There are no long-term contracts or cancellation fees. You can cancel your subscription at any time from your account settings, and you'll retain access until the end of your current billing period. We believe in earning your business every month.</div>
+    </div>
+  </div>
+
+  <!-- GLOSSARY -->
+  <div class="section-head" id="glossary">
+    <div class="section-label">📖 Glossary</div>
+    <div class="section-title">Key terms every seller should know</div>
+  </div>
+
+  <div class="glossary-grid">
+    <div class="gloss-card">
+      <div class="gloss-term">Amazon FBA</div>
+      <div class="gloss-def">Fulfilment by Amazon. You send your products to Amazon's warehouses and they handle storage, packing, shipping, and customer returns on your behalf — for a fee.</div>
+    </div>
+    <div class="gloss-card">
+      <div class="gloss-term">Walmart WFS</div>
+      <div class="gloss-def">Walmart Fulfilment Services. Walmart's equivalent of FBA — you send inventory to Walmart distribution centres and they fulfil orders under the Walmart brand.</div>
+    </div>
+    <div class="gloss-card">
+      <div class="gloss-term">SWAZ Score</div>
+      <div class="gloss-def">A 0–100 score assigned to each product by SWAZ's AI. It combines rating, price, demand signals, and competition data. 80+ = Winner. 45–79 = Moderate. Under 45 = Avoid.</div>
+    </div>
+    <div class="gloss-card">
+      <div class="gloss-term">Niche</div>
+      <div class="gloss-def">A specific product category or market segment. A profitable niche has high demand, low competition, and acceptable profit margins — exactly what SWAZ is built to find.</div>
+    </div>
+    <div class="gloss-card">
+      <div class="gloss-term">Referral Fee</div>
+      <div class="gloss-def">A percentage of the sale price that Amazon charges for selling on their platform. Typically 8–15% depending on category. This is separate from FBA fulfilment fees.</div>
+    </div>
+    <div class="gloss-card">
+      <div class="gloss-term">BSR (Best Seller Rank)</div>
+      <div class="gloss-def">Amazon's ranking system that shows how well a product is selling in its category. A lower BSR means higher sales. It updates hourly based on recent sales velocity.</div>
+    </div>
+    <div class="gloss-card">
+      <div class="gloss-term">Profit Margin</div>
+      <div class="gloss-def">The percentage of revenue left after all costs (sourcing, shipping, Amazon fees, advertising). A healthy FBA margin is typically 25–40% net profit per unit sold.</div>
+    </div>
+    <div class="gloss-card">
+      <div class="gloss-term">Private Label</div>
+      <div class="gloss-def">Sourcing a generic product from a manufacturer (usually in China via Alibaba), branding it with your own logo and packaging, and selling it as your own brand on Amazon or Walmart.</div>
+    </div>
+    <div class="gloss-card">
+      <div class="gloss-term">MOQ (Minimum Order Quantity)</div>
+      <div class="gloss-def">The smallest quantity a supplier will manufacture or sell. Common MOQs range from 100–500 units for private label products sourced from overseas factories.</div>
+    </div>
+    <div class="gloss-card">
+      <div class="gloss-term">Product Velocity</div>
+      <div class="gloss-def">How quickly a product is gaining traction in the marketplace — measured by the rate of increase in sales, reviews, and search impressions over a given time period.</div>
+    </div>
+    <div class="gloss-card">
+      <div class="gloss-term">SerpApi</div>
+      <div class="gloss-def">The real-time data provider that powers SWAZ's live marketplace search. It scrapes current Amazon and Walmart product listings, prices, and ratings on demand.</div>
+    </div>
+    <div class="gloss-card">
+      <div class="gloss-term">Winner Product</div>
+      <div class="gloss-def">In SWAZ, a product flagged as a Winner has: a rating ≥ 4.5 stars, a price under $60, and a SWAZ score ≥ 80. These three signals together indicate a high-opportunity market entry point.</div>
+    </div>
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="bottom-cta">
+    <h2>Put this knowledge to work</h2>
+    <p>Search your first niche for free — no credit card, no signup required.</p>
+    <a href="index.html" class="btn-white">Try SWAZ for free →</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="index.html" class="foot-logo"><div class="nav-dot"></div>SWAZ</a>
+  <div class="foot-links">
+    <a href="features.html" class="foot-link">Features</a>
+    <a href="index.html#pricing" class="foot-link">Pricing</a>
+    <a href="blog.html" class="foot-link">Blog</a>
+    <a href="resources.html" class="foot-link">Resources</a>
+  </div>
+  <div class="foot-copy">© 2025 SWAZ. All rights reserved.</div>
+</footer>
+
+<script>
+function toggleFaq(el) {
+  const item = el.parentElement;
+  item.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
