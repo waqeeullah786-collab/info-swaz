@@ -1068,6 +1068,28 @@ function updateCounter() {
     : 'Daily limit reached — resets tomorrow';
 }
 
+// ── Debug panel ──
+function showDebug(rawText, parsed) {
+  let panel = document.getElementById('debugPanel');
+  if (!panel) {
+    panel = document.createElement('div');
+    panel.id = 'debugPanel';
+    panel.style.cssText = 'max-width:760px;margin:16px auto;background:#1e1e2e;color:#cdd6f4;font-family:monospace;font-size:12px;border-radius:14px;padding:18px;border:1px solid rgba(37,99,235,0.3);';
+    document.querySelector('.hero-wrap').appendChild(panel);
+  }
+  panel.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <strong style="color:#89b4fa;">🐛 Debug — Raw n8n Response</strong>
+      <button onclick="document.getElementById('debugPanel').remove()" style="background:none;border:none;color:#f38ba8;cursor:pointer;font-size:13px;">✕ Close</button>
+    </div>
+    <div style="color:#a6e3a1;margin-bottom:6px;">Status: Response received ✓</div>
+    <div style="color:#fab387;margin-bottom:4px;">Raw text (first 1000 chars):</div>
+    <pre style="background:#11111b;padding:10px;border-radius:8px;overflow:auto;max-height:200px;white-space:pre-wrap;word-break:break-all;">${rawText.slice(0,1000)}</pre>
+    <div style="color:#fab387;margin-top:10px;margin-bottom:4px;">Parsed structure (type: ${Array.isArray(parsed)?'Array['+parsed.length+']':typeof parsed}):</div>
+    <pre style="background:#11111b;padding:10px;border-radius:8px;overflow:auto;max-height:200px;white-space:pre-wrap;">${JSON.stringify(parsed, null, 2).slice(0, 1500)}</pre>
+  `;
+}
+
 // ── Toast ──
 function showToast(msg) {
   const t = document.getElementById('errorToast');
@@ -1100,6 +1122,59 @@ function stopLoading() {
   document.getElementById('loadingOverlay').classList.remove('active');
 }
 
+// ── Normalize any n8n output shape into a flat product array ──
+function normalizeProducts(data) {
+  const candidates = [];
+
+  function tryExtract(obj) {
+    if (!obj || typeof obj !== 'object') return;
+    // direct product object
+    if (obj.product_name || obj.title || obj.name) {
+      const p = { ...obj };
+      if (!p.product_name) p.product_name = p.title || p.name;
+      candidates.push(p);
+      return;
+    }
+    // nested: { json: {...} }
+    if (obj.json) { tryExtract(obj.json); return; }
+    // nested arrays: output, results, products, items, data
+    for (const key of ['output','results','products','items','data','niches']) {
+      if (Array.isArray(obj[key])) { obj[key].forEach(tryExtract); return; }
+    }
+    // string output from AI node (markdown code block)
+    if (typeof obj.output === 'string') {
+      const cleaned = obj.output.replace(/```json|```/g,'').trim();
+      const match = cleaned.match(/\[[\s\S]*\]|\{[\s\S]*\}/);
+      if (match) {
+        try {
+          const parsed = JSON.parse(match[0]);
+          (Array.isArray(parsed) ? parsed : [parsed]).forEach(tryExtract);
+        } catch(e) {}
+      }
+      return;
+    }
+    // text/message field
+    if (typeof obj.text === 'string' || typeof obj.message === 'string') {
+      const s = obj.text || obj.message;
+      const match = s.match(/\[[\s\S]*\]/);
+      if (match) {
+        try {
+          const parsed = JSON.parse(match[0]);
+          (Array.isArray(parsed) ? parsed : [parsed]).forEach(tryExtract);
+        } catch(e) {}
+      }
+    }
+  }
+
+  if (Array.isArray(data)) {
+    data.forEach(tryExtract);
+  } else {
+    tryExtract(data);
+  }
+
+  return candidates;
+}
+
 // ── Render results ──
 function renderResults(data, query, platform) {
   const panel = document.getElementById('resultsPanel');
@@ -1109,33 +1184,20 @@ function renderResults(data, query, platform) {
   const platformLabel = platform.charAt(0).toUpperCase() + platform.slice(1);
   meta.textContent = platformLabel + ' · ' + new Date().toLocaleTimeString();
 
-  // Normalize data into array of products
   let products = [];
   try {
-    if (Array.isArray(data)) {
-      // n8n returns array - each item may have .json wrapper or be direct
-      products = data.map(item => {
-        const p = item.json || item;
-        if (p && p.title && !p.product_name) p.product_name = p.title;
-        return p;
-      }).filter(p => p && p.product_name);
-      if (!products.length) products = data.filter(p => p && p.product_name);
-    } else if (data && data.product_name) {
-      products = [data];
-    } else if (data && Array.isArray(data.output)) {
-      products = data.output;
-    } else if (data && typeof data.output === 'string') {
-      const cleaned = data.output.replace(/```json|```/g,'').trim();
-      const match = cleaned.match(/\[[\s\S]*\]/);
-      if (match) {
-        const parsed = JSON.parse(match[0]);
-        products = Array.isArray(parsed) ? parsed : [parsed];
-      }
-    }
-  } catch(e) { products = []; }
+    products = normalizeProducts(data);
+  } catch(e) {
+    console.error('Normalize error:', e);
+    products = [];
+  }
 
   if (!products.length) {
-    box.innerHTML = '<p style="color:#6B7A99;text-align:center;padding:20px;">No products found. Try a different search term.</p>';
+    box.innerHTML = `<div style="text-align:center;padding:24px;">
+      <div style="font-size:15px;color:#6B7A99;margin-bottom:12px;">⚠️ No products could be extracted from the n8n response.</div>
+      <div style="font-size:13px;color:#A0AABF;margin-bottom:16px;">This usually means your n8n workflow is returning data in an unexpected shape, or CORS is blocking the response.</div>
+      <button onclick="window.__lastRaw && showDebug(window.__lastRaw[0], window.__lastRaw[1])" style="background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.2);color:#2563EB;padding:8px 18px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;">🐛 Show raw response</button>
+    </div>`;
     panel.scrollIntoView({ behavior:'smooth', block:'start' });
     return;
   }
@@ -1194,22 +1256,38 @@ async function doSearch() {
 
   startLoading();
   try {
-    const res = await fetch(WEBHOOK_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query: q, platform: selectedPlatform })
-    });
+    let res;
+    try {
+      res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query: q, platform: selectedPlatform })
+      });
+    } catch (corsErr) {
+      stopLoading();
+      showToast('❌ CORS error: n8n blocked the request. Add Access-Control-Allow-Origin: * to your n8n webhook response headers.');
+      console.error('CORS/network error:', corsErr);
+      return;
+    }
 
     if (!res.ok) throw new Error('Server error ' + res.status);
     const text = await res.text();
     let result;
     try {
       result = JSON.parse(text);
+      // n8n JSON.stringify expression returns a string inside JSON — unwrap it
+      if (typeof result === 'string') {
+        try { result = JSON.parse(result); } catch(e) {}
+      }
     } catch(e) {
       // n8n sometimes returns newline-delimited JSON
       const lines = text.trim().split("\n").filter(Boolean);
       result = lines.map(l => { try { return JSON.parse(l); } catch(e) { return null; } }).filter(Boolean);
+      if (!result.length) result = { _raw: text };
     }
+
+    // Store raw for debug
+    window.__lastRaw = [text, result];
 
     // Increment counter only on success
     data.count += 1;
