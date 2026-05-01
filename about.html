@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — SWAZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --accent:#2563EB;--accent-light:#3B82F6;--green:#16A34A;
+  --bg-hero:#F0F5FD;--white:#FFFFFF;
+  --dark:#0F1724;--muted:#6B7A99;--muted2:#A0AABF;
+  --border:rgba(37,99,235,0.12);--border-med:rgba(37,99,235,0.22);
+  --shadow-sm:0 2px 8px rgba(37,99,235,0.08);
+  --shadow-md:0 4px 20px rgba(37,99,235,0.11);
+  --font:'DM Sans',sans-serif;--font-d:'Manrope',sans-serif;
+}
+body{background:var(--bg-hero);color:var(--dark);font-family:var(--font);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(circle,rgba(37,99,235,0.07) 1px,transparent 1px);
+  background-size:32px 32px;opacity:0.6;
+  mask-image:radial-gradient(ellipse 100% 60% at 50% 0%,black,transparent);}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:66px;background:rgba(255,255,255,0.94);backdrop-filter:blur(24px);border-bottom:1px solid rgba(200,215,240,0.6);box-shadow:0 1px 0 rgba(37,99,235,0.05);}
+.nav-logo{font-family:var(--font-d);font-size:21px;font-weight:900;letter-spacing:-0.04em;color:var(--dark);display:flex;align-items:center;gap:8px;text-decoration:none;}
+.nav-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.18);animation:dotPulse 2s ease-in-out infinite;}
+@keyframes dotPulse{0%,100%{box-shadow:0 0 0 3px rgba(37,99,235,0.18)}50%{box-shadow:0 0 0 5px rgba(37,99,235,0.08)}}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.nav-live{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:#16A34A;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);padding:6px 14px;border-radius:20px;}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#16A34A;animation:blink 1.4s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.nav-back{font-size:13.5px;font-weight:500;color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:9px;border:1px solid rgba(200,218,245,0.8);background:#fff;transition:all 0.15s;}
+.nav-back:hover{color:var(--dark);border-color:rgba(37,99,235,0.3);}
+.btn-cta{font-size:14px;font-weight:700;color:#fff;background:var(--accent);border:none;padding:9px 22px;border-radius:9px;cursor:pointer;font-family:var(--font);transition:all 0.18s;text-decoration:none;display:inline-flex;align-items:center;gap:7px;box-shadow:0 2px 12px rgba(37,99,235,0.28);}
+.btn-cta:hover{background:#1d4ed8;transform:translateY(-1px);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* PAGE HERO */
+.page-hero{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:72px 48px 56px;}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.18);color:var(--accent);font-size:12.5px;font-weight:600;padding:6px 16px;border-radius:20px;margin-bottom:22px;letter-spacing:0.02em;animation:fadeUp 0.5s ease both;}
+.page-title{font-family:var(--font-d);font-size:clamp(40px,5.5vw,68px);font-weight:900;line-height:1.05;letter-spacing:-0.03em;color:var(--dark);margin-bottom:18px;animation:fadeUp 0.5s 0.05s ease both;}
+.page-title .blue{color:var(--accent);}
+.page-sub{font-size:17px;color:var(--muted);line-height:1.75;max-width:560px;animation:fadeUp 0.5s 0.1s ease both;}
+
+/* CONTENT */
+.content{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 48px 100px;}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:64px;animation:fadeUp 0.5s 0.15s ease both;}
+.stat-card{background:rgba(255,255,255,0.85);border:1px solid rgba(200,218,245,0.7);border-radius:16px;padding:24px;text-align:center;backdrop-filter:blur(12px);box-shadow:var(--shadow-sm);transition:all 0.2s;}
+.stat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.stat-num{font-family:var(--font-d);font-size:36px;font-weight:900;color:var(--accent);letter-spacing:-0.03em;margin-bottom:6px;}
+.stat-label{font-size:13px;color:var(--muted);font-weight:500;}
+
+/* STORY */
+.section-eyebrow{font-size:11.5px;font-weight:700;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;}
+.section-heading{font-family:var(--font-d);font-size:clamp(26px,3vw,38px);font-weight:900;letter-spacing:-0.02em;color:var(--dark);margin-bottom:32px;line-height:1.1;}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:72px;}
+.story-text p{font-size:15.5px;color:var(--muted);line-height:1.85;margin-bottom:18px;}
+.story-text p:last-child{margin-bottom:0;}
+.story-text strong{color:var(--dark);font-weight:700;}
+.timeline{background:rgba(255,255,255,0.85);border:1px solid rgba(200,218,245,0.7);border-radius:20px;padding:32px;backdrop-filter:blur(12px);box-shadow:var(--shadow-sm);}
+.timeline-label{font-size:11px;font-weight:700;color:var(--muted2);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:24px;}
+.timeline-item{display:flex;gap:18px;align-items:flex-start;margin-bottom:20px;}
+.timeline-item:last-child{margin-bottom:0;}
+.timeline-year{font-family:var(--font-d);font-size:22px;font-weight:900;color:var(--accent);min-width:56px;line-height:1;}
+.timeline-content{}
+.timeline-title{font-family:var(--font-d);font-size:14px;font-weight:800;color:var(--dark);margin-bottom:4px;}
+.timeline-desc{font-size:13px;color:var(--muted);line-height:1.6;}
+.timeline-divider{width:100%;height:1px;background:rgba(200,218,245,0.7);margin:16px 0;}
+
+/* VALUES */
+.values-section{margin-bottom:72px;}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+.value-card{background:rgba(255,255,255,0.85);border:1px solid rgba(200,218,245,0.7);border-radius:18px;padding:28px;backdrop-filter:blur(12px);box-shadow:var(--shadow-sm);transition:all 0.2s;}
+.value-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(37,99,235,0.22);}
+.value-icon{font-size:30px;margin-bottom:14px;}
+.value-title{font-family:var(--font-d);font-size:17px;font-weight:800;color:var(--dark);margin-bottom:9px;}
+.value-desc{font-size:14px;color:var(--muted);line-height:1.7;}
+
+/* TEAM */
+.team-section{margin-bottom:72px;}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px;}
+.team-card{background:rgba(255,255,255,0.85);border:1px solid rgba(200,218,245,0.7);border-radius:18px;padding:28px;text-align:center;backdrop-filter:blur(12px);box-shadow:var(--shadow-sm);transition:all 0.2s;}
+.team-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+.team-avatar{width:68px;height:68px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-family:var(--font-d);font-size:24px;font-weight:900;color:#fff;}
+.team-name{font-family:var(--font-d);font-size:16px;font-weight:800;color:var(--dark);margin-bottom:4px;}
+.team-role{font-size:12px;color:var(--accent);font-weight:600;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:10px;}
+.team-bio{font-size:13.5px;color:var(--muted);line-height:1.65;}
+
+/* CTA STRIP */
+.cta-strip{background:linear-gradient(135deg,rgba(37,99,235,0.08),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.2);border-radius:20px;padding:40px 44px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.cta-strip h3{font-family:var(--font-d);font-size:24px;font-weight:900;color:var(--dark);letter-spacing:-0.02em;margin-bottom:6px;}
+.cta-strip p{font-size:14.5px;color:var(--muted);}
+.cta-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{font-size:14px;font-weight:700;color:#fff;background:var(--accent);padding:11px 26px;border-radius:10px;text-decoration:none;transition:all 0.18s;box-shadow:0 2px 12px rgba(37,99,235,0.28);display:inline-flex;align-items:center;gap:7px;}
+.btn-primary:hover{background:#1d4ed8;transform:translateY(-1px);}
+.btn-secondary{font-size:14px;font-weight:600;color:var(--accent);background:#fff;border:1.5px solid rgba(37,99,235,0.25);padding:11px 24px;border-radius:10px;text-decoration:none;transition:all 0.18s;}
+.btn-secondary:hover{border-color:var(--accent);transform:translateY(-1px);}
+
+/* FOOTER */
+footer{position:relative;z-index:1;background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.6);backdrop-filter:blur(16px);}
+.footer-inner{max-width:1100px;margin:0 auto;padding:52px 48px 0;}
+.footer-top{display:grid;grid-template-columns:1.4fr 2fr;gap:60px;margin-bottom:40px;}
+.footer-logo{font-family:var(--font-d);font-size:28px;font-weight:900;color:var(--dark);letter-spacing:-0.04em;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.footer-tagline{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:18px;}
+.footer-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--green);font-weight:600;}
+.footer-badge-dot{width:6px;height:6px;border-radius:50%;background:#16A34A;animation:blink 1.4s infinite;}
+.footer-links-group{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.footer-col{display:flex;flex-direction:column;gap:10px;}
+.footer-col-title{font-size:11px;font-weight:700;color:var(--dark);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;}
+.footer-col a{font-size:13.5px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+.footer-col a:hover{color:var(--dark);}
+.footer-bottom{border-top:1px solid rgba(200,218,245,0.6);padding:22px 0 26px;display:flex;align-items:center;justify-content:space-between;}
+.footer-copy{font-size:12px;color:var(--muted2);}
+.footer-bottom-links{display:flex;gap:20px;}
+.footer-bottom-links a{font-size:12px;color:var(--muted2);text-decoration:none;transition:color 0.15s;}
+.footer-bottom-links a:hover{color:var(--dark);}
+
+@media(max-width:900px){
+  nav{padding:0 20px;}
+  .page-hero,.content{padding-left:20px;padding-right:20px;}
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+  .story-grid{grid-template-columns:1fr;}
+  .values-grid{grid-template-columns:1fr;}
+  .team-grid{grid-template-columns:repeat(2,1fr);}
+  .footer-top{grid-template-columns:1fr;gap:32px;}
+  .footer-links-group{grid-template-columns:repeat(2,1fr);}
+  .footer-inner{padding:40px 20px 0;}
+  .cta-strip{flex-direction:column;align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><div class="nav-dot"></div>SWAZ</a>
+  <div class="nav-right">
+    <div class="nav-live"><div class="live-dot"></div>n8n Live</div>
+    <a href="index.html" class="nav-back">← Back to App</a>
+    <a href="pricing.html" class="btn-cta">Get started →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="eyebrow">🏢 About Us</div>
+  <h1 class="page-title">Built for sellers.<br><span class="blue">Powered by data.</span></h1>
+  <p class="page-sub">SWAZ is a product of Waqee Global Tech — an AI-powered niche intelligence platform helping Amazon & Walmart sellers find winning products before the market does.</p>
+</div>
+
+<div class="content">
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num">20K+</div>
+      <div class="stat-label">Active Sellers</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">10M+</div>
+      <div class="stat-label">Products Analyzed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Marketplaces</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">2022</div>
+      <div class="stat-label">Founded</div>
+    </div>
+  </div>
+
+  <!-- STORY -->
+  <div style="margin-bottom:10px;">
+    <div class="section-eyebrow">Our Story</div>
+    <h2 class="section-heading">From a single workflow<br>to a full SaaS platform.</h2>
+  </div>
+  <div class="story-grid">
+    <div class="story-text">
+      <p>SWAZ started with a simple frustration: <strong>why do sellers still spend hours doing research that software could do in seconds?</strong> We set out to fix that.</p>
+      <p>We're a product of <strong>Waqee Global Tech</strong> — a software and AI automation company based in Islamabad, Pakistan. Our platform is powered by real-time data pipelines, AI scoring engines, and deep marketplace intelligence.</p>
+      <p>Today, SWAZ helps <strong>20,000+ sellers</strong> on Amazon and Walmart discover profitable niches faster, reduce research errors, and make smarter product decisions every day.</p>
+      <p>We're not just engineers — we're sellers and product people who obsess over every data point and user workflow that SWAZ delivers.</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-label">// Our Timeline</div>
+      <div class="timeline-item">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-content">
+          <div class="timeline-title">First Data Pipeline</div>
+          <div class="timeline-desc">Built our first Amazon research automation — processing 10,000 products per day.</div>
+        </div>
+      </div>
+      <div class="timeline-divider"></div>
+      <div class="timeline-item">
+        <div class="timeline-year">2023</div>
+        <div class="timeline-content">
+          <div class="timeline-title">SWAZ Launched</div>
+          <div class="timeline-desc">Launched our flagship SaaS — 1,000 users in the first month.</div>
+        </div>
+      </div>
+      <div class="timeline-divider"></div>
+      <div class="timeline-item">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-content">
+          <div class="timeline-title">Walmart Added</div>
+          <div class="timeline-desc">Expanded to Walmart WFS & Retail with full niche scanner and trend forecasting.</div>
+        </div>
+      </div>
+      <div class="timeline-divider"></div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-content">
+          <div class="timeline-title">20K+ Sellers & Growing</div>
+          <div class="timeline-desc">20,000+ active users, 10M+ products analyzed, and a growing feature lineup.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <div class="values-section">
+    <div class="section-eyebrow">Our Values</div>
+    <h2 class="section-heading">What we stand for.</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">⚡</div>
+        <div class="value-title">Data First</div>
+        <div class="value-desc">Every product decision at SWAZ is backed by real marketplace data — not guesswork. We surface what actually sells.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🎯</div>
+        <div class="value-title">Seller Obsessed</div>
+        <div class="value-desc">We build for sellers, not analysts. Every feature is designed to save time and surface actionable insights instantly.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔬</div>
+        <div class="value-title">Always Improving</div>
+        <div class="value-desc">Our models are constantly retrained. Our pipelines are always expanding. SWAZ gets smarter every single week.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEAM -->
+  <div class="team-section">
+    <div class="section-eyebrow">The Team</div>
+    <h2 class="section-heading">The people behind SWAZ.</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#2563EB,#3B82F6);">W</div>
+        <div class="team-name">Waqee Khan</div>
+        <div class="team-role">Founder & CEO</div>
+        <div class="team-bio">Building AI-powered tools for e-commerce sellers. Founder of Waqee Global Tech and creator of SWAZ.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#16A34A,#22C55E);">AI</div>
+        <div class="team-name">AI & Data Team</div>
+        <div class="team-role">Engineering</div>
+        <div class="team-bio">A focused team of engineers building the data pipelines, AI scoring systems, and real-time APIs that power SWAZ.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#F59E0B,#FBBF24);">UX</div>
+        <div class="team-name">Product & Design</div>
+        <div class="team-role">Design & Growth</div>
+        <div class="team-bio">The team behind SWAZ's interface, user experience, and everything that makes the product intuitive and fast.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <div>
+      <h3>Ready to find your next winning product?</h3>
+      <p>Join 20,000+ sellers using SWAZ to research smarter and grow faster.</p>
+    </div>
+    <div class="cta-btns">
+      <a href="pricing.html" class="btn-primary">Start for free →</a>
+      <a href="contact.html" class="btn-secondary">Contact us</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><div class="nav-dot"></div>SWAZ</div>
+        <p class="footer-tagline">Amazon & Walmart niche intelligence powered by AI.<br>Find winning products before the market does.</p>
+        <div class="footer-badge"><div class="footer-badge-dot"></div>Waqee Global Tech</div>
+      </div>
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <div class="footer-col-title">Product</div>
+          <a href="features.html">Amazon Scanner</a>
+          <a href="features.html">Walmart Scanner</a>
+          <a href="features.html">Trend Forecasting</a>
+          <a href="features.html">FBA Calculator</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <a href="about.html">About Us</a>
+          <a href="blog.html">Blog</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Legal</div>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="refund.html">Refund Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 SWAZ · Waqee Global Tech. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="refund.html">Refund</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
