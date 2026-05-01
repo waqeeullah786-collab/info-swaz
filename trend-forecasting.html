@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trend Forecasting — SWAZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--accent:#2563EB;--green:#16A34A;--orange:#F59E0B;--purple:#7C3AED;--bg-hero:#F0F5FD;--white:#FFFFFF;--dark:#0F1724;--muted:#6B7A99;--muted2:#A0AABF;--shadow-sm:0 2px 8px rgba(37,99,235,0.08);--shadow-md:0 4px 20px rgba(37,99,235,0.11);--font:'DM Sans',sans-serif;--font-d:'Manrope',sans-serif;}
+body{background:var(--bg-hero);color:var(--dark);font-family:var(--font);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(circle,rgba(37,99,235,0.07) 1px,transparent 1px);background-size:32px 32px;opacity:0.6;mask-image:radial-gradient(ellipse 100% 60% at 50% 0%,black,transparent);}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:66px;background:rgba(255,255,255,0.94);backdrop-filter:blur(24px);border-bottom:1px solid rgba(200,215,240,0.6);}
+.nav-logo{font-family:var(--font-d);font-size:21px;font-weight:900;letter-spacing:-0.04em;color:var(--dark);display:flex;align-items:center;gap:8px;text-decoration:none;}
+.nav-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.18);animation:dotPulse 2s ease-in-out infinite;}
+@keyframes dotPulse{0%,100%{box-shadow:0 0 0 3px rgba(37,99,235,0.18)}50%{box-shadow:0 0 0 5px rgba(37,99,235,0.08)}}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.nav-live{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:#16A34A;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);padding:6px 14px;border-radius:20px;}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#16A34A;animation:blink 1.4s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.nav-back{font-size:13.5px;font-weight:500;color:var(--muted);text-decoration:none;padding:8px 16px;border-radius:9px;border:1px solid rgba(200,218,245,0.8);background:#fff;transition:all 0.15s;}
+.btn-cta{font-size:14px;font-weight:700;color:#fff;background:var(--accent);padding:9px 22px;border-radius:9px;text-decoration:none;transition:all 0.18s;box-shadow:0 2px 12px rgba(37,99,235,0.28);}
+.btn-cta:hover{background:#1d4ed8;transform:translateY(-1px);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.page-wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:64px 48px 100px;}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:var(--purple);font-size:12.5px;font-weight:600;padding:6px 16px;border-radius:20px;margin-bottom:20px;animation:fadeUp 0.5s ease both;}
+.page-title{font-family:var(--font-d);font-size:clamp(38px,5vw,62px);font-weight:900;line-height:1.05;letter-spacing:-0.03em;margin-bottom:14px;animation:fadeUp 0.5s 0.05s ease both;}
+.page-title .purple{color:var(--purple);}
+.page-sub{font-size:16.5px;color:var(--muted);line-height:1.75;max-width:580px;margin-bottom:20px;animation:fadeUp 0.5s 0.1s ease both;}
+.hero-btns{display:flex;gap:12px;margin-bottom:56px;animation:fadeUp 0.5s 0.15s ease both;}
+.btn-primary{font-size:14px;font-weight:700;color:#fff;background:var(--purple);padding:12px 28px;border-radius:10px;text-decoration:none;transition:all 0.18s;box-shadow:0 2px 14px rgba(124,58,237,0.3);}
+.btn-primary:hover{background:#6d28d9;transform:translateY(-1px);}
+.btn-secondary{font-size:14px;font-weight:600;color:var(--accent);background:#fff;border:1.5px solid rgba(37,99,235,0.25);padding:12px 24px;border-radius:10px;text-decoration:none;transition:all 0.18s;}
+
+/* TREND CARDS */
+.trends-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:64px;}
+.trend-card{background:rgba(255,255,255,0.88);border:1px solid rgba(200,218,245,0.7);border-radius:18px;padding:24px;backdrop-filter:blur(12px);box-shadow:var(--shadow-sm);transition:all 0.2s;}
+.trend-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.trend-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+.trend-name{font-family:var(--font-d);font-size:16px;font-weight:800;color:var(--dark);}
+.trend-tag{font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;}
+.tag-hot{background:rgba(239,68,68,0.1);color:#DC2626;}
+.tag-rising{background:rgba(22,163,74,0.1);color:var(--green);}
+.tag-emerging{background:rgba(124,58,237,0.1);color:var(--purple);}
+.tag-stable{background:rgba(37,99,235,0.08);color:var(--accent);}
+.sparkline{display:flex;align-items:flex-end;gap:4px;height:48px;margin-bottom:14px;}
+.bar{border-radius:3px 3px 0 0;flex:1;transition:height 0.3s;}
+.trend-stats{display:flex;gap:20px;}
+.trend-stat-val{font-family:var(--font-d);font-size:18px;font-weight:900;color:var(--dark);}
+.trend-stat-label{font-size:12px;color:var(--muted);}
+
+/* FEATURES */
+.section-eyebrow{font-size:11.5px;font-weight:700;color:var(--purple);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;}
+.section-heading{font-family:var(--font-d);font-size:clamp(26px,3vw,38px);font-weight:900;letter-spacing:-0.02em;margin-bottom:32px;line-height:1.1;}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:64px;}
+.feat-card{background:rgba(255,255,255,0.85);border:1px solid rgba(200,218,245,0.7);border-radius:18px;padding:26px;backdrop-filter:blur(12px);box-shadow:var(--shadow-sm);transition:all 0.2s;}
+.feat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.feat-icon{font-size:28px;margin-bottom:13px;}
+.feat-title{font-family:var(--font-d);font-size:16px;font-weight:800;color:var(--dark);margin-bottom:8px;}
+.feat-desc{font-size:13.5px;color:var(--muted);line-height:1.7;}
+
+/* CTA */
+.cta-strip{background:linear-gradient(135deg,rgba(124,58,237,0.08),rgba(124,58,237,0.03));border:1px solid rgba(124,58,237,0.2);border-radius:20px;padding:40px 44px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.cta-strip h3{font-family:var(--font-d);font-size:24px;font-weight:900;color:var(--dark);margin-bottom:6px;}
+.cta-strip p{font-size:14.5px;color:var(--muted);}
+
+/* FOOTER */
+footer{position:relative;z-index:1;background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.6);backdrop-filter:blur(16px);}
+.footer-inner{max-width:1100px;margin:0 auto;padding:52px 48px 0;}
+.footer-top{display:grid;grid-template-columns:1.4fr 2fr;gap:60px;margin-bottom:40px;}
+.footer-logo{font-family:var(--font-d);font-size:28px;font-weight:900;color:var(--dark);letter-spacing:-0.04em;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.footer-tagline{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:18px;}
+.footer-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--green);font-weight:600;}
+.footer-badge-dot{width:6px;height:6px;border-radius:50%;background:#16A34A;animation:blink 1.4s infinite;}
+.footer-links-group{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.footer-col{display:flex;flex-direction:column;gap:10px;}
+.footer-col-title{font-size:11px;font-weight:700;color:var(--dark);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;}
+.footer-col a{font-size:13.5px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+.footer-col a:hover{color:var(--dark);}
+.footer-bottom{border-top:1px solid rgba(200,218,245,0.6);padding:22px 0 26px;display:flex;align-items:center;justify-content:space-between;}
+.footer-copy{font-size:12px;color:var(--muted2);}
+.footer-bottom-links{display:flex;gap:20px;}
+.footer-bottom-links a{font-size:12px;color:var(--muted2);text-decoration:none;}
+.footer-bottom-links a:hover{color:var(--dark);}
+@media(max-width:900px){nav{padding:0 20px;}.page-wrap{padding:48px 20px 80px;}.trends-grid{grid-template-columns:1fr;}.features-grid{grid-template-columns:1fr;}.footer-top{grid-template-columns:1fr;gap:32px;}.footer-links-group{grid-template-columns:repeat(2,1fr);}.footer-inner{padding:40px 20px 0;}.cta-strip{flex-direction:column;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><div class="nav-dot"></div>SWAZ</a>
+  <div class="nav-right">
+    <div class="nav-live"><div class="live-dot"></div>n8n Live</div>
+    <a href="index.html" class="nav-back">← Back to App</a>
+    <a href="pricing.html" class="btn-cta">Get started →</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="eyebrow">📈 AI-Powered Intelligence</div>
+  <h1 class="page-title">Trend <span class="purple">Forecasting</span></h1>
+  <p class="page-sub">See what's going to sell before it goes viral. SWAZ's AI analyzes search velocity, seasonal signals, and marketplace data to surface rising niches weeks ahead of the market.</p>
+  <div class="hero-btns">
+    <a href="pricing.html" class="btn-primary">See Trends Now →</a>
+    <a href="amazon-scanner.html" class="btn-secondary">Amazon Scanner</a>
+  </div>
+
+  <!-- LIVE TRENDS -->
+  <div class="section-eyebrow">Trending Right Now</div>
+  <h2 class="section-heading">Niches on the rise<br>this week.</h2>
+  <div class="trends-grid">
+    <div class="trend-card">
+      <div class="trend-header">
+        <div class="trend-name">🧘 Acupressure Mats</div>
+        <span class="trend-tag tag-hot">🔥 Hot</span>
+      </div>
+      <div class="sparkline">
+        <div class="bar" style="height:30%;background:#E0EBFF;"></div>
+        <div class="bar" style="height:35%;background:#C7D9FF;"></div>
+        <div class="bar" style="height:40%;background:#ADC8FF;"></div>
+        <div class="bar" style="height:50%;background:#93B4FF;"></div>
+        <div class="bar" style="height:55%;background:#7AA0FF;"></div>
+        <div class="bar" style="height:65%;background:#608BFF;"></div>
+        <div class="bar" style="height:80%;background:#4677FF;"></div>
+        <div class="bar" style="height:100%;background:#2563EB;"></div>
+      </div>
+      <div class="trend-stats">
+        <div><div class="trend-stat-val">+147%</div><div class="trend-stat-label">Search growth</div></div>
+        <div><div class="trend-stat-val">$52K</div><div class="trend-stat-label">Avg monthly rev</div></div>
+        <div><div class="trend-stat-val">Low</div><div class="trend-stat-label">Competition</div></div>
+      </div>
+    </div>
+    <div class="trend-card">
+      <div class="trend-header">
+        <div class="trend-name">🐾 Pet Cooling Mats</div>
+        <span class="trend-tag tag-rising">📈 Rising</span>
+      </div>
+      <div class="sparkline">
+        <div class="bar" style="height:20%;background:#D1FAE5;"></div>
+        <div class="bar" style="height:28%;background:#A7F3D0;"></div>
+        <div class="bar" style="height:38%;background:#6EE7B7;"></div>
+        <div class="bar" style="height:48%;background:#34D399;"></div>
+        <div class="bar" style="height:60%;background:#10B981;"></div>
+        <div class="bar" style="height:72%;background:#059669;"></div>
+        <div class="bar" style="height:85%;background:#047857;"></div>
+        <div class="bar" style="height:100%;background:#16A34A;"></div>
+      </div>
+      <div class="trend-stats">
+        <div><div class="trend-stat-val">+89%</div><div class="trend-stat-label">Search growth</div></div>
+        <div><div class="trend-stat-val">$38K</div><div class="trend-stat-label">Avg monthly rev</div></div>
+        <div><div class="trend-stat-val">Low</div><div class="trend-stat-label">Competition</div></div>
+      </div>
+    </div>
+    <div class="trend-card">
+      <div class="trend-header">
+        <div class="trend-name">🌿 Mushroom Supplements</div>
+        <span class="trend-tag tag-emerging">✨ Emerging</span>
+      </div>
+      <div class="sparkline">
+        <div class="bar" style="height:25%;background:#EDE9FE;"></div>
+        <div class="bar" style="height:30%;background:#DDD6FE;"></div>
+        <div class="bar" style="height:35%;background:#C4B5FD;"></div>
+        <div class="bar" style="height:42%;background:#A78BFA;"></div>
+        <div class="bar" style="height:55%;background:#8B5CF6;"></div>
+        <div class="bar" style="height:68%;background:#7C3AED;"></div>
+        <div class="bar" style="height:80%;background:#6D28D9;"></div>
+        <div class="bar" style="height:95%;background:#5B21B6;"></div>
+      </div>
+      <div class="trend-stats">
+        <div><div class="trend-stat-val">+212%</div><div class="trend-stat-label">Search growth</div></div>
+        <div><div class="trend-stat-val">$71K</div><div class="trend-stat-label">Avg monthly rev</div></div>
+        <div><div class="trend-stat-val">Medium</div><div class="trend-stat-label">Competition</div></div>
+      </div>
+    </div>
+    <div class="trend-card">
+      <div class="trend-header">
+        <div class="trend-name">🏠 LED Neon Signs</div>
+        <span class="trend-tag tag-stable">📊 Stable</span>
+      </div>
+      <div class="sparkline">
+        <div class="bar" style="height:60%;background:#FEF3C7;"></div>
+        <div class="bar" style="height:65%;background:#FDE68A;"></div>
+        <div class="bar" style="height:62%;background:#FCD34D;"></div>
+        <div class="bar" style="height:70%;background:#FBBF24;"></div>
+        <div class="bar" style="height:68%;background:#F59E0B;"></div>
+        <div class="bar" style="height:75%;background:#D97706;"></div>
+        <div class="bar" style="height:72%;background:#B45309;"></div>
+        <div class="bar" style="height:78%;background:#92400E;"></div>
+      </div>
+      <div class="trend-stats">
+        <div><div class="trend-stat-val">+18%</div><div class="trend-stat-label">Search growth</div></div>
+        <div><div class="trend-stat-val">$94K</div><div class="trend-stat-label">Avg monthly rev</div></div>
+        <div><div class="trend-stat-val">High</div><div class="trend-stat-label">Competition</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="section-eyebrow">How It Works</div>
+  <h2 class="section-heading">Powered by AI &<br>real marketplace data.</h2>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🔭</div>
+      <div class="feat-title">Early Signal Detection</div>
+      <div class="feat-desc">Our AI detects rising search velocity before it hits mainstream — giving you a 4–6 week head start on competitors.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🌊</div>
+      <div class="feat-title">Seasonal Forecasting</div>
+      <div class="feat-desc">Know exactly when demand will spike for seasonal products. Plan your inventory months in advance with confidence.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🧠</div>
+      <div class="feat-title">AI Trend Scoring</div>
+      <div class="feat-desc">Every trend is scored by growth velocity, market size, competition level, and longevity potential.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📡</div>
+      <div class="feat-title">Cross-Platform Signals</div>
+      <div class="feat-desc">We analyze signals from Amazon, Walmart, TikTok, and Google Trends simultaneously to find what's actually rising.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🗺️</div>
+      <div class="feat-title">Category Heat Maps</div>
+      <div class="feat-desc">See which entire product categories are heating up or cooling down — perfect for strategic sourcing decisions.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🔔</div>
+      <div class="feat-title">Trend Alerts</div>
+      <div class="feat-desc">Get notified the moment a niche crosses your opportunity threshold — so you never miss a winning product window.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <div>
+      <h3>Get ahead of the market.</h3>
+      <p>See what's trending before your competitors do.</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="pricing.html" class="btn-primary">Start for free →</a>
+      <a href="amazon-scanner.html" class="btn-secondary">Amazon Scanner</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><div class="nav-dot"></div>SWAZ</div>
+        <p class="footer-tagline">Amazon & Walmart niche intelligence powered by AI.<br>Find winning products before the market does.</p>
+        <div class="footer-badge"><div class="footer-badge-dot"></div>Waqee Global Tech</div>
+      </div>
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <div class="footer-col-title">Product</div>
+          <a href="amazon-scanner.html">Amazon Scanner</a>
+          <a href="walmart-scanner.html">Walmart Scanner</a>
+          <a href="trend-forecasting.html">Trend Forecasting</a>
+          <a href="fba-calculator.html">FBA Calculator</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <a href="about.html">About Us</a>
+          <a href="blog.html">Blog</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Legal</div>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="refund.html">Refund Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 SWAZ · Waqee Global Tech. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="refund.html">Refund</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

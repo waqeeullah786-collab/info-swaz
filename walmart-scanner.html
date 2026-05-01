@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amazon Scanner — SWAZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--accent:#2563EB;--green:#16A34A;--orange:#F59E0B;--bg-hero:#F0F5FD;--white:#FFFFFF;--dark:#0F1724;--muted:#6B7A99;--muted2:#A0AABF;--shadow-sm:0 2px 8px rgba(37,99,235,0.08);--shadow-md:0 4px 20px rgba(37,99,235,0.11);--font:'DM Sans',sans-serif;--font-d:'Manrope',sans-serif;}
+body{background:var(--bg-hero);color:var(--dark);font-family:var(--font);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:radial-gradient(circle,rgba(37,99,235,0.07) 1px,transparent 1px);background-size:32px 32px;opacity:0.6;mask-image:radial-gradient(ellipse 100% 60% at 50% 0%,black,transparent);}
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:66px;background:rgba(255,255,255,0.94);backdrop-filter:blur(24px);border-bottom:1px solid rgba(200,215,240,0.6);}
+.nav-logo{font-family:var(--font-d);font-size:21px;font-weight:900;letter-spacing:-0.04em;color:var(--dark);display:flex;align-items:center;gap:8px;text-decoration:none;}
+.nav-dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(37,99,235,0.18);animation:dotPulse 2s ease-in-out infinite;}
+@keyframes dotPulse{0%,100%{box-shadow:0 0 0 3px rgba(37,99,235,0.18)}50%{box-shadow:0 0 0 5px rgba(37,99,235,0.08)}}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.nav-live{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:#16A34A;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);padding:6px 14px;border-radius:20px;}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#16A34A;animation:blink 1.4s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.nav-back{font-size:13.5px;font-weight:500;color:var(--muted);text-decoration:none;padding:8px 16px;border-radius:9px;border:1px solid rgba(200,218,245,0.8);background:#fff;transition:all 0.15s;}
+.nav-back:hover{color:var(--dark);}
+.btn-cta{font-size:14px;font-weight:700;color:#fff;background:var(--accent);padding:9px 22px;border-radius:9px;text-decoration:none;transition:all 0.18s;box-shadow:0 2px 12px rgba(37,99,235,0.28);}
+.btn-cta:hover{background:#1d4ed8;transform:translateY(-1px);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.page-wrap{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:64px 48px 100px;}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.18);color:var(--accent);font-size:12.5px;font-weight:600;padding:6px 16px;border-radius:20px;margin-bottom:20px;animation:fadeUp 0.5s ease both;}
+.page-title{font-family:var(--font-d);font-size:clamp(38px,5vw,62px);font-weight:900;line-height:1.05;letter-spacing:-0.03em;margin-bottom:14px;animation:fadeUp 0.5s 0.05s ease both;}
+.page-title .blue{color:var(--accent);}
+.page-sub{font-size:16.5px;color:var(--muted);line-height:1.75;max-width:580px;margin-bottom:20px;animation:fadeUp 0.5s 0.1s ease both;}
+.hero-btns{display:flex;gap:12px;margin-bottom:56px;animation:fadeUp 0.5s 0.15s ease both;}
+.btn-primary{font-size:14px;font-weight:700;color:#fff;background:var(--accent);padding:12px 28px;border-radius:10px;text-decoration:none;transition:all 0.18s;box-shadow:0 2px 14px rgba(37,99,235,0.3);}
+.btn-primary:hover{background:#1d4ed8;transform:translateY(-1px);}
+.btn-secondary{font-size:14px;font-weight:600;color:var(--accent);background:#fff;border:1.5px solid rgba(37,99,235,0.25);padding:12px 24px;border-radius:10px;text-decoration:none;transition:all 0.18s;}
+.btn-secondary:hover{border-color:var(--accent);}
+
+/* MOCK SCANNER UI */
+.scanner-mock{background:rgba(255,255,255,0.9);border:1px solid rgba(200,218,245,0.8);border-radius:20px;padding:28px;backdrop-filter:blur(12px);box-shadow:var(--shadow-md);margin-bottom:64px;}
+.mock-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+.mock-title{font-family:var(--font-d);font-size:15px;font-weight:800;color:var(--dark);}
+.mock-badge{font-size:11.5px;font-weight:600;color:var(--green);background:rgba(22,163,74,0.1);border:1px solid rgba(22,163,74,0.2);padding:5px 12px;border-radius:20px;}
+.mock-search{display:flex;gap:10px;margin-bottom:20px;}
+.mock-input{flex:1;font-family:var(--font);font-size:14px;color:var(--dark);background:#F8FAFF;border:1.5px solid rgba(200,218,245,0.9);border-radius:10px;padding:11px 16px;outline:none;}
+.mock-btn{font-size:14px;font-weight:700;color:#fff;background:var(--accent);border:none;padding:11px 22px;border-radius:10px;cursor:pointer;font-family:var(--font-d);}
+.mock-table{width:100%;border-collapse:collapse;}
+.mock-table th{font-size:11.5px;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:0.07em;padding:10px 14px;text-align:left;border-bottom:1px solid rgba(200,218,245,0.6);}
+.mock-table td{font-size:13.5px;color:var(--dark);padding:12px 14px;border-bottom:1px solid rgba(200,218,245,0.4);}
+.mock-table tr:last-child td{border-bottom:none;}
+.score-bar{display:flex;align-items:center;gap:8px;}
+.bar-bg{flex:1;height:6px;background:rgba(200,218,245,0.5);border-radius:4px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:4px;}
+.tag-green{background:rgba(22,163,74,0.1);color:var(--green);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.tag-orange{background:rgba(245,158,11,0.1);color:var(--orange);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.tag-blue{background:rgba(37,99,235,0.08);color:var(--accent);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
+
+/* FEATURES */
+.section-eyebrow{font-size:11.5px;font-weight:700;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;}
+.section-heading{font-family:var(--font-d);font-size:clamp(26px,3vw,38px);font-weight:900;letter-spacing:-0.02em;margin-bottom:32px;line-height:1.1;}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:64px;}
+.feat-card{background:rgba(255,255,255,0.85);border:1px solid rgba(200,218,245,0.7);border-radius:18px;padding:26px;backdrop-filter:blur(12px);box-shadow:var(--shadow-sm);transition:all 0.2s;}
+.feat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.feat-icon{font-size:28px;margin-bottom:13px;}
+.feat-title{font-family:var(--font-d);font-size:16px;font-weight:800;color:var(--dark);margin-bottom:8px;}
+.feat-desc{font-size:13.5px;color:var(--muted);line-height:1.7;}
+
+/* CTA */
+.cta-strip{background:linear-gradient(135deg,rgba(37,99,235,0.08),rgba(37,99,235,0.03));border:1px solid rgba(37,99,235,0.2);border-radius:20px;padding:40px 44px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.cta-strip h3{font-family:var(--font-d);font-size:24px;font-weight:900;color:var(--dark);margin-bottom:6px;}
+.cta-strip p{font-size:14.5px;color:var(--muted);}
+
+/* FOOTER */
+footer{position:relative;z-index:1;background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.6);backdrop-filter:blur(16px);}
+.footer-inner{max-width:1100px;margin:0 auto;padding:52px 48px 0;}
+.footer-top{display:grid;grid-template-columns:1.4fr 2fr;gap:60px;margin-bottom:40px;}
+.footer-logo{font-family:var(--font-d);font-size:28px;font-weight:900;color:var(--dark);letter-spacing:-0.04em;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.footer-tagline{font-size:13.5px;color:var(--muted);line-height:1.65;margin-bottom:18px;}
+.footer-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);border-radius:20px;padding:6px 14px;font-size:12px;color:var(--green);font-weight:600;}
+.footer-badge-dot{width:6px;height:6px;border-radius:50%;background:#16A34A;animation:blink 1.4s infinite;}
+.footer-links-group{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.footer-col{display:flex;flex-direction:column;gap:10px;}
+.footer-col-title{font-size:11px;font-weight:700;color:var(--dark);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:4px;}
+.footer-col a{font-size:13.5px;color:var(--muted);text-decoration:none;transition:color 0.15s;}
+.footer-col a:hover{color:var(--dark);}
+.footer-bottom{border-top:1px solid rgba(200,218,245,0.6);padding:22px 0 26px;display:flex;align-items:center;justify-content:space-between;}
+.footer-copy{font-size:12px;color:var(--muted2);}
+.footer-bottom-links{display:flex;gap:20px;}
+.footer-bottom-links a{font-size:12px;color:var(--muted2);text-decoration:none;}
+.footer-bottom-links a:hover{color:var(--dark);}
+@media(max-width:900px){nav{padding:0 20px;}.page-wrap{padding:48px 20px 80px;}.features-grid{grid-template-columns:1fr;}.footer-top{grid-template-columns:1fr;gap:32px;}.footer-links-group{grid-template-columns:repeat(2,1fr);}.footer-inner{padding:40px 20px 0;}.cta-strip{flex-direction:column;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo"><div class="nav-dot"></div>SWAZ</a>
+  <div class="nav-right">
+    <div class="nav-live"><div class="live-dot"></div>n8n Live</div>
+    <a href="index.html" class="nav-back">← Back to App</a>
+    <a href="pricing.html" class="btn-cta">Get started →</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="eyebrow">🏪 Amazon FBA & Marketplace</div>
+  <h1 class="page-title">Amazon <span class="blue">Niche Scanner</span></h1>
+  <p class="page-sub">Find profitable Amazon niches in seconds. AI-powered product research with real-time data on demand, competition, and profit potential.</p>
+  <div class="hero-btns">
+    <a href="pricing.html" class="btn-primary">Start Scanning →</a>
+    <a href="wfs-calculator.html" class="btn-secondary">WFS Calculator</a>
+  </div>
+
+  <!-- MOCK UI -->
+  <div class="scanner-mock">
+    <div class="mock-header">
+      <div class="mock-title">🔍 Walmart Niche Scanner</div>
+      <div class="mock-badge">● Live Data</div>
+    </div>
+    <div class="mock-search">
+      <input class="mock-input" type="text" value="yoga accessories" readonly>
+      <button class="mock-btn">Find Niches →</button>
+    </div>
+    <table class="mock-table">
+      <thead>
+        <tr>
+          <th>Niche / Keyword</th>
+          <th>Monthly Revenue</th>
+          <th>Competition</th>
+          <th>Opportunity Score</th>
+          <th>Trend</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Yoga Mat Strap</strong></td>
+          <td>$48,200</td>
+          <td><span class="tag-green">Low</span></td>
+          <td><div class="score-bar"><div class="bar-bg"><div class="bar-fill" style="width:88%;background:#16A34A;"></div></div><strong>88</strong></div></td>
+          <td>📈 Rising</td>
+        </tr>
+        <tr>
+          <td><strong>Yoga Blocks Cork</strong></td>
+          <td>$62,500</td>
+          <td><span class="tag-orange">Medium</span></td>
+          <td><div class="score-bar"><div class="bar-bg"><div class="bar-fill" style="width:74%;background:#F59E0B;"></div></div><strong>74</strong></div></td>
+          <td>📈 Rising</td>
+        </tr>
+        <tr>
+          <td><strong>Yoga Wheel Back Stretch</strong></td>
+          <td>$31,900</td>
+          <td><span class="tag-green">Low</span></td>
+          <td><div class="score-bar"><div class="bar-bg"><div class="bar-fill" style="width:82%;background:#16A34A;"></div></div><strong>82</strong></div></td>
+          <td>🔥 Hot</td>
+        </tr>
+        <tr>
+          <td><strong>Non-Slip Yoga Socks</strong></td>
+          <td>$89,100</td>
+          <td><span class="tag-blue">High</span></td>
+          <td><div class="score-bar"><div class="bar-bg"><div class="bar-fill" style="width:56%;background:#2563EB;"></div></div><strong>56</strong></div></td>
+          <td>📊 Stable</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="section-eyebrow">What You Get</div>
+  <h2 class="section-heading">Everything you need to<br>find winning products.</h2>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🤖</div>
+      <div class="feat-title">AI Opportunity Score</div>
+      <div class="feat-desc">Every niche gets an AI-powered score from 0–100 based on demand, competition, trend velocity, and profit potential.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📊</div>
+      <div class="feat-title">Real Revenue Estimates</div>
+      <div class="feat-desc">See monthly revenue estimates for every niche based on live Walmart sales data — not guesses.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">⚔️</div>
+      <div class="feat-title">Competition Analysis</div>
+      <div class="feat-desc">Understand how saturated a niche is before you invest. See top sellers, review counts, and market gaps.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📈</div>
+      <div class="feat-title">Trend Detection</div>
+      <div class="feat-desc">Spot rising trends early with our 12-month search volume trend data. Get in before the market does.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🔑</div>
+      <div class="feat-title">Keyword Intelligence</div>
+      <div class="feat-desc">Discover high-converting, low-competition keywords that your competitors are missing right now.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">💰</div>
+      <div class="feat-title">Profit Calculator</div>
+      <div class="feat-desc">Instant FBA profit estimates per niche — including fees, COGS estimates, and margin projections.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <div>
+      <h3>Ready to find your next product?</h3>
+      <p>Join 20,000+ Walmart sellers using SWAZ to research smarter.</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+      <a href="pricing.html" class="btn-primary">Start for free →</a>
+      <a href="amazon-scanner.html" class="btn-secondary">Try Amazon Scanner</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><div class="nav-dot"></div>SWAZ</div>
+        <p class="footer-tagline">Amazon & Walmart niche intelligence powered by AI.<br>Find winning products before the market does.</p>
+        <div class="footer-badge"><div class="footer-badge-dot"></div>Waqee Global Tech</div>
+      </div>
+      <div class="footer-links-group">
+        <div class="footer-col">
+          <div class="footer-col-title">Product</div>
+          <a href="walmart-scanner.html">Amazon Scanner</a>
+          <a href="walmart-scanner.html">Walmart Scanner</a>
+          <a href="trend-forecasting.html">Trend Forecasting</a>
+          <a href="wfs-calculator.html">WFS Calculator</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Company</div>
+          <a href="about.html">About Us</a>
+          <a href="blog.html">Blog</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Legal</div>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="refund.html">Refund Policy</a>
+          <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 SWAZ · Waqee Global Tech. All rights reserved.</div>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="refund.html">Refund</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
