@@ -108,7 +108,7 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
 <body>
 
 <nav>
-  <a href="khan87.html" class="nav-logo"><div class="nav-dot"></div>SWAZ</a>
+  <a href="index.html" class="nav-logo"><div class="nav-dot"></div>SWAZ</a>
   <div class="nav-links">
     <a href="features.html" class="nav-link">Features</a>
     <a href="pricing.html" class="nav-link active">Pricing</a>
@@ -117,8 +117,9 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
   </div>
   <div class="nav-right">
     <div class="nav-live"><div class="live-dot"></div>n8n Live</div>
-    <a href="#" class="btn-login">Log in</a>
-    <a href="#" class="btn-cta">Get started →</a>
+    <a href="index.html" style="font-size:13.5px;font-weight:500;color:#6B7A99;text-decoration:none;display:flex;align-items:center;gap:4px;padding:8px 16px;border-radius:9px;border:1px solid rgba(200,218,245,0.8);background:#fff;transition:all 0.15s;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px;"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>Home</a>
+    <a href="index.html" class="btn-login">Log in</a>
+    <a href="index.html" class="btn-cta">Get started →</a>
   </div>
 </nav>
 
@@ -139,13 +140,13 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
 
     <!-- Free -->
     <div class="plan">
-      <div class="plan-name">Starter</div>
+      <div class="plan-name">Free</div>
       <div class="plan-price"><sup>$</sup>0<span class="period">/mo</span></div>
       <div class="plan-annual-note"></div>
       <div class="plan-desc">Perfect for testing the waters. Get a feel for SWAZ with limited daily searches.</div>
-      <button class="plan-btn outline" onclick="window.location='khan87.html'">Get started free</button>
+      <button class="plan-btn outline" onclick="window.location='index.html'">Get started free</button>
       <ul class="plan-features">
-        <li><span class="icon yes">✓</span>5 searches per day</li>
+        <li><span class="icon yes">✓</span>7 searches per day</li>
         <li><span class="icon yes">✓</span>Amazon & Walmart results</li>
         <li><span class="icon yes">✓</span>Basic profitability score</li>
         <li class="faded"><span class="icon no">✕</span>Trend analysis</li>
@@ -155,14 +156,32 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
       </ul>
     </div>
 
+    <!-- Starter -->
+    <div class="plan">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price" id="starterPrice"><sup>$</sup>29<span class="period">/mo</span></div>
+      <div class="plan-annual-note" id="starterNote">Billed monthly</div>
+      <div class="plan-desc">For sellers ready to level up with more scans, saved niches, and keyword data.</div>
+      <button class="plan-btn outline" onclick="window.location='index.html'">Get started →</button>
+      <ul class="plan-features">
+        <li><span class="icon yes">✓</span>50 scans / month</li>
+        <li><span class="icon yes">✓</span>Amazon & Walmart results</li>
+        <li><span class="icon yes">✓</span>Competition scoring</li>
+        <li><span class="icon yes">✓</span>Basic keyword data</li>
+        <li><span class="icon yes">✓</span>5 categories</li>
+        <li><span class="icon yes">✓</span>Email support</li>
+        <li class="faded"><span class="icon no">✕</span>Trend forecasting</li>
+      </ul>
+    </div>
+
     <!-- Pro (featured) -->
     <div class="plan featured">
       <div class="plan-popular">⭐ Most Popular</div>
       <div class="plan-name">Pro</div>
-      <div class="plan-price" id="proPrice"><sup>$</sup>29<span class="period">/mo</span></div>
+      <div class="plan-price" id="proPrice"><sup>$</sup>96<span class="period">/mo</span></div>
       <div class="plan-annual-note" id="proNote">Billed monthly</div>
       <div class="plan-desc">For active sellers who need unlimited research, trend data, and full AI intelligence.</div>
-      <button class="plan-btn solid" onclick="window.location='khan87.html'">Start Pro free →</button>
+      <button class="plan-btn solid" onclick="window.location='index.html'">Start Pro free →</button>
       <ul class="plan-features">
         <li><span class="icon yes">✓</span>Unlimited daily searches</li>
         <li><span class="icon yes">✓</span>Amazon & Walmart results</li>
@@ -176,11 +195,11 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
 
     <!-- Business -->
     <div class="plan">
-      <div class="plan-name">Business</div>
-      <div class="plan-price" id="bizPrice"><sup>$</sup>79<span class="period">/mo</span></div>
+      <div class="plan-name">Agency</div>
+      <div class="plan-price" id="bizPrice"><sup>$</sup>600<span class="period">/mo</span></div>
       <div class="plan-annual-note" id="bizNote">Billed monthly</div>
       <div class="plan-desc">For agencies and power sellers who need everything — plus team collaboration and API access.</div>
-      <button class="plan-btn outline" onclick="window.location='khan87.html'">Start Business →</button>
+      <button class="plan-btn outline" onclick="window.location='index.html'">Start Business →</button>
       <ul class="plan-features">
         <li><span class="icon yes">✓</span>Unlimited daily searches</li>
         <li><span class="icon yes">✓</span>Amazon & Walmart results</li>
@@ -221,12 +240,12 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
   <div class="cta-banner">
     <h2 class="cta-banner-title">Still not sure? Try Starter free — forever.</h2>
     <p class="cta-banner-sub">No credit card required. Start finding winning products in minutes.</p>
-    <a href="khan87.html" class="btn-white">Launch SWAZ for free →</a>
+    <a href="index.html" class="btn-white">Launch SWAZ for free →</a>
   </div>
 </div>
 
 <footer>
-  <a href="khan87.html" class="footer-logo"><div class="nav-dot"></div>SWAZ</a>
+  <a href="index.html" class="footer-logo"><div class="nav-dot"></div>SWAZ</a>
   <div class="footer-links">
     <a href="features.html">Features</a>
     <a href="pricing.html">Pricing</a>
@@ -238,16 +257,19 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
 
 <script>
 let isAnnual = false;
-const proMonthly = 29, bizMonthly = 79;
+const starterMonthly = 29, proMonthly = 96, bizMonthly = 600;
 function toggleBilling() {
   isAnnual = !isAnnual;
   document.getElementById('billingToggle').classList.toggle('annual', isAnnual);
   document.getElementById('monthlyLabel').classList.toggle('active', !isAnnual);
   document.getElementById('annualLabel').classList.toggle('active', isAnnual);
+  const starterP = isAnnual ? Math.round(starterMonthly * 0.7) : starterMonthly;
   const proP = isAnnual ? Math.round(proMonthly * 0.7) : proMonthly;
   const bizP = isAnnual ? Math.round(bizMonthly * 0.7) : bizMonthly;
+  document.getElementById('starterPrice').innerHTML = `<sup>$</sup>${starterP}<span class="period">/mo</span>`;
   document.getElementById('proPrice').innerHTML = `<sup>$</sup>${proP}<span class="period">/mo</span>`;
   document.getElementById('bizPrice').innerHTML = `<sup>$</sup>${bizP}<span class="period">/mo</span>`;
+  document.getElementById('starterNote').textContent = isAnnual ? `$${starterP*12}/year — save $${(starterMonthly-starterP)*12}` : 'Billed monthly';
   document.getElementById('proNote').textContent = isAnnual ? `$${proP*12}/year — save $${(proMonthly-proP)*12}` : 'Billed monthly';
   document.getElementById('bizNote').textContent = isAnnual ? `$${bizP*12}/year — save $${(bizMonthly-bizP)*12}` : 'Billed monthly';
 }
