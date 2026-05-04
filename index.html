@@ -278,6 +278,31 @@ nav{
 .stat-val{font-family:var(--font-d);font-size:17px;font-weight:800;color:var(--dark);line-height:1.2;}
 .stat-label{font-size:11.5px;color:var(--muted);line-height:1.4;margin-top:1px;}
 
+/* ── REVIEW POPUP ── */
+#reviewModal{display:none;position:fixed;inset:0;z-index:998;background:rgba(15,23,36,0.5);backdrop-filter:blur(6px);align-items:center;justify-content:center;}
+.review-box{background:#fff;border-radius:24px;padding:36px 32px;max-width:420px;width:90%;text-align:center;box-shadow:0 24px 80px rgba(15,23,36,0.18);position:relative;}
+.review-stars{display:flex;justify-content:center;gap:10px;margin:18px 0;}
+.review-star{font-size:34px;cursor:pointer;color:#E5E7EB;transition:color 0.15s;}
+.review-star.active{color:#F59E0B;}
+.review-textarea{width:100%;border:1.5px solid rgba(200,218,245,0.9);border-radius:12px;padding:12px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:#0F1724;resize:none;outline:none;margin-bottom:14px;transition:border-color 0.18s;}
+.review-textarea:focus{border-color:rgba(37,99,235,0.4);}
+.review-submit{width:100%;background:#2563EB;color:#fff;border:none;border-radius:10px;padding:13px;font-size:14px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background 0.15s;}
+.review-submit:hover{background:#1d4ed8;}
+.review-skip{margin-top:10px;font-size:13px;color:#A0AABF;cursor:pointer;background:none;border:none;font-family:'DM Sans',sans-serif;}
+.review-skip:hover{color:#6B7A99;}
+
+/* ── REVIEWS SECTION ── */
+.reviews-section{max-width:1080px;margin:0 auto;padding:0 40px 80px;}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px;}
+.review-card{background:#fff;border:1px solid rgba(37,99,235,0.1);border-radius:16px;padding:24px;transition:all 0.2s;}
+.review-card:hover{border-color:rgba(37,99,235,0.22);transform:translateY(-2px);}
+.review-card-stars{color:#F59E0B;font-size:15px;margin-bottom:10px;}
+.review-card-text{font-size:13.5px;color:#6B7A99;line-height:1.65;margin-bottom:16px;}
+.review-card-user{display:flex;align-items:center;gap:10px;}
+.review-card-avatar{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid rgba(37,99,235,0.15);}
+.review-card-name{font-size:13px;font-weight:700;color:#0F1724;}
+.review-card-date{font-size:11px;color:#A0AABF;margin-top:1px;}
+
 /* ── TRUST LINE ── */
 .trust-line{
   text-align:center;margin-top:18px;padding-bottom:60px;
@@ -543,7 +568,7 @@ nav{
 </div><!-- /hero-wrap -->
 
 <!-- ═══════════════════════════════════════════ NUMBERS + PRICING BAR -->
-<div style="max-width:980px;margin:0 auto;padding:0 40px 60px;">
+<div id="pricing" style="max-width:980px;margin:0 auto;padding:0 40px 60px;">
   <!-- Stats row -->
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(37,99,235,0.08);border:1px solid rgba(37,99,235,0.12);border-radius:18px;overflow:hidden;margin-bottom:40px;">
     <div style="background:#F2F7FE;padding:30px 26px;"><div style="font-family:'Manrope',sans-serif;font-size:40px;font-weight:900;color:#0F1724;letter-spacing:-0.03em;line-height:1;margin-bottom:6px;">20<span style="color:#2563EB;">+</span></div><div style="font-size:13px;color:#6B7A99;">Amazon categories</div></div>
@@ -555,7 +580,7 @@ nav{
   <div style="font-size:12px;font-family:'Manrope',sans-serif;color:#2563EB;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:10px;">Pricing</div>
   <div style="font-family:'Manrope',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:900;letter-spacing:-0.03em;color:#0F1724;margin-bottom:8px;">Simple, honest pricing</div>
   <p style="font-size:14px;color:#6B7A99;margin-bottom:32px;">No hidden fees. No annual lock-in. Cancel anytime.</p>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;" id="pricing">
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
     <div class="plan-card">
       <div class="plan-name">Free</div>
       <div class="plan-price"><sup>$</sup>0</div>
@@ -601,7 +626,7 @@ nav{
     </div>
     <div class="plan-card">
       <div class="plan-name">Agency</div>
-      <div class="plan-price"><sup>$</sup>496</div>
+      <div class="plan-price"><sup>$</sup>600</div>
       <div class="plan-period">per month</div>
       <div class="plan-divider"></div>
       <ul class="plan-feats">
@@ -615,6 +640,36 @@ nav{
     </div>
   </div>
 </div>
+
+<!-- Review Modal -->
+<div id="reviewModal" style="position:fixed;inset:0;z-index:998;background:rgba(15,23,36,0.5);backdrop-filter:blur(6px);align-items:center;justify-content:center;">
+  <div class="review-box">
+    <button onclick="closeReviewModal()" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;color:#A0AABF;cursor:pointer;">✕</button>
+    <div style="font-size:28px;margin-bottom:6px;">🎉</div>
+    <h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:900;color:#0F1724;letter-spacing:-0.02em;margin-bottom:6px;">Found a winning product?</h3>
+    <p style="font-size:13px;color:#6B7A99;margin-bottom:4px;">Rate your SWAZ experience!</p>
+    <div class="review-stars" id="reviewStars">
+      <span class="review-star" onclick="setRating(1)">★</span>
+      <span class="review-star" onclick="setRating(2)">★</span>
+      <span class="review-star" onclick="setRating(3)">★</span>
+      <span class="review-star" onclick="setRating(4)">★</span>
+      <span class="review-star" onclick="setRating(5)">★</span>
+    </div>
+    <textarea class="review-textarea" id="reviewText" rows="3" placeholder="Tell others about your experience..."></textarea>
+    <button class="review-submit" onclick="submitReview()">Submit Review</button>
+    <br><button class="review-skip" onclick="closeReviewModal()">Skip for now</button>
+  </div>
+</div>
+
+<!-- Reviews Section -->
+<section class="reviews-section" id="reviewsSection">
+  <div style="font-size:12px;font-family:'Manrope',sans-serif;color:#2563EB;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;">What sellers say</div>
+  <div style="font-family:'Manrope',sans-serif;font-size:clamp(28px,4vw,40px);font-weight:900;letter-spacing:-0.03em;color:#0F1724;margin-bottom:8px;">Real reviews from real sellers</div>
+  <p style="font-size:14px;color:#6B7A99;margin-bottom:0;">From SWAZ users just like you.</p>
+  <div class="reviews-grid" id="reviewsGrid">
+    <div style="grid-column:1/-1;text-align:center;padding:40px;color:#A0AABF;font-size:14px;">Loading reviews...</div>
+  </div>
+</section>
 
 <!-- ═══════════════════════════════════════════ FEATURES -->
 <section id="features" style="max-width:1080px;margin:0 auto;padding:60px 40px 80px;">
@@ -716,7 +771,7 @@ nav{
   <div style="font-size:12px;font-family:'Manrope',sans-serif;color:#2563EB;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;">From the Blog</div>
   <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:36px;">
     <div style="font-family:'Manrope',sans-serif;font-size:clamp(26px,3.5vw,40px);font-weight:900;letter-spacing:-0.03em;color:#0F1724;line-height:1.08;">Seller insights &amp;<br>niche strategies</div>
-    <a href="blog.html" style="font-size:13px;font-weight:600;color:#2563EB;text-decoration:none;border:1px solid rgba(37,99,235,0.25);padding:9px 20px;border-radius:9px;white-space:nowrap;transition:all 0.15s;" onmouseover="this.style.background='rgba(37,99,235,0.06)'" onmouseout="this.style.background='transparent'">View all 50 articles →</a>
+    <a href="blog.html" class="blog-view-all">View all 50 articles →</a>
   </div>
   <div class="blog-grid">
     <a href="blog.html#blog-1" class="blog-card">
@@ -774,8 +829,11 @@ nav{
 .blog-title{font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;color:#0F1724;line-height:1.35;margin-bottom:10px;flex:1;}
 .blog-excerpt{font-size:13px;color:#6B7A99;line-height:1.65;margin-bottom:16px;}
 .blog-meta{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#A0AABF;margin-top:auto;}
-.blog-arrow{color:#2563EB;font-size:15px;transition:transform 0.15s;}
-.blog-card:hover .blog-arrow{transform:translateX(4px);}
+.footer-bottom-link{font-size:12px;color:#A0AABF;text-decoration:none;transition:color 0.15s;}
+.footer-bottom-link:hover{color:#0F1724;}
+.blog-view-all{font-size:13px;font-weight:600;color:#2563EB;text-decoration:none;border:1px solid rgba(37,99,235,0.25);padding:9px 20px;border-radius:9px;white-space:nowrap;transition:all 0.15s;background:transparent;}
+.blog-view-all:hover{background:rgba(37,99,235,0.06);}
+
 @media(max-width:1024px){.blog-grid{grid-template-columns:repeat(2,1fr)!important;}}
 @media(max-width:767px){
   .blog-grid{grid-template-columns:1fr!important;}
@@ -823,9 +881,9 @@ nav{
     <div style="border-top:1px solid rgba(37,99,235,0.1);padding:18px 0 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
       <div style="font-size:12px;color:#A0AABF;font-family:'DM Sans',sans-serif;">© 2025 Swaz · Waqee Global Tech. All rights reserved.</div>
       <div style="display:flex;gap:18px;">
-        <a href="privacy.html" style="font-size:12px;color:#A0AABF;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#0F1724'" onmouseout="this.style.color='#A0AABF'">Privacy</a>
-        <a href="refund.html" style="font-size:12px;color:#A0AABF;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#0F1724'" onmouseout="this.style.color='#A0AABF'">Refund</a>
-        <a href="terms.html" style="font-size:12px;color:#A0AABF;text-decoration:none;transition:color 0.15s;" onmouseover="this.style.color='#0F1724'" onmouseout="this.style.color='#A0AABF'">Terms</a>
+        <a href="privacy.html" class="footer-bottom-link">Privacy</a>
+        <a href="refund.html" class="footer-bottom-link">Refund</a>
+        <a href="terms.html" class="footer-bottom-link">Terms</a>
       </div>
     </div>
   </div>
@@ -1370,6 +1428,10 @@ async function doSearch() {
 
     stopLoading();
     renderResults(result, q, selectedPlatform);
+    // Show review popup after 3 seconds
+    setTimeout(() => {
+      if (window.__swazUser) openReviewModal();
+    }, 3000);
   } catch(err) {
     stopLoading();
     showToast('Search failed: ' + (err.message || 'Please try again'));
@@ -1415,12 +1477,62 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<!-- Review System JS -->
+<script>
+let currentRating = 0;
+
+function setRating(r) {
+  currentRating = r;
+  document.querySelectorAll('.review-star').forEach((s, i) => {
+    s.classList.toggle('active', i < r);
+  });
+}
+
+function openReviewModal() {
+  currentRating = 0;
+  document.querySelectorAll('.review-star').forEach(s => s.classList.remove('active'));
+  document.getElementById('reviewText').value = '';
+  document.getElementById('reviewModal').style.display = 'flex';
+}
+
+function closeReviewModal() {
+  document.getElementById('reviewModal').style.display = 'none';
+}
+
+async function submitReview() {
+  if (!currentRating) { showToast('⭐ Please select a star rating!'); return; }
+  const text = document.getElementById('reviewText').value.trim();
+  if (!text) { showToast('💬 Please write a short comment!'); return; }
+  if (!window.__swazUser) { showToast('Please sign in first!'); return; }
+
+  try {
+    await window.__saveReview({
+      rating: currentRating,
+      comment: text,
+      name: window.__swazUser.displayName || 'Anonymous',
+      avatar: window.__swazUser.photoURL || '',
+      email: window.__swazUser.email || '',
+      createdAt: new Date().toISOString()
+    });
+    closeReviewModal();
+    showToast('🎉 Thank you for your review!');
+    if (typeof window.loadReviews === 'function') window.loadReviews();
+  } catch(e) {
+    showToast('Failed to save review. Try again!');
+  }
+}
+
+document.addEventListener('click', e => {
+  if (e.target === document.getElementById('reviewModal')) closeReviewModal();
+});
+</script>
+
 <!-- Firebase Auth + Firestore -->
 <script type="module">
   import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
   import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged }
     from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
-  import { getFirestore, doc, getDoc, setDoc }
+  import { getFirestore, doc, getDoc, setDoc, collection, addDoc, getDocs, orderBy, query, limit }
     from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
   const firebaseConfig = {
@@ -1462,6 +1574,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     await setDoc(ref, { count: count + 1, date: todayStr() });
   };
+
+  // ── Save Review ──
+  window.__saveReview = async (reviewData) => {
+    const ref = collection(db, 'reviews');
+    await addDoc(ref, reviewData);
+  };
+
+  // ── Load Reviews ──
+  window.loadReviews = async () => {
+    const grid = document.getElementById('reviewsGrid');
+    if (!grid) return;
+    try {
+      const q = query(collection(db, 'reviews'), orderBy('createdAt', 'desc'), limit(6));
+      const snap = await getDocs(q);
+      if (snap.empty) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#A0AABF;font-size:14px;">No reviews yet. Be the first to share your experience!</div>';
+        return;
+      }
+      grid.innerHTML = snap.docs.map(d => {
+        const r = d.data();
+        const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+        const date = r.createdAt ? new Date(r.createdAt).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) : '';
+        return `<div class="review-card">
+          <div class="review-card-stars">${stars}</div>
+          <div class="review-card-text">"${r.comment}"</div>
+          <div class="review-card-user">
+            ${r.avatar ? `<img class="review-card-avatar" src="${r.avatar}" alt="${r.name}">` : `<div class="review-card-avatar" style="background:rgba(37,99,235,0.1);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#2563EB;">${(r.name||'A')[0]}</div>`}
+            <div>
+              <div class="review-card-name">${r.name || 'Anonymous'}</div>
+              <div class="review-card-date">${date}</div>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+    } catch(e) {
+      grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#A0AABF;font-size:14px;">Could not load reviews.</div>';
+    }
+  };
+
+  // Load reviews on page load
+  window.loadReviews();
 
   // ── Sign in ──
   window.signInWithGoogle = async () => {
