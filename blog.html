@@ -150,7 +150,7 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
   </div>
 
   <!-- Featured -->
-  <div class="featured-post" data-cat="strategy">
+  <div class="featured-post" data-cat="strategy" onclick="openArticle('featured')" style="cursor:pointer;">
     <div class="featured-img" style="padding:0;">
       <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80&fit=crop" alt="Winning Niche Strategy" style="width:100%;height:100%;object-fit:cover;min-height:280px;">
     </div>
@@ -165,14 +165,14 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
           <div style="font-size:12px;color:var(--muted2)">June 12, 2025 · 8 min read</div>
         </div>
       </div>
-      <a href="#" class="read-more">Read article →</a>
+      <a href="#" onclick="event.preventDefault();openArticle('featured')" class="read-more">Read article →</a>
     </div>
   </div>
 
   <!-- Posts grid -->
   <div class="posts-grid" id="postsGrid">
 
-    <div class="post-card" data-cat="amazon">
+    <div class="post-card" data-cat="amazon" onclick="openArticle('amazon')" style="cursor:pointer;">
       <div class="post-card-img blue-bg" style="padding:0;overflow:hidden;"><img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&q=80&fit=crop" alt="Amazon FBA" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="post-card-body">
         <span class="post-cat amazon">Amazon FBA</span>
@@ -185,7 +185,7 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
       </div>
     </div>
 
-    <div class="post-card" data-cat="tips">
+    <div class="post-card" data-cat="tips" onclick="openArticle('tips')" style="cursor:pointer;">
       <div class="post-card-img green-bg" style="padding:0;overflow:hidden;"><img src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=400&q=80&fit=crop" alt="Keyword Research" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="post-card-body">
         <span class="post-cat tips">Tips & Tricks</span>
@@ -198,7 +198,7 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
       </div>
     </div>
 
-    <div class="post-card" data-cat="walmart">
+    <div class="post-card" data-cat="walmart" onclick="openArticle('walmart')" style="cursor:pointer;">
       <div class="post-card-img orange-bg" style="padding:0;overflow:hidden;"><img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&q=80&fit=crop" alt="Walmart Selling" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="post-card-body">
         <span class="post-cat walmart">Walmart WFS</span>
@@ -211,7 +211,7 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
       </div>
     </div>
 
-    <div class="post-card" data-cat="tools">
+    <div class="post-card" data-cat="tools" onclick="openArticle('tools')" style="cursor:pointer;">
       <div class="post-card-img purple-bg" style="padding:0;overflow:hidden;"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80&fit=crop" alt="Automation Technology" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="post-card-body">
         <span class="post-cat tools">Tools</span>
@@ -224,7 +224,7 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
       </div>
     </div>
 
-    <div class="post-card" data-cat="strategy">
+    <div class="post-card" data-cat="strategy" onclick="openArticle('strategy')" style="cursor:pointer;">
       <div class="post-card-img pink-bg" style="padding:0;overflow:hidden;"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80&fit=crop" alt="Profitability Analytics" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="post-card-body">
         <span class="post-cat strategy">Strategy</span>
@@ -237,7 +237,7 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
       </div>
     </div>
 
-    <div class="post-card" data-cat="tips">
+    <div class="post-card" data-cat="tips" onclick="openArticle('trending')" style="cursor:pointer;">
       <div class="post-card-img blue-bg" style="padding:0;overflow:hidden;"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80&fit=crop" alt="Trending Products" style="width:100%;height:100%;object-fit:cover;"></div>
       <div class="post-card-body">
         <span class="post-cat tips">Tips & Tricks</span>
@@ -265,6 +265,25 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
 
 </div>
 
+
+<!-- ARTICLE MODAL -->
+<div id="articleModal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(15,23,36,0.6);backdrop-filter:blur(6px);overflow-y:auto;">
+  <div style="max-width:760px;margin:40px auto;background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 24px 80px rgba(15,23,36,0.2);position:relative;">
+    <div id="articleImg" style="width:100%;height:280px;overflow:hidden;"></div>
+    <div style="padding:40px 48px 52px;">
+      <button onclick="closeArticle()" style="position:absolute;top:20px;right:20px;background:rgba(15,23,36,0.07);border:none;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#6B7A99;transition:all 0.15s;" onmouseover="this.style.background='rgba(15,23,36,0.15)'" onmouseout="this.style.background='rgba(15,23,36,0.07)'">✕</button>
+      <div id="articleCat" style="margin-bottom:14px;"></div>
+      <h1 id="articleTitle" style="font-family:'Manrope',sans-serif;font-size:clamp(22px,3vw,32px);font-weight:900;color:#0F1724;line-height:1.2;margin-bottom:16px;letter-spacing:-0.02em;"></h1>
+      <div id="articleMeta" style="display:flex;align-items:center;gap:12px;font-size:13px;color:#6B7A99;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid rgba(200,218,245,0.6);"></div>
+      <div id="articleBody" style="font-size:16px;line-height:1.85;color:#374151;"></div>
+      <div style="margin-top:40px;padding-top:28px;border-top:1px solid rgba(200,218,245,0.6);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <a href="pricing.html" style="display:inline-flex;align-items:center;gap:8px;background:#2563EB;color:#fff;font-size:14px;font-weight:700;padding:12px 24px;border-radius:10px;text-decoration:none;">Try SWAZ Free →</a>
+        <button onclick="closeArticle()" style="font-size:14px;color:#6B7A99;background:none;border:1px solid rgba(200,218,245,0.8);padding:11px 20px;border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;">← Back to Blog</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <a href="index.html" class="footer-logo"><div class="nav-dot"></div>SWAZ</a>
   <div class="footer-links">
@@ -277,6 +296,149 @@ footer{background:rgba(255,255,255,0.8);border-top:1px solid rgba(200,218,245,0.
 </footer>
 
 <script>
+const articles = {
+  featured: {
+    cat: '<span class="post-cat strategy">Strategy</span>',
+    title: 'How to Find a Winning Niche in 2025: A Step-by-Step Framework',
+    meta: '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#2563EB,#7C3AED);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;">AK</div><div><div style="font-weight:600;color:#0F1724;">Ahmed Khan</div><div>June 12, 2025 · 8 min read</div></div>',
+    img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=760&q=80&fit=crop',
+    body: `<p>Finding a winning niche is the single most important decision you'll make as an e-commerce seller. Get it right and everything else becomes easier — sourcing, marketing, pricing. Get it wrong and you'll spend months fighting uphill battles against entrenched competition.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">Step 1: Define Your Winning Criteria</h3>
+<p>Before you search for anything, define what "winning" means to you. At SWAZ, we use three core signals: <strong>demand score</strong> (is there real buyer intent?), <strong>competition density</strong> (how many strong sellers are already there?), and <strong>profit margin potential</strong> (can you make money after fees?).</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">Step 2: Search Broad, Drill Narrow</h3>
+<p>Start with broad category keywords — "kitchen tools", "pet accessories", "home office" — then let the data guide you to sub-niches. A search for "pet accessories" might reveal that "slow feeder dog bowls" has high demand and low competition right now.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">Step 3: Validate with the Profitability Score</h3>
+<p>Any niche scoring 70+ on SWAZ's profitability index is worth serious consideration. Scores above 85 are rare gems — act fast because competition will follow. Scores below 50 usually indicate either low demand or a market flooded with established brands.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">Step 4: Check the Trend Direction</h3>
+<p>A high score today means nothing if the niche is declining. Always cross-reference with our Trend Forecasting tool to confirm the demand curve is stable or rising. Seasonal niches are fine — just plan your inventory accordingly.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">Step 5: Source and Launch</h3>
+<p>Once you've validated the niche, move fast. Use the competitor intelligence data to understand the price range, then find a supplier who can match or beat the quality at a lower cost. Your goal is to enter the market at a competitive price while maintaining a 30%+ net margin.</p>
+<p style="margin-top:24px;">The sellers who win consistently aren't luckier — they're more systematic. Use SWAZ to remove guesswork and replace it with data-driven confidence.</p>`
+  },
+  amazon: {
+    cat: '<span class="post-cat amazon">Amazon FBA</span>',
+    title: 'Amazon FBA vs. FBM in 2025: Which Is More Profitable?',
+    meta: '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#FF9900,#B45309);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;">SW</div><div><div style="font-weight:600;color:#0F1724;">Sara Williams</div><div>May 28, 2025 · 6 min read</div></div>',
+    img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=760&q=80&fit=crop',
+    body: `<p>The FBA vs. FBM debate is one of the most common questions new Amazon sellers face. The honest answer? It depends on your product type, volume, and margins. Here's how to think about it in 2025.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">What is FBA?</h3>
+<p>Fulfillment by Amazon means you ship your inventory to Amazon's warehouses and they handle storage, packing, shipping, and customer service. You pay fulfillment fees per unit plus monthly storage fees.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">What is FBM?</h3>
+<p>Fulfillment by Merchant means you store and ship products yourself. You keep more control but take on all logistics responsibilities. This works well for large, heavy, or custom items where Amazon's fees would eat your margins.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">The Numbers in 2025</h3>
+<p>For a standard small product ($20–$40 selling price), FBA typically costs $4–$7 per unit in fees. FBM shipping costs $3–$5 but requires your own warehouse or 3PL. For high-volume sellers, FBA almost always wins on efficiency. For slow-moving or oversized items, FBM can save you thousands in storage fees.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">Our Recommendation</h3>
+<p>Start with FBA for most products. The Prime badge, customer trust, and logistics infrastructure are worth the extra fees when you're starting out. As you scale and understand your margins better, selectively switch high-margin slow movers to FBM.</p>`
+  },
+  tips: {
+    cat: '<span class="post-cat tips">Tips & Tricks</span>',
+    title: '5 Keyword Research Mistakes That Kill Your Niche Score',
+    meta: '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#16A34A,#15803d);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;">MR</div><div><div style="font-weight:600;color:#0F1724;">Mike Rashid</div><div>May 14, 2025 · 4 min read</div></div>',
+    img: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=760&q=80&fit=crop',
+    body: `<p>Your keyword choice determines everything about your niche search results. Here are the five mistakes we see sellers make every day — and how to fix them.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">1. Searching Too Broadly</h3>
+<p>"Kitchen" returns too much noise. "Kitchen accessories" is better. "Silicone kitchen spatula set" is ideal. The more specific your keyword, the more actionable your results.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">2. Ignoring Buyer Intent</h3>
+<p>Some keywords are research keywords ("best yoga mat types") and some are buying keywords ("yoga mat non-slip thick"). Focus on buying-intent keywords — they convert to sales.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">3. Chasing Volume Over Opportunity</h3>
+<p>High search volume means high competition. A keyword with 50,000 monthly searches and 1,000 sellers is harder to win than one with 10,000 searches and 50 sellers. Look for the gap.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">4. Not Testing Variations</h3>
+<p>Try "dog harness", "no-pull dog harness", and "small dog harness" separately. Each returns different competition profiles and profitability scores. Small wording changes reveal huge opportunity differences.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">5. Searching Once and Moving On</h3>
+<p>Markets change. A niche that scored 45 in January might score 78 in March due to seasonal demand or a competitor going out of stock. Re-search your shortlist every few weeks.</p>`
+  },
+  walmart: {
+    cat: '<span class="post-cat walmart">Walmart WFS</span>',
+    title: 'Why Walmart is the Hidden Goldmine for New Sellers in 2025',
+    meta: '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#0071CE,#004f9a);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;">JL</div><div><div style="font-weight:600;color:#0F1724;">James Lee</div><div>Apr 30, 2025 · 5 min read</div></div>',
+    img: 'https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=760&q=80&fit=crop',
+    body: `<p>While everyone fights for Amazon rankings, a growing number of smart sellers are quietly building profitable businesses on Walmart Marketplace — with less competition, lower ad costs, and a massive loyal customer base.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">The Numbers Don't Lie</h3>
+<p>Walmart.com now attracts over 500 million monthly visitors. Its marketplace has grown 20%+ year-over-year, yet still has a fraction of Amazon's seller count. That ratio — huge traffic, fewer sellers — is the definition of opportunity.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">Lower PPC Costs</h3>
+<p>Walmart's advertising platform is less mature than Amazon's, which means cost-per-click rates are significantly lower. Sellers report 40–60% lower PPC costs for equivalent exposure compared to Amazon Sponsored Products.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">WFS Makes It Easy</h3>
+<p>Walmart Fulfillment Services (WFS) mirrors Amazon FBA in its simplicity. Send your inventory to Walmart's fulfillment centers and they handle the rest — including two-day shipping and returns. The onboarding process has improved dramatically in 2024-2025.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">How to Start</h3>
+<p>Apply for a Walmart Seller account at marketplace.walmart.com. Approval takes 1–2 weeks. Start by listing your best-performing Amazon products — the crossover demand is usually very high. Use SWAZ's Walmart scanner to validate which of your niches have strong demand on the platform.</p>`
+  },
+  tools: {
+    cat: '<span class="post-cat tools">Tools</span>',
+    title: 'How SWAZ Uses n8n to Deliver Real-Time Market Data',
+    meta: '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#7C3AED,#5b21b6);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;">WQ</div><div><div style="font-weight:600;color:#0F1724;">Waqee Team</div><div>Apr 18, 2025 · 7 min read</div></div>',
+    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=760&q=80&fit=crop',
+    body: `<p>Most product research tools rely on cached databases — data that was accurate last week, last month, or even last quarter. SWAZ does it differently. Every single search triggers a live data fetch via our n8n automation pipeline. Here's how it works.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">What is n8n?</h3>
+<p>n8n is an open-source workflow automation platform that lets us connect APIs, process data, and trigger actions — all in real time. Think of it as the engine room of SWAZ. When you hit "Find Products", n8n springs into action.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">The Pipeline in Action</h3>
+<p>Your search keyword is sent to our n8n webhook. The workflow then simultaneously queries multiple marketplace data sources, aggregates the results, runs our proprietary scoring algorithm, and returns structured results — all in under 10 seconds.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">Why Real-Time Matters</h3>
+<p>E-commerce moves fast. A product that was oversaturated three weeks ago might have a major seller go out of stock today — creating a window of opportunity that cached data would completely miss. Real-time data means you see what's happening right now, not what happened last month.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">The AI Layer</h3>
+<p>On top of the raw data, our AI model weighs dozens of signals — review velocity, price elasticity, seasonal patterns, competitor strength — to produce the final profitability score. This layer runs fresh on every search, so your score reflects current market conditions, not historical averages.</p>`
+  },
+  strategy: {
+    cat: '<span class="post-cat strategy">Strategy</span>',
+    title: 'The Profitability Score Explained: What 70+ Really Means',
+    meta: '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#EC4899,#be185d);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;">AK</div><div><div style="font-weight:600;color:#0F1724;">Ahmed Khan</div><div>Apr 5, 2025 · 5 min read</div></div>',
+    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=760&q=80&fit=crop',
+    body: `<p>The SWAZ profitability score is a 0–100 index that summarizes the overall opportunity quality of a niche. But what goes into it, and how should you use it?</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">What Goes Into the Score</h3>
+<p>The score is calculated from four weighted components: demand strength (40%), competition density (30%), margin potential (20%), and trend direction (10%). Each component is normalized and combined into a single index.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">Score Ranges Explained</h3>
+<p><strong>0–40:</strong> Avoid. Either demand is too low, competition is too high, or margins are razor thin.<br><strong>41–60:</strong> Caution. Possible opportunity but needs deeper validation — check trends and specific competitor weaknesses.<br><strong>61–75:</strong> Good. Worth pursuing if you have competitive advantages in sourcing or branding.<br><strong>76–89:</strong> Strong. High-confidence opportunity with favorable conditions across most signals.<br><strong>90–100:</strong> Rare gem. Move fast — these opportunities attract attention quickly.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">The ⭐ Winner Badge</h3>
+<p>When a product in the results earns the Winner badge, it means our AI identified it as the single highest-probability opportunity in that search. It's not just about the score — it's the product most likely to generate profitable sales given current market conditions.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">Don't Ignore the Components</h3>
+<p>A score of 72 built on strong demand but weak margins is very different from a 72 built on moderate demand and excellent margins. Always look at the breakdown, not just the headline number.</p>`
+  },
+  trending: {
+    cat: '<span class="post-cat tips">Tips & Tricks</span>',
+    title: '10 Trending Niches Our AI Flagged This Quarter',
+    meta: '<div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#2563EB,#1d4ed8);display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;">SW</div><div><div style="font-weight:600;color:#0F1724;">SWAZ Research</div><div>Mar 22, 2025 · 6 min read</div></div>',
+    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=760&q=80&fit=crop',
+    body: `<p>Every quarter our AI scans thousands of product categories and flags niches with rising demand, improving margins, and declining competition. Here are the top 10 from Q2 2025.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">1. Eco-Friendly Kitchen Tools</h3>
+<p>Bamboo utensil sets, beeswax wraps, and compostable cleaning products are seeing 35%+ demand growth. Competition is still moderate and margins are strong.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">2. AI-Enhanced Pet Gadgets</h3>
+<p>Automatic feeders with app connectivity, GPS pet trackers, and smart water fountains are riding the intersection of pet spending and smart home adoption.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">3. Posture & Ergonomic Office</h3>
+<p>With remote work firmly established, ergonomic accessories — lumbar supports, monitor stands, wrist rests — continue to grow steadily with high repeat purchase rates.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">4. Outdoor Hydration & Survival Gear</h3>
+<p>Collapsible water bottles, purification tablets, and multi-tool kits are seeing seasonal spikes that don't fully recede — pointing to a growing baseline of outdoor lifestyle buyers.</p>
+<h3 style="font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:#0F1724;margin:28px 0 12px;">5. Kids' STEM Toys</h3>
+<p>Educational toys with a science or coding angle are consistently high performers, especially in the $25–$45 price range where gifting purchase behavior dominates.</p>
+<p style="margin-top:20px;"><em>Search these categories in SWAZ to see current scores and find the specific sub-niches with the best opportunity right now.</em></p>`
+  }
+};
+
+function openArticle(key) {
+  const a = articles[key];
+  if (!a) return;
+  document.getElementById('articleImg').innerHTML = `<img src="${a.img}" style="width:100%;height:100%;object-fit:cover;" alt="${a.title}">`;
+  document.getElementById('articleCat').innerHTML = a.cat;
+  document.getElementById('articleTitle').textContent = a.title;
+  document.getElementById('articleMeta').innerHTML = a.meta;
+  document.getElementById('articleBody').innerHTML = a.body;
+  const modal = document.getElementById('articleModal');
+  modal.style.display = 'block';
+  modal.scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeArticle() {
+  document.getElementById('articleModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.getElementById('articleModal').addEventListener('click', function(e) {
+  if (e.target === this) closeArticle();
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeArticle();
+});
+
 function filterPosts(cat, btn) {
   document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
@@ -286,6 +448,7 @@ function filterPosts(cat, btn) {
   const featured = document.querySelector('.featured-post');
   if (featured) featured.style.display = (cat === 'all' || featured.dataset.cat === cat) ? '' : 'none';
 }
+
 document.querySelector('.newsletter-btn').addEventListener('click', function() {
   const input = document.querySelector('.newsletter-input');
   if (input.value && input.value.includes('@')) {
