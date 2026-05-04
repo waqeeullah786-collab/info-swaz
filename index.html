@@ -363,8 +363,11 @@ nav{
 <div id="authModal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(15,23,36,0.55);backdrop-filter:blur(6px);align-items:center;justify-content:center;">
   <div style="background:#fff;border-radius:24px;padding:44px 40px;max-width:400px;width:90%;text-align:center;box-shadow:0 24px 80px rgba(15,23,36,0.18);position:relative;">
     <button onclick="closeAuthModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;color:#A0AABF;cursor:pointer;line-height:1;">✕</button>
-    <div style="width:52px;height:52px;border-radius:14px;background:rgba(37,99,235,0.08);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;">
-      <div style="width:10px;height:10px;border-radius:50%;background:#2563EB;box-shadow:0 0 0 4px rgba(37,99,235,0.2);"></div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin:0 auto 18px;">
+      <div style="width:36px;height:36px;border-radius:10px;background:#2563EB;display:flex;align-items:center;justify-content:center;">
+        <div style="width:10px;height:10px;border-radius:50%;background:#fff;"></div>
+      </div>
+      <div style="font-family:'Manrope',sans-serif;font-size:26px;font-weight:900;letter-spacing:-0.04em;color:#0F1724;">SWAZ<span style="color:#2563EB;">.</span></div>
     </div>
     <h2 style="font-family:'Manrope',sans-serif;font-size:22px;font-weight:900;color:#0F1724;letter-spacing:-0.02em;margin-bottom:8px;">Welcome to SWAZ</h2>
     <p style="font-size:14px;color:#6B7A99;line-height:1.6;margin-bottom:28px;">Sign in to save your searches, track your daily limit, and unlock your plan features.</p>
@@ -1437,10 +1440,14 @@ async function doSearch() {
 
     stopLoading();
     renderResults(result, q, selectedPlatform);
-    // Show review popup after 3 seconds
-    setTimeout(() => {
-      if (window.__swazUser) openReviewModal();
-    }, 3000);
+
+    // Show review popup after 3rd search, only once ever
+    const { count } = await getSearchData();
+    const hasReviewed = localStorage.getItem('swaz_reviewed');
+    if (count === 3 && !hasReviewed && window.__swazUser) {
+      localStorage.setItem('swaz_reviewed', 'shown');
+      setTimeout(() => openReviewModal(), 2000);
+    }
   } catch(err) {
     stopLoading();
     showToast('Search failed: ' + (err.message || 'Please try again'));
