@@ -1125,7 +1125,7 @@ nav{
 
 <script>
 const WEBHOOK_URL = 'https://swaz.app.n8n.cloud/webhook/amazon-research';
-const MAX_SEARCHES = 7;
+const MAX_SEARCHES = window.__swazUser?.email === 'waqeeullah786@gmail.com' ? 999 : 7;
 const STORAGE_KEY = 'swaz_search_data';
 
 // ── today string ──
