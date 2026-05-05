@@ -61,7 +61,7 @@ nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-co
 .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:64px;}
 .feat-card{background:rgba(255,255,255,0.85);border:1px solid rgba(200,218,245,0.7);border-radius:18px;padding:26px;backdrop-filter:blur(12px);box-shadow:var(--shadow-sm);transition:all 0.2s;}
 .feat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);}
-.feat-icon{font-size:28px;margin-bottom:13px;}
+.feat-icon{margin-bottom:13px;line-height:0;}
 .feat-title{font-family:var(--font-d);font-size:16px;font-weight:800;color:var(--dark);margin-bottom:8px;}
 .feat-desc{font-size:13.5px;color:var(--muted);line-height:1.7;}
 
@@ -90,13 +90,14 @@ footer{position:relative;z-index:1;background:rgba(255,255,255,0.8);border-top:1
 .footer-bottom-links a:hover{color:var(--dark);}
 @media(max-width:900px){nav{padding:0 20px;}.page-wrap{padding:48px 20px 80px;}.features-grid{grid-template-columns:1fr;}.footer-top{grid-template-columns:1fr;gap:32px;}.footer-links-group{grid-template-columns:repeat(2,1fr);}.footer-inner{padding:40px 20px 0;}.cta-strip{flex-direction:column;}}
 </style>
+
 </head>
 <body>
 <nav>
   <a href="index.html" class="nav-logo"><div class="nav-dot"></div>SWAZ</a>
   <div class="nav-right">
     <div class="nav-live"><div class="live-dot"></div>n8n Live</div>
-    <a href="index.html" class="nav-back">← Back to App</a>
+    <a href="index.html" class="nav-back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:5px;"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></svg>Home</a>
     <a href="pricing.html" class="btn-cta">Get started →</a>
   </div>
 </nav>
@@ -168,32 +169,32 @@ footer{position:relative;z-index:1;background:rgba(255,255,255,0.8);border-top:1
   <h2 class="section-heading">Everything you need to<br>find winning products.</h2>
   <div class="features-grid">
     <div class="feat-card">
-      <div class="feat-icon">🤖</div>
+      <div class="feat-icon"><svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><polygon points="24,4 29,18 44,19.5 33,29.5 36.5,44 24,36.5 11.5,44 15,29.5 4,19.5 19,18" fill="#FFC107" stroke="#FFB300" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
       <div class="feat-title">AI Opportunity Score</div>
       <div class="feat-desc">Every niche gets an AI-powered score from 0–100 based on demand, competition, trend velocity, and profit potential.</div>
     </div>
     <div class="feat-card">
-      <div class="feat-icon">📊</div>
+      <div class="feat-icon"><svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="28" width="8" height="14" rx="2" fill="#4CAF50"/><rect x="20" y="18" width="8" height="24" rx="2" fill="#2196F3"/><rect x="34" y="8" width="8" height="34" rx="2" fill="#F44336"/><rect x="4" y="42" width="40" height="2" rx="1" fill="#555"/></svg></div>
       <div class="feat-title">Real Revenue Estimates</div>
       <div class="feat-desc">See monthly revenue estimates for every niche based on live Walmart sales data — not guesses.</div>
     </div>
     <div class="feat-card">
-      <div class="feat-icon">⚔️</div>
+      <div class="feat-icon"><svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path d="M24 4 L44 16 L44 36 C44 36 24 46 24 46 C24 46 4 36 4 36 L4 16 Z" fill="#7C3AED"/><polyline points="17,24 22,29 31,20" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="feat-title">Competition Analysis</div>
       <div class="feat-desc">Understand how saturated a niche is before you invest. See top sellers, review counts, and market gaps.</div>
     </div>
     <div class="feat-card">
-      <div class="feat-icon">📈</div>
+      <div class="feat-icon"><svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><polyline points="4,36 17,21 27,28 44,10" fill="none" stroke="#14B8A6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><polyline points="36,10 44,10 44,18" fill="none" stroke="#14B8A6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="feat-title">Trend Detection</div>
       <div class="feat-desc">Spot rising trends early with our 12-month search volume trend data. Get in before the market does.</div>
     </div>
     <div class="feat-card">
-      <div class="feat-icon">🔑</div>
+      <div class="feat-icon"><svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><circle cx="21" cy="21" r="14" fill="none" stroke="#F59E0B" stroke-width="4"/><line x1="31" y1="31" x2="44" y2="44" stroke="#F59E0B" stroke-width="4" stroke-linecap="round"/></svg></div>
       <div class="feat-title">Keyword Intelligence</div>
       <div class="feat-desc">Discover high-converting, low-competition keywords that your competitors are missing right now.</div>
     </div>
     <div class="feat-card">
-      <div class="feat-icon">💰</div>
+      <div class="feat-icon"><svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect x="8" y="4" width="32" height="40" rx="4" fill="#EC4899"/><line x1="16" y1="14" x2="32" y2="14" stroke="white" stroke-width="3" stroke-linecap="round"/><line x1="16" y1="22" x2="32" y2="22" stroke="white" stroke-width="3" stroke-linecap="round"/><line x1="16" y1="30" x2="24" y2="30" stroke="white" stroke-width="3" stroke-linecap="round"/></svg></div>
       <div class="feat-title">Profit Calculator</div>
       <div class="feat-desc">Instant FBA profit estimates per niche — including fees, COGS estimates, and margin projections.</div>
     </div>
@@ -253,5 +254,6 @@ footer{position:relative;z-index:1;background:rgba(255,255,255,0.8);border-top:1
     </div>
   </div>
 </footer>
+
 </body>
 </html>
